@@ -4,7 +4,6 @@
 
 import { initNavigation } from './navigation.js';
 import { initCategoryGallery } from './category-gallery.js';
-import { initTimeline } from './timeline.js';
 import { initVideoPlayer } from './video-player.js';
 import { initProjects } from './projects.js';
 import { initEnquiry } from './enquiry.js';
@@ -45,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
       gsap.registerPlugin(ScrollTrigger);
     }
 
-    // Hero Staggered Entrance Animation
+    // Hero Staggered Entrance Animation (Light Mode)
     if (!prefersReducedMotion) {
       const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
@@ -56,28 +55,36 @@ document.addEventListener('DOMContentLoaded', () => {
           duration: 0.8,
           delay: 0.1
         })
+        .from('.hero__eyebrow', {
+          y: 20,
+          opacity: 0,
+          duration: 0.7
+        }, '-=0.4')
         .from('.hero__headline', {
           y: 40,
           opacity: 0,
           duration: 0.9
-        }, '-=0.4')
+        }, '-=0.5')
         .from('.hero__lead', {
-          y: 20,
+          y: 25,
           opacity: 0,
-          duration: 0.7
+          duration: 0.75
         }, '-=0.5')
         .from('.hero__actions', {
           y: 20,
           opacity: 0,
           duration: 0.6
         }, '-=0.5')
-        .from('.hero__media-card', {
-          clipPath: 'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)',
-          scale: 1.04,
+        .from('.hero__bottom-bar', {
+          y: 30,
           opacity: 0,
-          duration: 1.1,
-          ease: 'expo.out'
-        }, '-=0.7');
+          duration: 0.8
+        }, '-=0.4')
+        .from('.hero__counter', {
+          opacity: 0,
+          x: 15,
+          duration: 0.7
+        }, '-=0.5');
     }
 
     // 3. One-Time Metrics Count-Up Animation
@@ -130,7 +137,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // 5. Initialize Components
   initNavigation();
   initCategoryGallery();
-  initTimeline();
   initVideoPlayer();
   initProjects();
   initEnquiry();

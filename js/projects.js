@@ -1,5 +1,5 @@
 /**
- * HYPER STEEL FABRICATION — PROJECTS & LIGHTBOX MODULE
+ * HYPER STEEL — PROJECTS & LIGHTBOX MODULE
  */
 
 export function initProjects() {

@@ -1,6 +1,8 @@
 /**
- * HYPER STEEL FABRICATION — CATEGORY GALLERY MODULE
- * Bespoke 7-panel interactive expanding exhibition gallery
+ * HYPER STEEL — CATEGORY GALLERY MODULE
+ * Initial state: ALL panels equal compressed width (no panel open).
+ * Hover state: hovered panel grows, others shrink.
+ * Mouse leave: resets all panels to equal compressed state.
  */
 
 export function initCategoryGallery() {
@@ -10,74 +12,77 @@ export function initCategoryGallery() {
   const panels = Array.from(gallery.querySelectorAll('.category-panel'));
   if (panels.length === 0) return;
 
-  let activeIndex = 0; // Default to first panel expanded for visual richness
   const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-  function activatePanel(index, retain = true) {
+  function resetAll() {
+    panels.forEach((p) => {
+      p.classList.remove('is-expanded');
+      p.classList.remove('is-shrunk');
+      p.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  function expandPanel(index) {
     panels.forEach((panel, i) => {
       if (i === index) {
         panel.classList.add('is-expanded');
+        panel.classList.remove('is-shrunk');
         panel.setAttribute('aria-expanded', 'true');
       } else {
         panel.classList.remove('is-expanded');
+        panel.classList.add('is-shrunk');
         panel.setAttribute('aria-expanded', 'false');
       }
     });
-    if (retain) {
-      activeIndex = index;
-    }
   }
 
-  // Initial state
-  activatePanel(0, true);
+  // Ensure initial state has no open panel
+  resetAll();
 
-  // Mouse interactions for desktop
   panels.forEach((panel, index) => {
-    // Hover expand
+    // Desktop hover
     panel.addEventListener('mouseenter', () => {
       if (!isTouchDevice && window.innerWidth > 900) {
-        activatePanel(index, false);
+        expandPanel(index);
       }
     });
 
-    // Click / Tap
-    panel.addEventListener('click', (e) => {
-      // If clicking inside a button/link inside the expanded panel, don't toggle
-      if (e.target.closest('a') || e.target.closest('button')) {
-        return;
+    // Click / touch toggle
+    panel.addEventListener('click', () => {
+      if (panel.classList.contains('is-expanded')) {
+        resetAll();
+      } else {
+        expandPanel(index);
       }
-      activatePanel(index, true);
     });
 
-    // Keyboard support: Enter / Space / Arrow keys
+    // Keyboard support
     panel.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        activatePanel(index, true);
+        if (panel.classList.contains('is-expanded')) {
+          resetAll();
+        } else {
+          expandPanel(index);
+        }
       } else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
         e.preventDefault();
         const nextIndex = (index + 1) % panels.length;
         panels[nextIndex].focus();
-        activatePanel(nextIndex, true);
+        expandPanel(nextIndex);
       } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
         e.preventDefault();
         const prevIndex = (index - 1 + panels.length) % panels.length;
         panels[prevIndex].focus();
-        activatePanel(prevIndex, true);
-      }
-    });
-
-    panel.addEventListener('focus', () => {
-      if (window.innerWidth > 900) {
-        activatePanel(index, false);
+        expandPanel(prevIndex);
       }
     });
   });
 
-  // When pointer leaves gallery on desktop, revert to last explicitly clicked/retained active panel
+  // When pointer leaves the gallery container, reset all to equal compressed state
   gallery.addEventListener('mouseleave', () => {
     if (!isTouchDevice && window.innerWidth > 900) {
-      activatePanel(activeIndex, true);
+      resetAll();
     }
   });
 }

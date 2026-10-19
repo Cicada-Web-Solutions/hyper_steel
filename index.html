@@ -434,7 +434,6 @@ m-4741 -136 c40 -43 99 -109 131 -148 32 -38 63 -74 69 -80 43 -40 255 -314
         <nav class="site-nav" role="navigation" aria-label="Primary Navigation">
           <a href="#hero" class="site-nav__link is-active">Overview</a>
           <a href="#gallery" class="site-nav__link">Categories</a>
-          <a href="#timeline" class="site-nav__link">Process</a>
           <a href="#craft-videos" class="site-nav__link">Craft Film</a>
           <a href="#projects" class="site-nav__link">Portfolio</a>
           <a href="#capabilities" class="site-nav__link">Capabilities</a>
@@ -473,11 +472,10 @@ m-4741 -136 c40 -43 99 -109 131 -148 32 -38 63 -74 69 -80 43 -40 255 -314
       <nav class="mobile-drawer__nav">
         <a href="#hero" class="mobile-drawer__link">01 · Overview</a>
         <a href="#gallery" class="mobile-drawer__link">02 · Categories</a>
-        <a href="#timeline" class="mobile-drawer__link">03 · Process</a>
-        <a href="#craft-videos" class="mobile-drawer__link">04 · Craft Film</a>
-        <a href="#projects" class="mobile-drawer__link">05 · Portfolio</a>
-        <a href="#capabilities" class="mobile-drawer__link">06 · Capabilities</a>
-        <a href="#contact" class="mobile-drawer__link">07 · Contact</a>
+        <a href="#craft-videos" class="mobile-drawer__link">03 · Craft Film</a>
+        <a href="#projects" class="mobile-drawer__link">04 · Portfolio</a>
+        <a href="#capabilities" class="mobile-drawer__link">05 · Capabilities</a>
+        <a href="#contact" class="mobile-drawer__link">06 · Contact</a>
       </nav>
     </div>
 
@@ -494,49 +492,45 @@ m-4741 -136 c40 -43 99 -109 131 -148 32 -38 63 -74 69 -80 43 -40 255 -314
 
   <main id="main-content">
     <!-- ========================================================================
-         02 — HERO SECTION: THE ART OF ARCHITECTURAL STEEL
+         02 — HERO SECTION: THE ART OF ARCHITECTURAL STEEL (LIGHT MODE)
          ======================================================================== -->
     <section id="hero" class="hero" aria-label="Introduction">
-      <div class="container">
-        <div class="hero__grid">
-          <!-- Text Content -->
-          <div class="hero__content">
-            <h1 class="hero__headline">
-              THE ART OF<br>
-              <span class="highlight-word">ARCHITECTURAL</span> STEEL
-            </h1>
+      <div class="hero__backdrop-gradient" aria-hidden="true"></div>
 
-            <p class="hero__lead">
-              From bold entrances to defining details, we make steel part of the architecture. Precision-crafted bespoke doors, automated gate systems, and structural stairs designed for contemporary living.
-            </p>
+      <div class="container hero__inner">
+        <div class="hero__content">
 
-            <div class="hero__actions">
-              <button type="button" class="btn btn--primary js-open-enquiry" data-service="Architectural Entrance">
-                <span>Discuss a Project</span>
-                <span class="btn__icon" aria-hidden="true">↗</span>
-              </button>
+          <h1 class="hero__headline">
+            <span class="hero__title-light">The Art of</span>
+            <span class="hero__title-bold">Architectural</span>
+            <span class="hero__title-steel">Steel</span>
+          </h1>
 
-              <a href="#gallery" class="btn btn--secondary btn--down">
-                <span>Explore Our Work</span>
-                <span class="btn__icon" aria-hidden="true">↓</span>
-              </a>
-            </div>
-          </div>
+          <p class="hero__lead">
+            From bold entrances to defining details, we make steel part of the architecture. Precision-crafted bespoke doors, automated gate systems, and structural stairs designed for contemporary living.
+          </p>
 
-          <!-- Hero Media Display: Own Real Client Asset -->
-          <div class="hero__media-wrapper">
-            <div class="hero__media-card">
-              <img 
-                src="assets/stylish_gate.jpeg" 
-                alt="Hyper Steel bespoke architectural steel entrance gate with rich vertical timber panels"
-                class="hero__image"
-                width="1600"
-                height="1200"
-                fetchpriority="high"
-              >
-            </div>
+          <div class="hero__actions">
+            <button type="button" class="btn btn--primary btn--pill js-open-enquiry" data-service="Architectural Entrance">
+              <span>Discuss a Project</span>
+              <span class="btn__icon" aria-hidden="true">↗</span>
+            </button>
+
+            <a href="#gallery" class="btn btn--secondary btn--pill">
+              <span>Explore Our Work</span>
+              <span class="btn__icon" aria-hidden="true">↓</span>
+            </a>
           </div>
         </div>
+
+        
+      </div>
+
+      <!-- Subtle Slide Counter from Reference -->
+      <div class="hero__counter" aria-hidden="true">
+        <span>01</span>
+        <span class="hero__counter-line"></span>
+        <span>03</span>
       </div>
     </section>
 
@@ -584,23 +578,18 @@ m-4741 -136 c40 -43 99 -109 131 -148 32 -38 63 -74 69 -80 43 -40 255 -314
          ======================================================================== -->
     <section id="gallery" class="gallery-section" aria-label="Signature Categories">
       <div class="container">
-        <div class="section-header section-header--split">
-          <div class="section-header__text">
-            <h2 class="section-title">ONE MATERIAL. MANY POSSIBILITIES.</h2>
-            <p class="section-lead">
-              Every project begins with a vision. We shape the steel that brings it to life. Hover or select a discipline below to reveal its architectural execution.
-            </p>
-          </div>
-          <div class="section-header__badge">
-            <span class="badge badge--apricot">7 Specialized Disciplines</span>
-          </div>
+        <div class="section-header">
+          <h2 class="section-title">ONE MATERIAL. MANY POSSIBILITIES.</h2>
+          <p class="section-lead">
+            Every project begins with a vision. We shape the steel that brings it to life. Hover or select a discipline below to reveal its architectural execution.
+          </p>
         </div>
 
-        <!-- 7 Narrow Vertical Interactive Panels -->
+        <!-- 7 Narrow Vertical Interactive Panels (All initially compressed equal width) -->
         <div class="category-gallery" role="tablist" aria-label="Steel Disciplines">
           
           <!-- Panel 1: Architectural Entrances -->
-          <div class="category-panel is-expanded" role="tab" tabindex="0" aria-expanded="true" aria-label="Architectural Entrances">
+          <div class="category-panel" role="tab" tabindex="0" aria-expanded="false" aria-label="Architectural Entrances">
             <div class="category-panel__media-bg">
               <img src="assets/stylish_gate.jpeg" alt="Architectural blackened steel entrance gate with vertical timber panels" class="category-panel__img" loading="lazy">
               <div class="category-panel__overlay"></div>
@@ -781,133 +770,9 @@ m-4741 -136 c40 -43 99 -109 131 -148 32 -38 63 -74 69 -80 43 -40 255 -314
     </section>
 
     <!-- ========================================================================
-         05 — HORIZONTAL SCROLL TIMELINE: TRANSFORMATION OF STEEL
+         05 — WORKING VIDEOS: AUTOPLAY PROCESS FILMS (LIGHT MODE ACCENT)
          ======================================================================== -->
-    <section id="timeline" class="timeline-section section--dark" aria-label="Fabrication Process Timeline">
-      <div class="timeline-pinned-container">
-        <div class="container timeline-header-wrap">
-          <div class="eyebrow">
-            <span class="eyebrow__dot" aria-hidden="true"></span>
-            <span>The Fabrication Journey</span>
-          </div>
-          <h2 class="section-title">FROM RAW MATERIAL TO REFINED DETAIL.</h2>
-          <p class="section-lead">
-            Steel begins as raw structural section. Through engineering, precision cutting, joinery, and meticulous finishing, it becomes an enduring architectural landmark.
-          </p>
-          <div class="timeline-progress-bar" aria-hidden="true">
-            <div class="timeline-progress-fill"></div>
-          </div>
-        </div>
-
-        <div class="timeline-track-wrapper">
-          <div class="container">
-            <div class="timeline-track">
-              
-              <!-- Stage 01 -->
-              <div class="timeline-card">
-                <div class="timeline-card__media">
-                  <img src="assets/finished_exterior.jpeg" alt="Modern villa site evaluation" class="timeline-card__img" loading="lazy">
-                  <div class="timeline-card__step-tag">STAGE 01</div>
-                </div>
-                <div class="timeline-card__body">
-                  <div class="timeline-card__stage">01 · SPATIAL BRIEF</div>
-                  <h3 class="timeline-card__title">VISION & LOAD ANALYSIS</h3>
-                  <p class="timeline-card__text">
-                    We evaluate structural foundations, spatial clearances, wind loads, and architectural intent alongside the client and architect.
-                  </p>
-                  <div class="timeline-card__specs">
-                    <span class="badge badge--dark">Load Calculations</span>
-                    <span class="badge badge--dark">Site Survey</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Stage 02 -->
-              <div class="timeline-card">
-                <div class="timeline-card__media">
-                  <img src="assets/railing_1.jpeg" alt="CAD detailing for balustrades and steelwork" class="timeline-card__img" loading="lazy">
-                  <div class="timeline-card__step-tag">STAGE 02</div>
-                </div>
-                <div class="timeline-card__body">
-                  <div class="timeline-card__stage">02 · ENGINEERING</div>
-                  <h3 class="timeline-card__title">CAD & JOINT DETAILING</h3>
-                  <p class="timeline-card__text">
-                    Translating concepts into millimeter-accurate 3D models, defining anchor bolt locations, hidden brackets, and CNC cutting vector paths.
-                  </p>
-                  <div class="timeline-card__specs">
-                    <span class="badge badge--dark">3D Structural CAD</span>
-                    <span class="badge badge--dark">CNC Vectors</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Stage 03 -->
-              <div class="timeline-card">
-                <div class="timeline-card__media">
-                  <img src="assets/spiral_staircase_work_2.jpeg" alt="Technicians fabricating steel spiral staircase" class="timeline-card__img" loading="lazy">
-                  <div class="timeline-card__step-tag">STAGE 03</div>
-                </div>
-                <div class="timeline-card__body">
-                  <div class="timeline-card__stage">03 · WORKSHOP</div>
-                  <h3 class="timeline-card__title">PRECISION FABRICATION</h3>
-                  <p class="timeline-card__text">
-                    High-power CNC fiber laser cutting, mechanical plate rolling, jig fitting, and certified TIG/MIG welding inside our Madurai facility.
-                  </p>
-                  <div class="timeline-card__specs">
-                    <span class="badge badge--dark">Fiber Laser Cut</span>
-                    <span class="badge badge--dark">TIG / MIG Welds</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Stage 04 -->
-              <div class="timeline-card">
-                <div class="timeline-card__media">
-                  <img src="assets/supportless_steel_staircase.jpeg" alt="Steel staircase with anti-corrosion primer and satin finish" class="timeline-card__img" loading="lazy">
-                  <div class="timeline-card__step-tag">STAGE 04</div>
-                </div>
-                <div class="timeline-card__body">
-                  <div class="timeline-card__stage">04 · PROTECTION</div>
-                  <h3 class="timeline-card__title">SURFACE & FINISHING</h3>
-                  <p class="timeline-card__text">
-                    Abrasive blast cleaning, multi-coat zinc phosphate anti-corrosion primer, and electrostatic architectural powder coating baked for extreme durability.
-                  </p>
-                  <div class="timeline-card__specs">
-                    <span class="badge badge--dark">Zinc Epoxy Base</span>
-                    <span class="badge badge--dark">Electrostatic Coat</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Stage 05 -->
-              <div class="timeline-card">
-                <div class="timeline-card__media">
-                  <img src="assets/rooftop_canopy_work.jpeg" alt="Installation crew anchoring glass and steel pergola on roof" class="timeline-card__img" loading="lazy">
-                  <div class="timeline-card__step-tag">STAGE 05</div>
-                </div>
-                <div class="timeline-card__body">
-                  <div class="timeline-card__stage">05 · HANDOVER</div>
-                  <h3 class="timeline-card__title">INSTALLATION & ALIGNMENT</h3>
-                  <p class="timeline-card__text">
-                    Laser-guided site leveling, heavy structural chemical anchoring, mechanical testing of motors and pivots, and flawless architectural delivery.
-                  </p>
-                  <div class="timeline-card__specs">
-                    <span class="badge badge--dark">Laser Leveling</span>
-                    <span class="badge badge--dark">Final Commissioning</span>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================================================
-         06 — WORKING VIDEOS: AUTOPLAY PROCESS FILMS
-         ======================================================================== -->
-    <section id="craft-videos" class="videos-section section--dark" aria-label="Process Films">
+    <section id="craft-videos" class="videos-section" aria-label="Process Films">
       <div class="container">
         <div class="section-header">
           <h2 class="section-title">PRECISION ISN'T A CLAIM. IT'S A PROCESS.</h2>
@@ -987,10 +852,11 @@ m-4741 -136 c40 -43 99 -109 131 -148 32 -38 63 -74 69 -80 43 -40 255 -314
               </div>
             </div>
 
-            <!-- Item 3: Botanical Gate Showcase -->
+            <!-- Item 3: Botanical Gate Showcase (Rotated 90 Deg Corrected) -->
             <div class="video-thumb-card" 
                  role="button" 
                  tabindex="0"
+                 data-rotate="90"
                  data-video-src="assets/metal_gate_showcase.mp4" 
                  data-video-poster="assets/video_posters/metal_gate_showcase_poster.jpg"
                  data-video-title="Laser-Cut Botanical Screen Showcase"
@@ -1005,10 +871,11 @@ m-4741 -136 c40 -43 99 -109 131 -148 32 -38 63 -74 69 -80 43 -40 255 -314
               </div>
             </div>
 
-            <!-- Item 4: Stylish Gate 3 Operation -->
+            <!-- Item 4: Stylish Gate 3 Operation (Rotated 90 Deg Corrected) -->
             <div class="video-thumb-card" 
                  role="button" 
                  tabindex="0"
+                 data-rotate="90"
                  data-video-src="assets/stylish_gate_3.mp4" 
                  data-video-poster="assets/video_posters/stylish_gate_3_poster.jpg"
                  data-video-title="Heavy Architectural Compound Gate"
@@ -1033,22 +900,11 @@ m-4741 -136 c40 -43 99 -109 131 -148 32 -38 63 -74 69 -80 43 -40 255 -314
          ======================================================================== -->
     <section id="projects" class="projects-section" aria-label="Completed Projects">
       <div class="container">
-        <div class="section-header section-header--split">
-          <div class="section-header__text">
-            <h2 class="section-title">SELECTED ARCHITECTURAL WORKS</h2>
-            <p class="section-lead">
-              A curated selection of executed installations across Madurai and Tamil Nadu. Click any project to inspect construction details, materials, and structural execution.
-            </p>
-          </div>
-
-          <!-- Project Filter -->
-          <div class="projects-filter" role="group" aria-label="Project Categories">
-            <button type="button" class="filter-btn is-active" data-filter="all">All Works</button>
-            <button type="button" class="filter-btn" data-filter="stairs">Staircases</button>
-            <button type="button" class="filter-btn" data-filter="entrances">Entrances & Gates</button>
-            <button type="button" class="filter-btn" data-filter="facades">Facades & Balustrades</button>
-            <button type="button" class="filter-btn" data-filter="canopies">Canopies</button>
-          </div>
+        <div class="section-header">
+          <h2 class="section-title">SELECTED ARCHITECTURAL WORKS</h2>
+          <p class="section-lead">
+            A curated selection of executed installations across Madurai and Tamil Nadu. Click any project to inspect construction details, materials, and structural execution.
+          </p>
         </div>
 
         <!-- Asymmetric Portfolio Grid -->
@@ -1350,8 +1206,7 @@ m-4741 -136 c40 -43 99 -109 131 -148 32 -38 63 -74 69 -80 43 -40 255 -314
           <ul class="footer-links">
             <li><a href="#hero">Overview</a></li>
             <li><a href="#gallery">Categories</a></li>
-            <li><a href="#timeline">Fabrication Process</a></li>
-            <li><a href="#craft-videos">Craft Footage</a></li>
+            <li><a href="#craft-videos">Craft Film</a></li>
             <li><a href="#projects">Portfolio</a></li>
             <li><a href="#capabilities">Disciplines</a></li>
           </ul>

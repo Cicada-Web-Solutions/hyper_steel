@@ -1,6 +1,6 @@
 /**
  * HYPER STEEL — VIDEO SHOWCASE MODULE
- * Autoplaying cinema player with playlist switching and mute toggle
+ * Autoplay cinema player with dynamic playlist switching and 90-degree upright correction
  */
 
 export function initVideoPlayer() {
@@ -14,30 +14,14 @@ export function initVideoPlayer() {
 
   if (!cinemaPlayer || !mainVideo) return;
 
-  // Autoplay video on load (muted)
+  // Autoplay video on initial load
   mainVideo.muted = true;
   mainVideo.play().then(() => {
     cinemaPlayer.classList.add('is-playing');
     updatePlayIcons(true);
-  }).catch((err) => {
-    console.log('Autoplay deferred until user interaction:', err);
+  }).catch(() => {
+    // Autoplay will activate on first user touch/click
   });
-
-  // Toggle play/pause
-  function togglePlay() {
-    if (mainVideo.paused) {
-      mainVideo.play().then(() => {
-        cinemaPlayer.classList.add('is-playing');
-        updatePlayIcons(true);
-      }).catch((err) => {
-        console.warn('Playback prevented:', err);
-      });
-    } else {
-      mainVideo.pause();
-      cinemaPlayer.classList.remove('is-playing');
-      updatePlayIcons(false);
-    }
-  }
 
   function updatePlayIcons(isPlaying) {
     if (playToggleBtn) {
@@ -48,7 +32,19 @@ export function initVideoPlayer() {
     }
   }
 
-  // Toggle mute
+  function togglePlay() {
+    if (mainVideo.paused) {
+      mainVideo.play().then(() => {
+        cinemaPlayer.classList.add('is-playing');
+        updatePlayIcons(true);
+      }).catch((err) => console.warn(err));
+    } else {
+      mainVideo.pause();
+      cinemaPlayer.classList.remove('is-playing');
+      updatePlayIcons(false);
+    }
+  }
+
   function toggleMute() {
     mainVideo.muted = !mainVideo.muted;
     if (muteToggleBtn) {
@@ -62,7 +58,7 @@ export function initVideoPlayer() {
   playToggleBtn?.addEventListener('click', togglePlay);
   muteToggleBtn?.addEventListener('click', toggleMute);
 
-  // Switch video from playlist
+  // Switch video from playlist and handle 90-deg rotation orientation
   playlistItems.forEach((card) => {
     card.addEventListener('click', () => {
       playlistItems.forEach((c) => c.classList.remove('is-active'));
@@ -72,12 +68,20 @@ export function initVideoPlayer() {
       const videoPoster = card.getAttribute('data-video-poster');
       const title = card.getAttribute('data-video-title');
       const caption = card.getAttribute('data-video-caption');
+      const rotate = card.getAttribute('data-rotate');
 
       if (videoSrc) {
         mainVideo.src = videoSrc;
         if (videoPoster) mainVideo.poster = videoPoster;
         if (playerTitle && title) playerTitle.textContent = title;
         if (playerCaption && caption) playerCaption.textContent = caption;
+
+        // Apply upright orientation transform if video was recorded sideways
+        if (rotate === '90') {
+          mainVideo.classList.add('is-rotated-90');
+        } else {
+          mainVideo.classList.remove('is-rotated-90');
+        }
 
         mainVideo.load();
         mainVideo.play().then(() => {
