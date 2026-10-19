@@ -1,5 +1,5 @@
 /**
- * HYPER STEEL FABRICATION — NAVIGATION MODULE
+ * HYPER STEEL — NAVIGATION & BACK-TO-TOP MODULE
  */
 
 export function initNavigation() {
@@ -9,19 +9,43 @@ export function initNavigation() {
   const drawerBackdrop = document.querySelector('.mobile-drawer__backdrop');
   const drawerClose = document.querySelector('.mobile-drawer__close');
   const navLinks = document.querySelectorAll('.site-nav__link, .mobile-drawer__link');
+  const backToTopBtn = document.querySelector('.back-to-top');
+  const heroSection = document.querySelector('#hero');
 
-  // Header scroll appearance
+  // Header scroll appearance & Back-to-top visibility
   function handleScroll() {
-    if (!header) return;
-    if (window.scrollY > 40) {
-      header.classList.add('is-scrolled');
-    } else {
-      header.classList.remove('is-scrolled');
+    const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+    
+    // Header styling
+    if (header) {
+      if (scrollY > 40) {
+        header.classList.add('is-scrolled');
+      } else {
+        header.classList.remove('is-scrolled');
+      }
+    }
+
+    // Back-to-top button: visible when scrolled below hero
+    if (backToTopBtn) {
+      const heroThreshold = heroSection ? heroSection.offsetHeight * 0.75 : 450;
+      if (scrollY > heroThreshold) {
+        backToTopBtn.classList.add('is-visible');
+      } else {
+        backToTopBtn.classList.remove('is-visible');
+      }
     }
   }
 
   window.addEventListener('scroll', handleScroll, { passive: true });
   handleScroll();
+
+  // Back to top click handler
+  backToTopBtn?.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
 
   // Mobile menu open / close
   function openMenu() {

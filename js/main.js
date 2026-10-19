@@ -1,5 +1,5 @@
 /**
- * HYPER STEEL FABRICATION — MAIN ENTRY POINT
+ * HYPER STEEL — MAIN ENTRY POINT
  */
 
 import { initNavigation } from './navigation.js';
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (typeof Lenis !== 'undefined' && !prefersReducedMotion) {
     lenis = new Lenis({
-      duration: 1.2,
+      duration: 1.1,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
@@ -56,16 +56,10 @@ document.addEventListener('DOMContentLoaded', () => {
           duration: 0.8,
           delay: 0.1
         })
-        .from('.hero__eyebrow', {
-          y: 20,
-          opacity: 0,
-          duration: 0.6
-        }, '-=0.4')
         .from('.hero__headline', {
           y: 40,
           opacity: 0,
-          duration: 0.9,
-          stagger: 0.1
+          duration: 0.9
         }, '-=0.4')
         .from('.hero__lead', {
           y: 20,
@@ -79,11 +73,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }, '-=0.5')
         .from('.hero__media-card', {
           clipPath: 'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)',
-          scale: 1.05,
+          scale: 1.04,
           opacity: 0,
-          duration: 1.2,
+          duration: 1.1,
           ease: 'expo.out'
-        }, '-=0.8');
+        }, '-=0.7');
     }
 
     // 3. One-Time Metrics Count-Up Animation
@@ -141,18 +135,14 @@ document.addEventListener('DOMContentLoaded', () => {
   initProjects();
   initEnquiry();
 
-  // Scroll indicator in hero
-  const scrollCue = document.querySelector('.hero__scroll-indicator');
-  scrollCue?.addEventListener('click', () => {
-    const nextSection = document.querySelector('#metrics');
-    if (nextSection) {
-      const topPos = nextSection.getBoundingClientRect().top + window.pageYOffset - 80;
-      window.scrollTo({ top: topPos, behavior: 'smooth' });
+  // Refresh ScrollTrigger on window resize and load
+  window.addEventListener('resize', () => {
+    if (typeof ScrollTrigger !== 'undefined') {
+      ScrollTrigger.refresh();
     }
   });
 
-  // Refresh ScrollTrigger on window resize
-  window.addEventListener('resize', () => {
+  window.addEventListener('load', () => {
     if (typeof ScrollTrigger !== 'undefined') {
       ScrollTrigger.refresh();
     }

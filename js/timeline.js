@@ -1,16 +1,14 @@
 /**
- * HYPER STEEL FABRICATION — TIMELINE MODULE
+ * HYPER STEEL — TIMELINE MODULE
  * GSAP ScrollTrigger pinned horizontal fabrication story
  */
 
 export function initTimeline() {
   const section = document.querySelector('.timeline-section');
-  const pinnedContainer = document.querySelector('.timeline-pinned-container');
-  const trackWrapper = document.querySelector('.timeline-track-wrapper');
   const track = document.querySelector('.timeline-track');
   const progressFill = document.querySelector('.timeline-progress-fill');
 
-  if (!section || !trackWrapper || !track || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+  if (!section || !track || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
     return;
   }
 
@@ -21,14 +19,13 @@ export function initTimeline() {
   // Desktop only (viewport width > 900px and no reduced motion)
   mm.add('(min-width: 901px) and (prefers-reduced-motion: no-preference)', () => {
     function getScrollDistance() {
-      const containerWidth = trackWrapper.clientWidth;
       const trackWidth = track.scrollWidth;
-      // Add a slight padding so the final stage is fully comfortable in viewport
-      return Math.max(0, trackWidth - containerWidth + 80);
+      const windowWidth = window.innerWidth;
+      // Scroll until the last card is fully visible + margin
+      return Math.max(0, trackWidth - windowWidth + 120);
     }
 
     const scrollDistance = getScrollDistance();
-
     if (scrollDistance <= 0) return;
 
     const timelineAnimation = gsap.to(track, {
@@ -36,17 +33,23 @@ export function initTimeline() {
       ease: 'none',
       scrollTrigger: {
         trigger: section,
-        pin: pinnedContainer,
+        pin: true,
         start: 'top top',
-        end: () => `+=${getScrollDistance() * 1.15}`,
-        scrub: 1,
+        end: () => `+=${getScrollDistance() * 1.25}`,
+        scrub: 0.8,
         invalidateOnRefresh: true,
+        anticipatePin: 1,
         onUpdate: (self) => {
           if (progressFill) {
             progressFill.style.width = `${self.progress * 100}%`;
           }
         }
       }
+    });
+
+    // Refresh once all images are loaded
+    window.addEventListener('load', () => {
+      ScrollTrigger.refresh();
     });
 
     return () => {

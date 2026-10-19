@@ -1,5 +1,5 @@
 /**
- * HYPER STEEL FABRICATION — PROJECT CONSULTATION MODULE
+ * HYPER STEEL — PROJECT CONSULTATION MODULE
  */
 
 export function initEnquiry() {
@@ -50,13 +50,12 @@ export function initEnquiry() {
       e.preventDefault();
       const name = form.querySelector('#enquiry-name')?.value.trim() || 'Client';
       const phone = form.querySelector('#enquiry-phone')?.value.trim() || '';
-      const service = form.querySelector('#enquiry-service')?.value || 'Architectural Steel Fabrication';
+      const service = form.querySelector('#enquiry-service')?.value || 'Architectural Steel Project';
       const location = form.querySelector('#enquiry-location')?.value.trim() || 'Madurai';
       const message = form.querySelector('#enquiry-message')?.value.trim() || '';
 
-      const text = `Hello Hyper Steel Fabrication,\n\nI am interested in discussing an architectural project:\n- Name: ${name}\n- Phone: ${phone}\n- Service: ${service}\n- Project Location: ${location}\n- Notes: ${message}\n\nPlease let me know when we can schedule a consultation.`;
+      const text = `Hello Hyper Steel,\n\nI am interested in discussing an architectural project:\n- Name: ${name}\n- Phone: ${phone}\n- Discipline: ${service}\n- Project Location: ${location}\n- Notes: ${message}\n\nPlease let me know when we can schedule a consultation.`;
 
-      // Official WhatsApp format (Madurai code)
       const encodedText = encodeURIComponent(text);
       const whatsappUrl = `https://wa.me/919943360800?text=${encodedText}`;
 

@@ -1,12 +1,11 @@
 /**
- * HYPER STEEL FABRICATION — VIDEO SHOWCASE MODULE
- * Immersive cinema player with custom controls and playlist switching
+ * HYPER STEEL — VIDEO SHOWCASE MODULE
+ * Autoplaying cinema player with playlist switching and mute toggle
  */
 
 export function initVideoPlayer() {
   const cinemaPlayer = document.querySelector('.cinema-player');
   const mainVideo = document.querySelector('.cinema-player__video');
-  const overlayPlay = document.querySelector('.cinema-player__overlay-play');
   const playToggleBtn = document.querySelector('.js-play-toggle');
   const muteToggleBtn = document.querySelector('.js-mute-toggle');
   const playerTitle = document.querySelector('.cinema-player__title');
@@ -14,6 +13,15 @@ export function initVideoPlayer() {
   const playlistItems = document.querySelectorAll('.video-thumb-card');
 
   if (!cinemaPlayer || !mainVideo) return;
+
+  // Autoplay video on load (muted)
+  mainVideo.muted = true;
+  mainVideo.play().then(() => {
+    cinemaPlayer.classList.add('is-playing');
+    updatePlayIcons(true);
+  }).catch((err) => {
+    console.log('Autoplay deferred until user interaction:', err);
+  });
 
   // Toggle play/pause
   function togglePlay() {
@@ -51,14 +59,8 @@ export function initVideoPlayer() {
     }
   }
 
-  overlayPlay?.addEventListener('click', togglePlay);
   playToggleBtn?.addEventListener('click', togglePlay);
   muteToggleBtn?.addEventListener('click', toggleMute);
-
-  mainVideo.addEventListener('ended', () => {
-    cinemaPlayer.classList.remove('is-playing');
-    updatePlayIcons(false);
-  });
 
   // Switch video from playlist
   playlistItems.forEach((card) => {
@@ -89,7 +91,7 @@ export function initVideoPlayer() {
     });
   });
 
-  // Auto-pause video when scrolled out of view to save system performance
+  // Auto-pause video when scrolled out of view to preserve resources
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -97,6 +99,11 @@ export function initVideoPlayer() {
           mainVideo.pause();
           cinemaPlayer.classList.remove('is-playing');
           updatePlayIcons(false);
+        } else if (entry.isIntersecting && mainVideo.paused) {
+          mainVideo.play().then(() => {
+            cinemaPlayer.classList.add('is-playing');
+            updatePlayIcons(true);
+          }).catch(() => {});
         }
       });
     }, { threshold: 0.25 });
