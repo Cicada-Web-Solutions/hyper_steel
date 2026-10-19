@@ -799,6 +799,7 @@ m-4741 -136 c40 -43 99 -109 131 -148 32 -38 63 -74 69 -80 43 -40 255 -314
             <!-- Video Player Controls Bar -->
             <div class="cinema-player__controls">
               <div class="cinema-player__info">
+                <span class="badge badge--apricot cinema-player__badge" style="margin-bottom: 0.25rem; display: inline-block;">DOORS &amp; SECURITY</span>
                 <span class="cinema-player__title">Multi-Track Sliding Steel Grille Door</span>
                 <span class="cinema-player__caption">Smooth effortless glide mechanism tested in front of architectural spiral stair</span>
               </div>
@@ -810,16 +811,18 @@ m-4741 -136 c40 -43 99 -109 131 -148 32 -38 63 -74 69 -80 43 -40 255 -314
             </div>
           </div>
 
-          <!-- Video Playlist / Interactive Thumbnails -->
+          <!-- Video Playlist / Interactive Thumbnails (All 11 Work Videos) -->
           <div class="video-playlist">
-            <div class="video-playlist__header">SELECT FOOTAGE TO PREVIEW</div>
+            <div class="video-playlist__header">SELECT FOOTAGE TO PREVIEW (11 CLIPS)</div>
 
-            <!-- Item 1: Active by default -->
+            <!-- Clip 1: Sliding Door -->
             <div class="video-thumb-card is-active" 
                  role="button" 
                  tabindex="0"
+                 aria-selected="true"
                  data-video-src="assets/sliding_door.mp4" 
                  data-video-poster="assets/video_posters/sliding_door_poster.jpg"
+                 data-video-category="DOORS &amp; SECURITY"
                  data-video-title="Multi-Track Sliding Steel Grille Door"
                  data-video-caption="Smooth effortless glide mechanism tested in front of architectural spiral stair">
               <div class="video-thumb-card__media">
@@ -828,17 +831,18 @@ m-4741 -136 c40 -43 99 -109 131 -148 32 -38 63 -74 69 -80 43 -40 255 -314
               </div>
               <div class="video-thumb-card__body">
                 <div class="video-thumb-card__title">Sliding Door Glide Test</div>
-                <p class="video-thumb-card__desc">Precision multi-track rolling tolerance & latching</p>
+                <p class="video-thumb-card__desc">Precision multi-track rolling tolerance &amp; latching</p>
               </div>
             </div>
 
-            <!-- Item 2: Stylish Door -->
+            <!-- Clip 2: Stylish Door (Portrait Louvered Entrance) -->
             <div class="video-thumb-card" 
                  role="button" 
                  tabindex="0"
-                 data-rotate="90"
+                 aria-selected="false"
                  data-video-src="assets/stylish_door.mp4" 
                  data-video-poster="assets/video_posters/stylish_door_poster.jpg"
+                 data-video-category="ARCHITECTURAL ENTRANCES"
                  data-video-title="Matte Black Louvered Architectural Entrance"
                  data-video-caption="Cinematic upward reveal of a multi-panel black steel pivot entrance door">
               <div class="video-thumb-card__media">
@@ -851,32 +855,34 @@ m-4741 -136 c40 -43 99 -109 131 -148 32 -38 63 -74 69 -80 43 -40 255 -314
               </div>
             </div>
 
-            <!-- Item 3: Botanical Gate Showcase (Rotated 90 Deg Corrected) -->
+            <!-- Clip 3: Botanical Gate Showcase -->
             <div class="video-thumb-card" 
                  role="button" 
                  tabindex="0"
-                 data-rotate="90"
+                 aria-selected="false"
                  data-video-src="assets/metal_gate_showcase.mp4" 
                  data-video-poster="assets/video_posters/metal_gate_showcase_poster.jpg"
+                 data-video-category="CNC LASER SCREENS"
                  data-video-title="Laser-Cut Botanical Screen Showcase"
-                 data-video-caption="CNC laser cut bamboo & floral steel motif with mirror stainless insert backing">
+                 data-video-caption="CNC laser cut bamboo &amp; floral steel motif with mirror stainless insert backing">
               <div class="video-thumb-card__media">
                 <img src="assets/video_posters/metal_gate_showcase_poster.jpg" alt="Laser cut gate panel preview" class="video-thumb-card__img" loading="lazy">
                 <span class="video-thumb-card__badge">00:04</span>
               </div>
               <div class="video-thumb-card__body">
                 <div class="video-thumb-card__title">CNC Laser Cut Showcase</div>
-                <p class="video-thumb-card__desc">Botanical precision detailing & stainless reflections</p>
+                <p class="video-thumb-card__desc">Botanical precision detailing &amp; stainless reflections</p>
               </div>
             </div>
 
-            <!-- Item 4: Stylish Gate 3 Operation (Rotated 90 Deg Corrected) -->
+            <!-- Clip 4: Compound Gate Movement -->
             <div class="video-thumb-card" 
                  role="button" 
                  tabindex="0"
-                 data-rotate="90"
+                 aria-selected="false"
                  data-video-src="assets/stylish_gate_3.mp4" 
                  data-video-poster="assets/video_posters/stylish_gate_3_poster.jpg"
+                 data-video-category="AUTOMATED GATES"
                  data-video-title="Heavy Architectural Compound Gate"
                  data-video-caption="Smooth cantilever movement of heavy-duty steel and timber composite gate">
               <div class="video-thumb-card__media">
@@ -886,6 +892,146 @@ m-4741 -136 c40 -43 99 -109 131 -148 32 -38 63 -74 69 -80 43 -40 255 -314
               <div class="video-thumb-card__body">
                 <div class="video-thumb-card__title">Compound Gate Movement</div>
                 <p class="video-thumb-card__desc">Effortless alignment across heavy architectural span</p>
+              </div>
+            </div>
+
+            <!-- Clip 5: Balcony Railing & Elevation -->
+            <div class="video-thumb-card" 
+                 role="button" 
+                 tabindex="0"
+                 aria-selected="false"
+                 data-video-src="assets/balcony_view.mp4" 
+                 data-video-poster="assets/video_posters/balcony_view_poster.jpg"
+                 data-video-category="BALCONIES &amp; GLASS"
+                 data-video-title="Cantilever Balcony Railing &amp; Glass Elevation"
+                 data-video-caption="Sleek architectural steel balustrade with toughened glass panels overlooking courtyard">
+              <div class="video-thumb-card__media">
+                <img src="assets/video_posters/balcony_view_poster.jpg" alt="Balcony glass railing preview" class="video-thumb-card__img" loading="lazy">
+                <span class="video-thumb-card__badge">00:10</span>
+              </div>
+              <div class="video-thumb-card__body">
+                <div class="video-thumb-card__title">Balcony Glass Balustrade</div>
+                <p class="video-thumb-card__desc">Toughened architectural glass with stainless steel posts</p>
+              </div>
+            </div>
+
+            <!-- Clip 6: Exterior Work -->
+            <div class="video-thumb-card" 
+                 role="button" 
+                 tabindex="0"
+                 aria-selected="false"
+                 data-video-src="assets/exterior_work.mp4" 
+                 data-video-poster="assets/video_posters/exterior_work_poster.jpg"
+                 data-video-category="EXTERIOR FACADES"
+                 data-video-title="Architectural Facade Structural Fitting"
+                 data-video-caption="On-site structural alignment and precision fitting of architectural steel facade cladding">
+              <div class="video-thumb-card__media">
+                <img src="assets/video_posters/exterior_work_poster.jpg" alt="Exterior facade fitting preview" class="video-thumb-card__img" loading="lazy">
+                <span class="video-thumb-card__badge">00:04</span>
+              </div>
+              <div class="video-thumb-card__body">
+                <div class="video-thumb-card__title">Facade Structural Fitting</div>
+                <p class="video-thumb-card__desc">Precision alignment on contemporary building exterior</p>
+              </div>
+            </div>
+
+            <!-- Clip 7: Finished Exterior 2 -->
+            <div class="video-thumb-card" 
+                 role="button" 
+                 tabindex="0"
+                 aria-selected="false"
+                 data-video-src="assets/finished_exterior_2.mp4" 
+                 data-video-poster="assets/video_posters/finished_exterior_2_poster.jpg"
+                 data-video-category="COMPLETE RESIDENTIAL"
+                 data-video-title="Finished Villa Steel Elevation"
+                 data-video-caption="Comprehensive contemporary residential steel installation including balcony glass and perimeter gates">
+              <div class="video-thumb-card__media">
+                <img src="assets/video_posters/finished_exterior_2_poster.jpg" alt="Finished villa steel elevation preview" class="video-thumb-card__img" loading="lazy">
+                <span class="video-thumb-card__badge">00:05</span>
+              </div>
+              <div class="video-thumb-card__body">
+                <div class="video-thumb-card__title">Finished Villa Elevation</div>
+                <p class="video-thumb-card__desc">Complete architectural gate, balcony, and pergola package</p>
+              </div>
+            </div>
+
+            <!-- Clip 8: Finished Exterior 3 (Vertical Walkthrough) -->
+            <div class="video-thumb-card" 
+                 role="button" 
+                 tabindex="0"
+                 aria-selected="false"
+                 data-video-src="assets/finished_exterior_3.mp4" 
+                 data-video-poster="assets/video_posters/finished_exterior_3_poster.jpg"
+                 data-video-category="RESIDENTIAL ELEVATION"
+                 data-video-title="Architectural Residence Vertical Elevation"
+                 data-video-caption="Vertical architectural reveal of completed luxury villa with precision steel details">
+              <div class="video-thumb-card__media">
+                <img src="assets/video_posters/finished_exterior_3_poster.jpg" alt="Architectural villa vertical reveal preview" class="video-thumb-card__img" loading="lazy">
+                <span class="video-thumb-card__badge">00:08</span>
+              </div>
+              <div class="video-thumb-card__body">
+                <div class="video-thumb-card__title">Villa Vertical Walkthrough</div>
+                <p class="video-thumb-card__desc">Full-height facade elevation reveal with steel craftsmanship</p>
+              </div>
+            </div>
+
+            <!-- Clip 9: Roof Structural Work -->
+            <div class="video-thumb-card" 
+                 role="button" 
+                 tabindex="0"
+                 aria-selected="false"
+                 data-video-src="assets/roof_work.mp4" 
+                 data-video-poster="assets/video_posters/roof_work_poster.jpg"
+                 data-video-category="ROOFING &amp; CANOPIES"
+                 data-video-title="Structural Steel Roof Framework &amp; Trusses"
+                 data-video-caption="Heavy-gauge fabricated steel roof beams and weather-sealed framework engineered for high spans">
+              <div class="video-thumb-card__media">
+                <img src="assets/video_posters/roof_work_poster.jpg" alt="Roof structural steel trusses preview" class="video-thumb-card__img" loading="lazy">
+                <span class="video-thumb-card__badge">00:04</span>
+              </div>
+              <div class="video-thumb-card__body">
+                <div class="video-thumb-card__title">Roof Framework &amp; Trusses</div>
+                <p class="video-thumb-card__desc">Heavy-gauge fabricated structural steel beam installation</p>
+              </div>
+            </div>
+
+            <!-- Clip 10: Roof Work 2 (Rooftop Canopy) -->
+            <div class="video-thumb-card" 
+                 role="button" 
+                 tabindex="0"
+                 aria-selected="false"
+                 data-video-src="assets/roof_work_2.mp4" 
+                 data-video-poster="assets/video_posters/roof_work_2_poster.jpg"
+                 data-video-category="CANOPIES &amp; PERGOLAS"
+                 data-video-title="Rooftop Canopy &amp; Pergola Installation"
+                 data-video-caption="Modern architectural steel terrace pergola structure designed for open-air living spaces">
+              <div class="video-thumb-card__media">
+                <img src="assets/video_posters/roof_work_2_poster.jpg" alt="Rooftop pergola canopy preview" class="video-thumb-card__img" loading="lazy">
+                <span class="video-thumb-card__badge">00:09</span>
+              </div>
+              <div class="video-thumb-card__body">
+                <div class="video-thumb-card__title">Rooftop Canopy Pergola</div>
+                <p class="video-thumb-card__desc">Weather-resistant steel terrace pergola structure</p>
+              </div>
+            </div>
+
+            <!-- Clip 11: Stylish Gate 2 -->
+            <div class="video-thumb-card" 
+                 role="button" 
+                 tabindex="0"
+                 aria-selected="false"
+                 data-video-src="assets/stylish_gate_2.mp4" 
+                 data-video-poster="assets/video_posters/stylish_gate_2_poster.jpg"
+                 data-video-category="AUTOMATED GATES"
+                 data-video-title="Motorized Louvered Boundary Gate"
+                 data-video-caption="Automated gate sliding glide operation with integrated safety sensors and quiet motor drive">
+              <div class="video-thumb-card__media">
+                <img src="assets/video_posters/stylish_gate_2_poster.jpg" alt="Motorized boundary gate preview" class="video-thumb-card__img" loading="lazy">
+                <span class="video-thumb-card__badge">00:03</span>
+              </div>
+              <div class="video-thumb-card__body">
+                <div class="video-thumb-card__title">Motorized Louvered Gate</div>
+                <p class="video-thumb-card__desc">Quiet electric automated drive with modern steel louvers</p>
               </div>
             </div>
 
@@ -909,77 +1055,77 @@ m-4741 -136 c40 -43 99 -109 131 -148 32 -38 63 -74 69 -80 43 -40 255 -314
         <!-- Asymmetric Portfolio Grid -->
         <div class="projects-masonry">
           
-          <!-- Project 1: Villa Helical Staircase (Col 7, Tall) -->
+          <!-- Project 1: Luxury Villa Helical Spiral Stairway (Col 7, Tall) -->
           <div class="project-item project-item--col-7 project-item--tall" 
                tabindex="0"
                data-category="stairs"
-               data-detail-desc="Monumental curved helical staircase with rolled white steel plate stringer, custom radius tempered glass balustrade, and crafted teakwood handrail in a double-height luxury villa foyer.">
+               data-detail-desc="Monumental curved helical staircase featuring rolled black steel plate outer stringer, precision curved tubular balustrade, and integrated step treads rising through a double-height luxury atrium foyer.">
             <div class="project-item__media">
-              <img src="assets/stylish_curved_staircase.jpeg" alt="Villa Helical Curved Steel Staircase" class="project-item__img" loading="lazy">
+              <img src="assets/spiral_staircase_2.jpeg" alt="Double-Height Curved Steel Spiral Staircase" class="project-item__img" loading="lazy">
               <div class="project-item__overlay">
                 <span class="project-item__tag">HELICAL STAIRCASE · LUXURY RESIDENCE</span>
                 <h3 class="project-item__title">The Villa Helical Stairway</h3>
-                <span class="project-item__location">Madurai · Custom Curved Steel & Glass</span>
+                <span class="project-item__location">Madurai · Custom Curved Steel &amp; Glass</span>
               </div>
             </div>
           </div>
 
-          <!-- Project 2: Floating Teakwood Mono-Stringer (Col 5, Tall) -->
+          <!-- Project 2: Contemporary Villa Elevation & Gate (Col 5, Tall) -->
           <div class="project-item project-item--col-5 project-item--tall" 
                tabindex="0"
-               data-category="stairs"
-               data-detail-desc="Heavy structural steel mono-stringer spine with cantilevered solid teak treads and slender vertical steel balusters against an exposed rust brick feature wall.">
+               data-category="entrances"
+               data-detail-desc="Integrated residential metalwork installation featuring automated motorized entrance gate with geometric laser motifs, structural balcony glass railings, and custom steel rooftop pergola on an architectural villa.">
             <div class="project-item__media">
-              <img src="assets/floating_staircase.jpeg" alt="Floating steel staircase with teakwood steps" class="project-item__img" loading="lazy">
+              <img src="assets/exterior_2.jpeg" alt="Contemporary villa architectural steel facade and automated entrance gate" class="project-item__img" loading="lazy">
               <div class="project-item__overlay">
-                <span class="project-item__tag">MONO-STRINGER · INTERIOR STEEL</span>
-                <h3 class="project-item__title">Courtyard Floating Mono-Stringer</h3>
-                <span class="project-item__location">Private Residence · Teak & Structural Steel</span>
+                <span class="project-item__tag">RESIDENTIAL ELEVATION · STEEL &amp; GLASS</span>
+                <h3 class="project-item__title">Villa Perimeter Portal &amp; Elevation</h3>
+                <span class="project-item__location">Madurai · Motorized Gate &amp; Pergola</span>
               </div>
             </div>
           </div>
 
-          <!-- Project 3: Modern Solar Facade Screen (Col 5) -->
+          <!-- Project 3: Geometric Brick & Steel Facade Louvers (Col 5) -->
           <div class="project-item project-item--col-5" 
                tabindex="0"
                data-category="facades"
-               data-detail-desc="Custom-engineered geometric steel louver screen powder-coated in golden apricot, providing architectural shading and facade texture on an upper balcony.">
+               data-detail-desc="Custom-engineered architectural steel vertical louver fins flanking a brick-faced monumental arch, engineered for natural ventilation, privacy, and bold shadow lines on a contemporary residence.">
             <div class="project-item__media">
-              <img src="assets/balcony.jpeg" alt="Modern villa facade with golden-apricot steel louvers" class="project-item__img" loading="lazy">
+              <img src="assets/exterior_1.jpeg" alt="Architectural vertical steel louvers and brick arch facade" class="project-item__img" loading="lazy">
               <div class="project-item__overlay">
-                <span class="project-item__tag">FACADE SCREEN · ARCHITECTURAL LOUVERS</span>
-                <h3 class="project-item__title">Horizon Solar Facade & Balcony</h3>
-                <span class="project-item__location">Contemporary Villa · Golden Apricot Powder Coat</span>
+                <span class="project-item__tag">FACADE SCREEN · VERTICAL LOUVERS</span>
+                <h3 class="project-item__title">Monumental Arch Steel Louvers</h3>
+                <span class="project-item__location">Contemporary Residence · Charcoal Matte Coating</span>
               </div>
             </div>
           </div>
 
-          <!-- Project 4: Botanical Laser Cut Compound Gate (Col 7) -->
+          <!-- Project 4: Sunset Terrace Steel Pergola (Col 7) -->
           <div class="project-item project-item--col-7" 
                tabindex="0"
-               data-category="entrances"
-               data-detail-desc="Precision fiber laser-cut bamboo and floral screen panels in heavy-gauge steel, finished with textured matte black powder coating and mirror stainless backing.">
+               data-category="canopies"
+               data-detail-desc="Geometric basketweave steel canopy structure providing architectural shading on a luxury villa rooftop terrace, finished with UV-stabilized exterior matte powder coat overlooking the Madurai skyline.">
             <div class="project-item__media">
-              <img src="assets/metal_gate.jpeg" alt="Botanical laser cut steel compound gate" class="project-item__img" loading="lazy">
+              <img src="assets/terrace_work.jpeg" alt="Sunset rooftop terrace architectural steel pergola structure" class="project-item__img" loading="lazy">
               <div class="project-item__overlay">
-                <span class="project-item__tag">CNC LASER CRAFT · COMPOUND ENTRANCE</span>
-                <h3 class="project-item__title">The Botanical Estate Portal</h3>
-                <span class="project-item__location">Private Estate · Laser Cut Steel & Brick Coping</span>
+                <span class="project-item__tag">OUTDOOR ARCHITECTURE · STEEL PERGOLA</span>
+                <h3 class="project-item__title">Sunset Terrace Pergola</h3>
+                <span class="project-item__location">Rooftop Terrace · Geometric Basketweave Steel</span>
               </div>
             </div>
           </div>
 
-          <!-- Project 5: Rooftop Glass & Steel Pergola (Col 6) -->
+          <!-- Project 5: Skylight Center-Column Spiral Stair (Col 6) -->
           <div class="project-item project-item--col-6" 
                tabindex="0"
-               data-category="canopies"
-               data-detail-desc="Engineered structural steel framework with laminated safety glass skylight panels being sealed and commissioned on a rooftop terrace overlooking Madurai.">
+               data-category="stairs"
+               data-detail-desc="Continuous center-column steel spiral staircase rising to an open circular skylight with curved tubular steel balustrade and non-slip perforated treads in a modern architectural residence.">
             <div class="project-item__media">
-              <img src="assets/rooftop_canopy_work.jpeg" alt="Rooftop structural steel glass pergola" class="project-item__img" loading="lazy">
+              <img src="assets/spiral_staircase_1.jpeg" alt="Center-column steel spiral staircase rising to circular skylight" class="project-item__img" loading="lazy">
               <div class="project-item__overlay">
-                <span class="project-item__tag">OUTDOOR CANOPY · STRUCTURAL GLASS</span>
-                <h3 class="project-item__title">Skylight Atrium Canopy</h3>
-                <span class="project-item__location">Rooftop Terrace · Galvanized Steel & Laminated Glass</span>
+                <span class="project-item__tag">CUSTOM FABRICATION · SPIRAL STAIR</span>
+                <h3 class="project-item__title">Skylight Atrium Spiral Stair</h3>
+                <span class="project-item__location">Private Residence · Matte Black Steel</span>
               </div>
             </div>
           </div>

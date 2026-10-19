@@ -1,25 +1,27 @@
 /**
  * HYPER STEEL — VIDEO SHOWCASE MODULE
- * Muted autoplay cinema player with reliable playlist switching and 90-degree upright correction.
+ * Muted cinema player with smooth video switching, play/pause controls, and metadata updates.
  */
 
 export function initVideoPlayer() {
-  const cinemaPlayer = document.querySelector('.cinema-player');
-  const mainVideo    = document.querySelector('.cinema-player__video');
+  const cinemaPlayer  = document.querySelector('.cinema-player');
+  const mainVideo     = document.querySelector('.cinema-player__video');
   const playToggleBtn = document.querySelector('.js-play-toggle');
   const playerTitle   = document.querySelector('.cinema-player__title');
   const playerCaption = document.querySelector('.cinema-player__caption');
+  const playerBadge   = document.querySelector('.cinema-player__badge');
   const playlistItems = document.querySelectorAll('.video-thumb-card');
 
   if (!cinemaPlayer || !mainVideo) return;
 
-  /* ---- Always keep muted ---- */
+  /* ---- Always keep muted and prevent unmuting ---- */
   function enforceMuted() {
     mainVideo.muted        = true;
     mainVideo.defaultMuted = true;
     mainVideo.volume       = 0;
   }
   enforceMuted();
+  mainVideo.addEventListener('volumechange', enforceMuted);
 
   /* ---- Play / pause icon sync ---- */
   function updatePlayIcons(playing) {
@@ -30,65 +32,75 @@ export function initVideoPlayer() {
       : `<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>`;
   }
 
-  mainVideo.addEventListener('play',  () => { cinemaPlayer.classList.add('is-playing');    updatePlayIcons(true);  });
-  mainVideo.addEventListener('pause', () => { cinemaPlayer.classList.remove('is-playing'); updatePlayIcons(false); });
-  mainVideo.addEventListener('volumechange', () => { if (!mainVideo.muted) mainVideo.muted = true; });
+  mainVideo.addEventListener('play', () => {
+    cinemaPlayer.classList.add('is-playing');
+    updatePlayIcons(true);
+  });
+
+  mainVideo.addEventListener('pause', () => {
+    cinemaPlayer.classList.remove('is-playing');
+    updatePlayIcons(false);
+  });
 
   /* ---- Toggle play/pause ---- */
   function togglePlay() {
+    enforceMuted();
     if (mainVideo.paused) {
-      enforceMuted();
-      mainVideo.play().catch(console.warn);
+      const p = mainVideo.play();
+      if (p !== undefined) {
+        p.then(() => {
+          cinemaPlayer.classList.add('is-playing');
+          updatePlayIcons(true);
+        }).catch((err) => {
+          console.warn('Play interrupted:', err);
+        });
+      }
     } else {
       mainVideo.pause();
     }
   }
-  playToggleBtn?.addEventListener('click', togglePlay);
+
+  playToggleBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+    togglePlay();
+  });
+
+  mainVideo.addEventListener('click', togglePlay);
 
   /* ---- Switch to a different video card ---- */
   function selectVideo(card) {
     if (!card) return;
 
-    /* Update active indicator */
-    playlistItems.forEach((c) => {
+    const videoSrc    = card.getAttribute('data-video-src');
+    const videoPoster = card.getAttribute('data-video-poster');
+    const title       = card.getAttribute('data-video-title');
+    const caption     = card.getAttribute('data-video-caption');
+    const category    = card.getAttribute('data-video-category');
+
+    if (!videoSrc) return;
+
+    /* Update active indicator across all cards */
+    const allCards = document.querySelectorAll('.video-thumb-card');
+    allCards.forEach((c) => {
       c.classList.remove('is-active');
       c.setAttribute('aria-selected', 'false');
     });
     card.classList.add('is-active');
     card.setAttribute('aria-selected', 'true');
 
-    const videoSrc    = card.getAttribute('data-video-src');
-    const videoPoster = card.getAttribute('data-video-poster');
-    const title       = card.getAttribute('data-video-title');
-    const caption     = card.getAttribute('data-video-caption');
-    const rotate      = card.getAttribute('data-rotate');
-
-    if (!videoSrc) return;
-
-    /* Update text */
+    /* Update text metadata */
     if (playerTitle   && title)   playerTitle.textContent   = title;
     if (playerCaption && caption) playerCaption.textContent = caption;
-
-    /* Rotation correction for portrait/sideways footage */
-    if (rotate === '90') {
-      mainVideo.classList.add('is-rotated-90');
-    } else {
-      mainVideo.classList.remove('is-rotated-90');
-    }
+    if (playerBadge   && category) playerBadge.textContent = category;
 
     /* Poster update */
     if (videoPoster) mainVideo.setAttribute('poster', videoPoster);
 
-    /* ---- Robust source switch ---- */
+    /* ---- Source switch and reload ---- */
     enforceMuted();
     mainVideo.pause();
 
-    // Remove any existing <source> children and rely on src attribute
-    Array.from(mainVideo.querySelectorAll('source')).forEach(s => s.remove());
-
-    mainVideo.removeAttribute('src');
-    mainVideo.load(); // reset media element
-
+    // Cleanly assign source and load
     mainVideo.src = videoSrc;
     mainVideo.load();
 
@@ -97,9 +109,10 @@ export function initVideoPlayer() {
       p.then(() => {
         cinemaPlayer.classList.add('is-playing');
         updatePlayIcons(true);
-      }).catch(() => {
+      }).catch((err) => {
         cinemaPlayer.classList.remove('is-playing');
         updatePlayIcons(false);
+        console.log('Video ready to play:', err.message);
       });
     }
   }
@@ -119,9 +132,18 @@ export function initVideoPlayer() {
     });
   });
 
-  /* ---- Initial autoplay ---- */
+  /* ---- Initial autoplay attempt ---- */
   enforceMuted();
-  mainVideo.play().catch(() => { /* Waiting for user gesture */ });
+  const initPromise = mainVideo.play();
+  if (initPromise !== undefined) {
+    initPromise.then(() => {
+      cinemaPlayer.classList.add('is-playing');
+      updatePlayIcons(true);
+    }).catch(() => {
+      cinemaPlayer.classList.remove('is-playing');
+      updatePlayIcons(false);
+    });
+  }
 
   /* ---- Auto-pause when scrolled out of view ---- */
   if ('IntersectionObserver' in window) {

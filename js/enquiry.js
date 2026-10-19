@@ -57,7 +57,7 @@ export function initEnquiry() {
       const text = `Hello Hyper Steel,\n\nI am interested in discussing an architectural project:\n- Name: ${name}\n- Phone: ${phone}\n- Discipline: ${service}\n- Project Location: ${location}\n- Notes: ${message}\n\nPlease let me know when we can schedule a consultation.`;
 
       const encodedText = encodeURIComponent(text);
-      const whatsappUrl = `https://wa.me/919943360800?text=${encodedText}`;
+      const whatsappUrl = `https://wa.me/919944020815?text=${encodedText}`;
 
       closeModal();
       window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
