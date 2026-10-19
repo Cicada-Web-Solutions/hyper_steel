@@ -1,0 +1,262 @@
+/* ==========================================================================
+   HYPER STEEL FABRICATION — REUSABLE COMPONENTS
+   ========================================================================== */
+
+/* --- Buttons --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 0.9rem 1.85rem;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  border-radius: var(--radius-sm);
+  transition: all var(--duration-fast) var(--ease-out-expo);
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+  line-height: 1;
+  min-height: 48px;
+  white-space: nowrap;
+}
+
+.btn .btn__icon {
+  display: inline-block;
+  transition: transform var(--duration-fast) var(--ease-out-expo);
+}
+
+.btn:hover .btn__icon {
+  transform: translate(3px, -3px);
+}
+
+.btn--down:hover .btn__icon {
+  transform: translateY(4px);
+}
+
+/* Primary Button: Golden Apricot */
+.btn--primary {
+  background-color: var(--color-apricot);
+  color: var(--color-black);
+  border: 1px solid var(--color-apricot);
+}
+
+.btn--primary:hover {
+  background-color: var(--color-apricot-hover);
+  border-color: var(--color-apricot-hover);
+  color: var(--color-black);
+  box-shadow: 0 4px 15px rgba(216, 151, 60, 0.25);
+}
+
+/* Secondary Button: Clean Architectural Border */
+.btn--secondary {
+  background-color: transparent;
+  color: var(--color-black);
+  border: 1px solid var(--color-black);
+}
+
+.btn--secondary:hover {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+/* Light / Secondary on Dark Surface */
+.btn--secondary-dark {
+  background-color: transparent;
+  color: var(--color-white);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.btn--secondary-dark:hover {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border-color: var(--color-white);
+}
+
+/* Text Link with Arrow */
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-black);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  border-bottom: 1px solid transparent;
+  transition: all var(--duration-fast) ease;
+}
+
+.text-link:hover {
+  color: var(--color-apricot);
+  border-bottom-color: var(--color-apricot);
+}
+
+.text-link .text-link__arrow {
+  transition: transform var(--duration-fast) ease;
+}
+
+.text-link:hover .text-link__arrow {
+  transform: translateX(4px);
+}
+
+/* --- Section Eyebrow & Headers --- */
+.section-header {
+  margin-bottom: var(--space-7);
+}
+
+.section-header--center {
+  text-align: center;
+  max-width: 55rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-header--split {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.section-header--split .section-header__text {
+  max-width: 48rem;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-heading);
+  font-size: var(--text-eyebrow);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-charcoal);
+  margin-bottom: var(--space-3);
+}
+
+.section--dark .eyebrow {
+  color: var(--color-apricot);
+}
+
+.eyebrow__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-apricot);
+  display: inline-block;
+}
+
+.section-title {
+  font-size: var(--text-h2);
+  font-weight: 700;
+  line-height: var(--leading-tight);
+  color: var(--color-black);
+  margin-bottom: var(--space-4);
+  letter-spacing: var(--tracking-tight);
+}
+
+.section--dark .section-title {
+  color: var(--color-white);
+}
+
+.section-lead {
+  font-size: var(--text-body-large);
+  color: var(--color-charcoal);
+  line-height: 1.5;
+  max-width: 60ch;
+}
+
+.section--dark .section-lead {
+  color: var(--color-text-muted-dark);
+}
+
+/* --- Hairlines & Dividers --- */
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-border);
+  margin: var(--space-8) 0;
+  border: none;
+}
+
+.divider--dark {
+  background-color: var(--color-dark-border);
+}
+
+/* --- Editorial Badges --- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.35rem 0.75rem;
+  font-size: 0.75rem;
+  font-family: var(--font-body);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-charcoal);
+}
+
+.badge--dark {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: var(--color-white);
+}
+
+.badge--apricot {
+  background: var(--color-apricot-subtle);
+  border-color: rgba(216, 151, 60, 0.3);
+  color: var(--color-black);
+}
+
+/* --- Quick Contact Bar / Floating CTA --- */
+.floating-actions {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: var(--z-overlay);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+@media (max-width: 768px) {
+  .floating-actions {
+    bottom: 1.25rem;
+    right: 1.25rem;
+  }
+}
+
+.fab-whatsapp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background-color: #25D366;
+  color: #FFFFFF;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+  transition: transform var(--duration-fast) ease, box-shadow var(--duration-fast) ease;
+}
+
+.fab-whatsapp:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.45);
+}
+
+.fab-whatsapp svg {
+  width: 28px;
+  height: 28px;
+  fill: currentColor;
+}
