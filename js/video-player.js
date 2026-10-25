@@ -1,6 +1,6 @@
 /**
  * HYPER STEEL — VIDEO SHOWCASE MODULE
- * Muted cinema player with smooth video switching, play/pause controls, and metadata updates.
+ * Muted cinema player with smooth video switching, reliable play/pause controls, and metadata updates.
  */
 
 export function initVideoPlayer() {
@@ -9,10 +9,12 @@ export function initVideoPlayer() {
   const playToggleBtn = document.querySelector('.js-play-toggle');
   const playerTitle   = document.querySelector('.cinema-player__title');
   const playerCaption = document.querySelector('.cinema-player__caption');
-  const playerBadge   = document.querySelector('.cinema-player__badge');
   const playlistItems = document.querySelectorAll('.video-thumb-card');
 
   if (!cinemaPlayer || !mainVideo) return;
+
+  let isPlayingDesired = true;
+  let activePlayPromise = null;
 
   /* ---- Always keep muted and prevent unmuting ---- */
   function enforceMuted() {
@@ -42,21 +44,63 @@ export function initVideoPlayer() {
     updatePlayIcons(false);
   });
 
+  mainVideo.addEventListener('ended', () => {
+    // Loop reliably from start
+    mainVideo.currentTime = 0;
+    playVideo();
+  });
+
+  /* ---- Safe play helper ---- */
+  function playVideo() {
+    enforceMuted();
+    isPlayingDesired = true;
+    const promise = mainVideo.play();
+    if (promise !== undefined) {
+      activePlayPromise = promise;
+      promise
+        .then(() => {
+          activePlayPromise = null;
+          cinemaPlayer.classList.add('is-playing');
+          updatePlayIcons(true);
+        })
+        .catch((err) => {
+          activePlayPromise = null;
+          // Ignore AbortError when switching videos or pausing
+          if (err.name !== 'AbortError') {
+            cinemaPlayer.classList.remove('is-playing');
+            updatePlayIcons(false);
+            console.log('Video play info:', err.message);
+          }
+        });
+    }
+  }
+
+  /* ---- Safe pause helper ---- */
+  function pauseVideo() {
+    isPlayingDesired = false;
+    if (activePlayPromise) {
+      activePlayPromise.then(() => {
+        mainVideo.pause();
+        cinemaPlayer.classList.remove('is-playing');
+        updatePlayIcons(false);
+      }).catch(() => {});
+    } else {
+      mainVideo.pause();
+      cinemaPlayer.classList.remove('is-playing');
+      updatePlayIcons(false);
+    }
+  }
+
   /* ---- Toggle play/pause ---- */
   function togglePlay() {
     enforceMuted();
-    if (mainVideo.paused) {
-      const p = mainVideo.play();
-      if (p !== undefined) {
-        p.then(() => {
-          cinemaPlayer.classList.add('is-playing');
-          updatePlayIcons(true);
-        }).catch((err) => {
-          console.warn('Play interrupted:', err);
-        });
+    if (mainVideo.paused || mainVideo.ended) {
+      if (mainVideo.ended) {
+        mainVideo.currentTime = 0;
       }
+      playVideo();
     } else {
-      mainVideo.pause();
+      pauseVideo();
     }
   }
 
@@ -75,7 +119,6 @@ export function initVideoPlayer() {
     const videoPoster = card.getAttribute('data-video-poster');
     const title       = card.getAttribute('data-video-title');
     const caption     = card.getAttribute('data-video-caption');
-    const category    = card.getAttribute('data-video-category');
 
     if (!videoSrc) return;
 
@@ -89,32 +132,23 @@ export function initVideoPlayer() {
     card.setAttribute('aria-selected', 'true');
 
     /* Update text metadata */
-    if (playerTitle   && title)   playerTitle.textContent   = title;
+    if (playerTitle && title) playerTitle.textContent = title;
     if (playerCaption && caption) playerCaption.textContent = caption;
-    if (playerBadge   && category) playerBadge.textContent = category;
 
     /* Poster update */
     if (videoPoster) mainVideo.setAttribute('poster', videoPoster);
 
-    /* ---- Source switch and reload ---- */
+    /* ---- Source switch and reload from beginning ---- */
     enforceMuted();
     mainVideo.pause();
+    mainVideo.currentTime = 0;
 
     // Cleanly assign source and load
     mainVideo.src = videoSrc;
     mainVideo.load();
+    mainVideo.currentTime = 0;
 
-    const p = mainVideo.play();
-    if (p !== undefined) {
-      p.then(() => {
-        cinemaPlayer.classList.add('is-playing');
-        updatePlayIcons(true);
-      }).catch((err) => {
-        cinemaPlayer.classList.remove('is-playing');
-        updatePlayIcons(false);
-        console.log('Video ready to play:', err.message);
-      });
-    }
+    playVideo();
   }
 
   /* ---- Bind clicks on all playlist cards ---- */
@@ -134,26 +168,20 @@ export function initVideoPlayer() {
 
   /* ---- Initial autoplay attempt ---- */
   enforceMuted();
-  const initPromise = mainVideo.play();
-  if (initPromise !== undefined) {
-    initPromise.then(() => {
-      cinemaPlayer.classList.add('is-playing');
-      updatePlayIcons(true);
-    }).catch(() => {
-      cinemaPlayer.classList.remove('is-playing');
-      updatePlayIcons(false);
-    });
-  }
+  playVideo();
 
-  /* ---- Auto-pause when scrolled out of view ---- */
+  /* ---- Auto-pause when scrolled out of view & resume when in view ---- */
   if ('IntersectionObserver' in window) {
     const obs = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (!entry.isIntersecting && !mainVideo.paused) {
-          mainVideo.pause();
-        } else if (entry.isIntersecting && mainVideo.paused && cinemaPlayer.classList.contains('is-playing')) {
-          enforceMuted();
-          mainVideo.play().catch(() => {});
+        if (!entry.isIntersecting) {
+          if (!mainVideo.paused) {
+            mainVideo.pause();
+          }
+        } else {
+          if (isPlayingDesired && mainVideo.paused) {
+            playVideo();
+          }
         }
       });
     }, { threshold: 0.25 });

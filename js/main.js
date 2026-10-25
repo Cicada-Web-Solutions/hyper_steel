@@ -23,6 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
       wheelMultiplier: 0.9,
     });
 
+    window.lenis = lenis;
+
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
       lenis.on('scroll', ScrollTrigger.update);
       gsap.ticker.add((time) => {
@@ -55,11 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
           duration: 0.8,
           delay: 0.1
         })
-        .from('.hero__eyebrow', {
-          y: 20,
-          opacity: 0,
-          duration: 0.7
-        }, '-=0.4')
         .from('.hero__headline', {
           y: 40,
           opacity: 0,
@@ -75,16 +72,27 @@ document.addEventListener('DOMContentLoaded', () => {
           opacity: 0,
           duration: 0.6
         }, '-=0.5')
-        .from('.hero__bottom-bar', {
-          y: 30,
-          opacity: 0,
-          duration: 0.8
-        }, '-=0.4')
         .from('.hero__counter', {
           opacity: 0,
           x: 15,
           duration: 0.7
         }, '-=0.5');
+    }
+
+    // Hero Parallax Layered Scrolling
+    // Complements fixed hero background by adding subtle depth to content on scroll
+    if (!prefersReducedMotion && typeof ScrollTrigger !== 'undefined') {
+      gsap.to('.hero__content, .hero__counter', {
+        y: -30,
+        opacity: 0.7,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '#hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 0.5
+        }
+      });
     }
 
     // 3. One-Time Metrics Count-Up Animation

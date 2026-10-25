@@ -1,0 +1,444 @@
+/* ==========================================================================
+   HYPER STEEL — REUSABLE UI COMPONENTS (ARCHITECTURAL PRECISION)
+   ========================================================================== */
+
+/* --- 1. ARCHITECTURAL BUTTONS (RADIUS 0–4px, NO PILL SHAPES) --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: 0.85rem 1.65rem;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  border-radius: var(--radius-sm); /* Strictly square/minimal 2-4px */
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--duration-fast) var(--ease-architectural);
+}
+
+.btn__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--duration-fast) var(--ease-architectural);
+}
+
+/* Primary Button: Solid Gold (#F0A202) on Black Text */
+.btn--primary {
+  background-color: var(--color-gold);
+  color: var(--color-black);
+  border: 1px solid var(--color-gold);
+  box-shadow: 0 4px 16px rgba(240, 162, 2, 0.2);
+}
+
+.btn--primary:hover {
+  background-color: var(--color-gold-hover);
+  border-color: var(--color-gold-hover);
+  color: var(--color-black);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(240, 162, 2, 0.35);
+}
+
+.btn--primary:hover .btn__icon {
+  transform: translate(3px, -3px);
+}
+
+.btn--primary:active {
+  transform: translateY(0);
+}
+
+/* Secondary Button: Outlined Minimal White / Gray */
+.btn--secondary {
+  background-color: transparent;
+  color: var(--color-white);
+  border: 1px solid var(--color-border);
+}
+
+.btn--secondary:hover {
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+  background-color: rgba(240, 162, 2, 0.05);
+  transform: translateY(-2px);
+}
+
+.btn--secondary:hover .btn__icon {
+  transform: translate(3px, -3px);
+}
+
+.btn--down:hover .btn__icon {
+  transform: translateY(3px);
+}
+
+/* WhatsApp Direct CTA Button */
+.btn--whatsapp {
+  background-color: #121212;
+  color: #25D366;
+  border: 1px solid #292929;
+}
+
+.btn--whatsapp:hover {
+  background-color: #1a1a1a;
+  border-color: #25D366;
+  color: #25D366;
+  transform: translateY(-2px);
+}
+
+/* Text Link with Animated Gold Line */
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-size: var(--text-body-sm);
+  font-weight: 600;
+  color: var(--color-gold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  position: relative;
+  padding-bottom: 2px;
+}
+
+.text-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-gold);
+  transform: scaleX(0.4);
+  transform-origin: left;
+  transition: transform var(--duration-fast) var(--ease-architectural);
+}
+
+.text-link:hover::after {
+  transform: scaleX(1);
+}
+
+.text-link__arrow {
+  transition: transform var(--duration-fast) var(--ease-architectural);
+}
+
+.text-link:hover .text-link__arrow {
+  transform: translateX(4px);
+}
+
+/* --- 2. BRAND LOGO (VECTOR SVG WITH GOLD HOVER) --- */
+.brand-logo {
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-white);
+  transition: color var(--duration-fast) ease;
+  line-height: 1;
+}
+
+.brand-logo__svg {
+  width: 44px;
+  height: 44px;
+  fill: currentColor;
+  transition: fill var(--duration-fast) ease, transform var(--duration-fast) ease;
+}
+
+.brand-logo:hover {
+  color: var(--color-gold);
+}
+
+.brand-logo:hover .brand-logo__svg {
+  transform: scale(1.04);
+}
+
+/* --- 3. BADGES & CHIPS --- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.75rem;
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  border-radius: var(--radius-xs);
+}
+
+.badge--gold {
+  background-color: var(--color-gold-subtle);
+  color: var(--color-gold);
+  border: 1px solid rgba(240, 162, 2, 0.35);
+}
+
+.badge--dark {
+  background-color: var(--color-surface-elevated);
+  color: var(--color-gray-muted);
+  border: 1px solid var(--color-border);
+}
+
+/* --- 4. BACK TO TOP BUTTON --- */
+.back-to-top {
+  position: fixed;
+  bottom: clamp(1.5rem, 3vw, 2.5rem);
+  right: clamp(1.5rem, 3vw, 2.5rem);
+  width: 44px;
+  height: 44px;
+  background-color: var(--color-surface-elevated);
+  border: 1px solid var(--color-border);
+  color: var(--color-white);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-header);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(15px);
+  transition: all var(--duration-normal) var(--ease-architectural);
+}
+
+.back-to-top svg {
+  width: 20px;
+  height: 20px;
+  transition: transform var(--duration-fast) ease;
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background-color: var(--color-gold);
+  color: var(--color-black);
+  border-color: var(--color-gold);
+}
+
+.back-to-top:hover svg {
+  transform: translateY(-2px);
+}
+
+/* --- 5. LIGHTBOX MODAL --- */
+.project-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-normal) ease;
+}
+
+.project-lightbox.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox__backdrop {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.94);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.lightbox__box {
+  position: relative;
+  z-index: 2;
+  max-width: 960px;
+  width: 92%;
+  max-height: 90vh;
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+}
+
+.lightbox__media-wrap {
+  width: 100%;
+  height: clamp(280px, 55vh, 520px);
+  background-color: var(--color-black);
+  position: relative;
+}
+
+.lightbox__image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.lightbox__info {
+  padding: 1.75rem 2rem;
+  background: var(--color-surface-elevated);
+  border-top: 1px solid var(--color-border);
+}
+
+.lightbox__title {
+  font-size: var(--text-h3);
+  color: var(--color-white);
+  margin-bottom: var(--space-2);
+}
+
+.lightbox__desc {
+  font-size: var(--text-body-sm);
+  color: var(--color-gray-muted);
+  line-height: 1.6;
+  margin-bottom: var(--space-4);
+}
+
+.lightbox__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  font-size: 1.25rem;
+  transition: all var(--duration-fast) ease;
+}
+
+.lightbox__close:hover {
+  background: var(--color-gold);
+  color: var(--color-black);
+  border-color: var(--color-gold);
+}
+
+/* --- 6. CONSULTATION ENQUIRY MODAL --- */
+.enquiry-modal {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-normal) ease;
+}
+
+.enquiry-modal.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.enquiry-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.enquiry-modal__box {
+  position: relative;
+  z-index: 2;
+  max-width: 580px;
+  width: 92%;
+  max-height: 92vh;
+  overflow-y: auto;
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: clamp(1.75rem, 4vw, 2.75rem);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85);
+}
+
+.enquiry-modal__close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-gray-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.15rem;
+  transition: all var(--duration-fast) ease;
+}
+
+.enquiry-modal__close:hover {
+  background: var(--color-gold);
+  color: var(--color-black);
+  border-color: var(--color-gold);
+}
+
+/* Form Styling within Modal */
+.form-group {
+  margin-bottom: var(--space-4);
+}
+
+.form-label {
+  display: block;
+  font-size: 0.75rem;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-gray-muted);
+  margin-bottom: var(--space-2);
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  transition: border-color var(--duration-fast) ease, box-shadow var(--duration-fast) ease;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 1px var(--color-gold);
+}
+
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23F0A202' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+@media (max-width: 600px) {
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+}

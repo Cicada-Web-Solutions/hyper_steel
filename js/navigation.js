@@ -41,10 +41,14 @@ export function initNavigation() {
 
   // Back to top click handler
   backToTopBtn?.addEventListener('click', () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    if (window.lenis) {
+      window.lenis.scrollTo(0, { duration: 1.1 });
+    } else {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
   });
 
   // Mobile menu open / close
@@ -92,11 +96,15 @@ export function initNavigation() {
           e.preventDefault();
           closeMenu();
           const headerOffset = 80;
-          const targetPosition = targetEl.getBoundingClientRect().top + window.pageYOffset - headerOffset;
-          window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-          });
+          if (window.lenis) {
+            window.lenis.scrollTo(targetEl, { offset: -headerOffset, duration: 1.1 });
+          } else {
+            const targetPosition = targetEl.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+          }
         }
       }
     });
