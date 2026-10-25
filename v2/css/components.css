@@ -130,28 +130,41 @@
   transform: translateX(4px);
 }
 
-/* --- 2. BRAND LOGO (VECTOR SVG WITH GOLD HOVER) --- */
+/* --- 2. BRAND LOGO (VECTOR SVG WITH C SYMBOL + TEXT) --- */
 .brand-logo {
   display: inline-flex;
   align-items: center;
-  color: var(--color-white);
-  transition: color var(--duration-fast) ease;
+  gap: 12px;
+  text-decoration: none;
   line-height: 1;
 }
 
-.brand-logo__svg {
+.brand-logo__img {
   width: 44px;
   height: 44px;
-  fill: currentColor;
-  transition: fill var(--duration-fast) ease, transform var(--duration-fast) ease;
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
+  transition: transform var(--duration-fast) ease;
 }
 
-.brand-logo:hover {
+.brand-logo:hover .brand-logo__img {
+  transform: scale(1.05);
+}
+
+.brand-logo__text {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-white);
+  line-height: 1;
+  transition: color var(--duration-fast) ease;
+}
+
+.brand-logo:hover .brand-logo__text {
   color: var(--color-gold);
-}
-
-.brand-logo:hover .brand-logo__svg {
-  transform: scale(1.04);
 }
 
 /* --- 3. BADGES & CHIPS --- */

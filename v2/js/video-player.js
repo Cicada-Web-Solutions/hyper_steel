@@ -1,117 +1,105 @@
 /**
  * HYPER STEEL — PROCESS VIDEO PLAYER MODULE
- * Dominant Cinema Video Player with Smooth Clip Switching, Reliable Play/Pause Controls,
- * Safe Async Play Handling, and Strict Muting Enforcement.
+ * Dominant Cinema Video Player with Dynamic Clip Switching,
+ * Real Play/Pause Controls, Strict Muting Enforcement, and Media Synchronization.
  */
 
 export function initVideoPlayer() {
-  const cinemaPlayer  = document.querySelector('.cinema-player');
-  const mainVideo     = document.querySelector('.cinema-player__video');
+  const cinemaPlayer = document.querySelector('.cinema-player');
+  const mainVideo = document.querySelector('.cinema-player__video');
   const playToggleBtn = document.querySelector('.js-play-toggle');
-  const playerTitle   = document.querySelector('.cinema-player__title');
+  const playerTitle = document.querySelector('.cinema-player__title');
   const playerCaption = document.querySelector('.cinema-player__caption');
   const playlistItems = document.querySelectorAll('.video-thumb-card');
 
   if (!cinemaPlayer || !mainVideo) return;
 
-  let isPlayingDesired = true;
-  let activePlayPromise = null;
-
-  /* ---- Always keep muted and prevent unmuting ---- */
+  /**
+   * Enforce muted state permanently
+   */
   function enforceMuted() {
-    mainVideo.muted        = true;
+    mainVideo.muted = true;
     mainVideo.defaultMuted = true;
-    mainVideo.volume       = 0;
+    mainVideo.volume = 0;
   }
   enforceMuted();
   mainVideo.addEventListener('volumechange', enforceMuted);
 
-  /* ---- Sync Play/Pause Icons ---- */
-  function updatePlayIcons(playing) {
+  /**
+   * Synchronize Play / Pause button UI and Accessible Label
+   */
+  function updatePlayButtonUI(isPlaying) {
     if (!playToggleBtn) return;
-    playToggleBtn.setAttribute('aria-label', playing ? 'Pause Video' : 'Play Video');
-    playToggleBtn.innerHTML = playing
-      ? `<svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>`
-      : `<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>`;
+    if (isPlaying) {
+      cinemaPlayer.classList.add('is-playing');
+      playToggleBtn.setAttribute('aria-label', 'Pause video');
+      playToggleBtn.innerHTML = `
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+          <rect x="6" y="4" width="4" height="16"/>
+          <rect x="14" y="4" width="4" height="16"/>
+        </svg>
+      `;
+    } else {
+      cinemaPlayer.classList.remove('is-playing');
+      playToggleBtn.setAttribute('aria-label', 'Play video');
+      playToggleBtn.innerHTML = `
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+          <polygon points="6 4 20 12 6 20 6 4"/>
+        </svg>
+      `;
+    }
   }
 
-  mainVideo.addEventListener('play', () => {
-    cinemaPlayer.classList.add('is-playing');
-    updatePlayIcons(true);
-  });
+  // Hook actual HTML5 video events to UI synchronization
+  mainVideo.addEventListener('play', () => updatePlayButtonUI(true));
+  mainVideo.addEventListener('playing', () => updatePlayButtonUI(true));
+  mainVideo.addEventListener('pause', () => updatePlayButtonUI(false));
+  mainVideo.addEventListener('ended', () => updatePlayButtonUI(false));
+  mainVideo.addEventListener('error', () => updatePlayButtonUI(false));
 
-  mainVideo.addEventListener('pause', () => {
-    cinemaPlayer.classList.remove('is-playing');
-    updatePlayIcons(false);
-  });
-
-  mainVideo.addEventListener('ended', () => {
-    // Seamless loop
-    mainVideo.currentTime = 0;
-    playVideo();
-  });
-
-  /* ---- Safe Play Helper ---- */
-  function playVideo() {
+  /**
+   * Safe Play Helper handling Browser Autoplay Policies
+   */
+  function attemptPlay() {
     enforceMuted();
-    isPlayingDesired = true;
-
     try {
-      const promise = mainVideo.play();
-      if (promise !== undefined) {
-        activePlayPromise = promise;
-        promise
+      const playPromise = mainVideo.play();
+      if (playPromise !== undefined) {
+        playPromise
           .then(() => {
-            activePlayPromise = null;
-            cinemaPlayer.classList.add('is-playing');
-            updatePlayIcons(true);
+            updatePlayButtonUI(true);
           })
           .catch((err) => {
-            activePlayPromise = null;
-            // Ignore AbortError when switching videos or pausing
+            // Autoplay rejected or aborted due to clip switch
             if (err.name !== 'AbortError') {
-              cinemaPlayer.classList.remove('is-playing');
-              updatePlayIcons(false);
+              updatePlayButtonUI(false);
             }
           });
       }
     } catch (e) {
-      activePlayPromise = null;
+      updatePlayButtonUI(false);
     }
   }
 
-  /* ---- Safe Pause Helper ---- */
-  function pauseVideo() {
-    isPlayingDesired = false;
-
-    if (activePlayPromise) {
-      activePlayPromise
-        .then(() => {
-          mainVideo.pause();
-          cinemaPlayer.classList.remove('is-playing');
-          updatePlayIcons(false);
-        })
-        .catch(() => {
-          cinemaPlayer.classList.remove('is-playing');
-          updatePlayIcons(false);
-        });
-    } else {
-      mainVideo.pause();
-      cinemaPlayer.classList.remove('is-playing');
-      updatePlayIcons(false);
-    }
+  /**
+   * Safe Pause Helper
+   */
+  function attemptPause() {
+    mainVideo.pause();
+    updatePlayButtonUI(false);
   }
 
-  /* ---- Toggle Play / Pause ---- */
+  /**
+   * Toggle Play / Pause
+   */
   function togglePlay() {
-    enforceMuted();
     if (mainVideo.paused || mainVideo.ended) {
       if (mainVideo.ended) {
         mainVideo.currentTime = 0;
       }
-      playVideo();
+      attemptPlay();
     } else {
-      pauseVideo();
+      attemptPause();
     }
   }
 
@@ -121,21 +109,23 @@ export function initVideoPlayer() {
     togglePlay();
   });
 
-  const wrapper = document.querySelector('.cinema-player__video-wrapper');
-  wrapper?.addEventListener('click', togglePlay);
+  const videoWrapper = document.querySelector('.cinema-player__video-wrapper');
+  videoWrapper?.addEventListener('click', togglePlay);
 
-  /* ---- Switch Active Video Clip ---- */
+  /**
+   * Switch Active Video Clip
+   */
   function selectVideo(card) {
     if (!card) return;
 
-    const videoSrc    = card.getAttribute('data-video-src');
+    const videoSrc = card.getAttribute('data-video-src');
     const videoPoster = card.getAttribute('data-video-poster');
-    const title       = card.getAttribute('data-video-title');
-    const caption     = card.getAttribute('data-video-caption');
+    const title = card.getAttribute('data-video-title');
+    const caption = card.getAttribute('data-video-caption');
 
     if (!videoSrc) return;
 
-    /* Update Active Thumbnail Indicator */
+    // 1. Update Thumbnail Selector Active State
     playlistItems.forEach((c) => {
       c.classList.remove('is-active');
       c.setAttribute('aria-selected', 'false');
@@ -143,24 +133,25 @@ export function initVideoPlayer() {
     card.classList.add('is-active');
     card.setAttribute('aria-selected', 'true');
 
-    /* Update Titles */
+    // 2. Update Overlay Title & Subtitle
     if (playerTitle && title) playerTitle.textContent = title;
     if (playerCaption && caption) playerCaption.textContent = caption;
 
-    /* Poster Update */
-    if (videoPoster) mainVideo.setAttribute('poster', videoPoster);
-
-    /* Safe switch source */
-    enforceMuted();
+    // 3. Stop and reset previous footage
     mainVideo.pause();
     mainVideo.currentTime = 0;
+
+    // 4. Load new video footage
+    if (videoPoster) mainVideo.setAttribute('poster', videoPoster);
     mainVideo.src = videoSrc;
     mainVideo.load();
+    enforceMuted();
 
-    playVideo();
+    // 5. Autoplay new footage
+    attemptPlay();
   }
 
-  /* ---- Bind Thumbnails ---- */
+  // Bind all thumbnail cards
   playlistItems.forEach((card) => {
     card.addEventListener('click', (e) => {
       e.preventDefault();
@@ -175,26 +166,8 @@ export function initVideoPlayer() {
     });
   });
 
-  /* ---- Initial Autoplay Attempt ---- */
+  // Initial player state
+  updatePlayButtonUI(false);
   enforceMuted();
-  playVideo();
-
-  /* ---- Viewport Visibility Observer (Pause when off-screen) ---- */
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) {
-          if (!mainVideo.paused) {
-            mainVideo.pause();
-          }
-        } else {
-          if (isPlayingDesired && mainVideo.paused) {
-            playVideo();
-          }
-        }
-      });
-    }, { threshold: 0.25 });
-
-    observer.observe(cinemaPlayer);
-  }
+  attemptPlay();
 }

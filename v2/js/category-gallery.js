@@ -1,7 +1,8 @@
 /**
  * HYPER STEEL — SIGNATURE ACCORDION GALLERY MODULE
- * Architectural Horizontal Flex Accordion with Smooth GSAP Coordination.
- * Ensures robust pointer hover, rapid pointer traversal handling, keyboard focus, and mobile tap.
+ * Architectural Horizontal Flex Accordion.
+ * Class-driven flex transition system ensuring zero layout jumping, zero container overflow,
+ * fluid pointer traversal, keyboard navigation, and mobile touch support.
  */
 
 export function initCategoryGallery() {
@@ -11,202 +12,125 @@ export function initCategoryGallery() {
   const panels = Array.from(gallery.querySelectorAll('.category-panel'));
   if (panels.length === 0) return;
 
-  let activeIndex = -1;
-  let isMobile = window.innerWidth <= 900;
-
-  // Track window resize for mobile vs desktop mode
-  window.addEventListener('resize', () => {
-    const currentIsMobile = window.innerWidth <= 900;
-    if (currentIsMobile !== isMobile) {
-      isMobile = currentIsMobile;
-      resetGallery(true);
-    }
-  });
+  let activeIndex = 0; // Default active panel: 0 (Entrances)
+  let isMobile = window.innerWidth <= 800;
+  let resetDebounce = null;
 
   /**
-   * Reset all panels to default equal state
+   * Set the active panel by index
    */
-  function resetGallery(immediate = false) {
-    activeIndex = -1;
-
-    panels.forEach((panel) => {
-      panel.classList.remove('is-expanded', 'is-shrunk');
-      panel.setAttribute('aria-expanded', 'false');
-
-      if (!isMobile && typeof gsap !== 'undefined') {
-        gsap.to(panel, {
-          flexGrow: 1,
-          opacity: 1,
-          duration: immediate ? 0 : 0.45,
-          ease: 'power2.out',
-          overwrite: 'auto'
-        });
-      } else if (isMobile && typeof gsap !== 'undefined') {
-        gsap.set(panel, { clearProps: 'all' });
-      }
-    });
-  }
-
-  /**
-   * Expand specific panel by index
-   */
-  function expandPanel(index) {
-    if (index === activeIndex && !isMobile) return;
+  function setPanel(index) {
+    if (index < 0 || index >= panels.length) return;
+    clearTimeout(resetDebounce);
     activeIndex = index;
 
-    panels.forEach((panel, i) => {
-      const isTarget = i === index;
-      const collapsedLabel = panel.querySelector('.category-panel__collapsed-label');
-      const expandedContent = panel.querySelector('.category-panel__expanded-content');
-      const img = panel.querySelector('.category-panel__img');
+    gallery.classList.add('has-active');
 
-      if (isTarget) {
+    panels.forEach((panel, i) => {
+      if (i === index) {
         panel.classList.add('is-expanded');
         panel.classList.remove('is-shrunk');
         panel.setAttribute('aria-expanded', 'true');
-
-        if (!isMobile && typeof gsap !== 'undefined') {
-          // GSAP smooth expand animation
-          gsap.to(panel, {
-            flexGrow: 5.5,
-            opacity: 1,
-            duration: 0.55,
-            ease: 'power3.out',
-            overwrite: 'auto'
-          });
-
-          if (img) {
-            gsap.to(img, {
-              scale: 1.0,
-              filter: 'brightness(0.85) contrast(1.02)',
-              duration: 0.65,
-              ease: 'power2.out',
-              overwrite: 'auto'
-            });
-          }
-
-          if (collapsedLabel) {
-            gsap.to(collapsedLabel, {
-              opacity: 0,
-              duration: 0.2,
-              overwrite: 'auto'
-            });
-          }
-
-          if (expandedContent) {
-            gsap.fromTo(
-              expandedContent,
-              { y: 14, opacity: 0 },
-              {
-                y: 0,
-                opacity: 1,
-                duration: 0.45,
-                delay: 0.1,
-                ease: 'power2.out',
-                overwrite: 'auto'
-              }
-            );
-          }
-        }
       } else {
         panel.classList.remove('is-expanded');
         panel.classList.add('is-shrunk');
         panel.setAttribute('aria-expanded', 'false');
-
-        if (!isMobile && typeof gsap !== 'undefined') {
-          gsap.to(panel, {
-            flexGrow: 0.65,
-            opacity: 0.6,
-            duration: 0.55,
-            ease: 'power3.out',
-            overwrite: 'auto'
-          });
-
-          if (img) {
-            gsap.to(img, {
-              scale: 1.1,
-              filter: 'brightness(0.6) contrast(1.05)',
-              duration: 0.65,
-              ease: 'power2.out',
-              overwrite: 'auto'
-            });
-          }
-
-          if (collapsedLabel) {
-            gsap.to(collapsedLabel, {
-              opacity: 1,
-              duration: 0.35,
-              delay: 0.1,
-              overwrite: 'auto'
-            });
-          }
-
-          if (expandedContent) {
-            gsap.to(expandedContent, {
-              opacity: 0,
-              y: 10,
-              duration: 0.2,
-              overwrite: 'auto'
-            });
-          }
-        }
       }
     });
   }
 
-  // Initial State: Reset all to equal collapsed state
-  resetGallery(true);
-
-  // Desktop Hover Interactions
-  panels.forEach((panel, index) => {
-    panel.addEventListener('mouseenter', () => {
+  /**
+   * Reset to deliberate default state (panel 0 expanded)
+   */
+  function resetToDefault() {
+    clearTimeout(resetDebounce);
+    resetDebounce = setTimeout(() => {
       if (!isMobile) {
-        expandPanel(index);
+        setPanel(0);
+      }
+    }, 180);
+  }
+
+  // Set initial default panel
+  setPanel(0);
+
+  // Responsive breakpoint tracking
+  window.addEventListener('resize', () => {
+    const nextIsMobile = window.innerWidth <= 800;
+    if (nextIsMobile !== isMobile) {
+      isMobile = nextIsMobile;
+      if (isMobile) {
+        gallery.classList.remove('has-active');
+        panels.forEach((p, i) => {
+          if (i === 0) {
+            p.classList.add('is-expanded');
+            p.setAttribute('aria-expanded', 'true');
+          } else {
+            p.classList.remove('is-expanded', 'is-shrunk');
+            p.setAttribute('aria-expanded', 'false');
+          }
+        });
+      } else {
+        setPanel(activeIndex);
+      }
+    }
+  });
+
+  panels.forEach((panel, index) => {
+    // Desktop pointer enter
+    panel.addEventListener('pointerenter', (e) => {
+      if (e.pointerType === 'mouse' && !isMobile) {
+        setPanel(index);
       }
     });
 
+    // Keyboard focus activation
     panel.addEventListener('focus', () => {
-      expandPanel(index);
+      setPanel(index);
     });
 
-    // Touch / Click Handler
+    // Click & Touch activation
     panel.addEventListener('click', (e) => {
       if (isMobile) {
-        if (panel.classList.contains('is-expanded')) {
-          resetGallery();
-        } else {
-          expandPanel(index);
+        const isCurrentExpanded = panel.classList.contains('is-expanded');
+        panels.forEach((p) => {
+          p.classList.remove('is-expanded', 'is-shrunk');
+          p.setAttribute('aria-expanded', 'false');
+        });
+        if (!isCurrentExpanded) {
+          panel.classList.add('is-expanded');
+          panel.setAttribute('aria-expanded', 'true');
         }
       } else {
-        expandPanel(index);
+        setPanel(index);
       }
     });
 
-    // Accessible Keyboard Navigation
+    // Accessible keyboard arrow navigation
     panel.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        panel.classList.contains('is-expanded') ? resetGallery() : expandPanel(index);
+        setPanel(index);
       } else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
         e.preventDefault();
         const next = (index + 1) % panels.length;
         panels[next].focus();
-        expandPanel(next);
+        setPanel(next);
       } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
         e.preventDefault();
         const prev = (index - 1 + panels.length) % panels.length;
         panels[prev].focus();
-        expandPanel(prev);
+        setPanel(prev);
       } else if (e.key === 'Escape') {
-        resetGallery();
+        resetToDefault();
       }
     });
   });
 
-  // Mouse Leaving Gallery Container
-  gallery.addEventListener('mouseleave', () => {
-    if (!isMobile) {
-      resetGallery();
+  // Pointer leaves entire accordion container
+  gallery.addEventListener('pointerleave', (e) => {
+    if (e.pointerType === 'mouse' && !isMobile) {
+      resetToDefault();
     }
   });
 }

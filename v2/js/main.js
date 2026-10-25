@@ -6,7 +6,6 @@
 
 import { initNavigation } from './navigation.js';
 import { initCategoryGallery } from './category-gallery.js';
-import { initTimeline } from './timeline.js';
 import { initVideoPlayer } from './video-player.js';
 import { initProjects } from './projects.js';
 import { initEnquiry } from './enquiry.js';
@@ -43,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // 2. Register GSAP Plugins
+  // 2. Register GSAP Plugins & Orchestrate Motion
   if (typeof gsap !== 'undefined') {
     if (typeof ScrollTrigger !== 'undefined') {
       gsap.registerPlugin(ScrollTrigger);
@@ -60,28 +59,23 @@ document.addEventListener('DOMContentLoaded', () => {
           duration: 0.6,
           delay: 0.05
         })
-        .from('.hero__meta', {
-          opacity: 0,
-          y: 15,
-          duration: 0.45
-        }, '-=0.3')
         .from('.hero__headline-line', {
           y: 35,
           opacity: 0,
-          stagger: 0.1,
-          duration: 0.65
-        }, '-=0.3')
+          stagger: 0.12,
+          duration: 0.7
+        }, '-=0.25')
         .from('.hero__lead', {
           y: 20,
           opacity: 0,
           duration: 0.55
-        }, '-=0.4')
+        }, '-=0.35')
         .from('.hero__actions .btn', {
           y: 20,
           duration: 0.5,
           stagger: 0.08,
           clearProps: 'all'
-        }, '-=0.3')
+        }, '-=0.25')
         .from('.hero__scroll-indicator', {
           opacity: 0,
           duration: 0.6
@@ -90,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // 2B. Hero Background Parallax (Anchored Background Layer)
       if (typeof ScrollTrigger !== 'undefined') {
         gsap.to('.hero__bg', {
-          yPercent: 22,
+          yPercent: 18,
           ease: 'none',
           scrollTrigger: {
             trigger: '#hero',
@@ -102,8 +96,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Content slight lift & fade out as following section scrolls up
         gsap.to('.hero__content', {
-          y: -40,
-          opacity: 0.65,
+          y: -35,
+          opacity: 0.7,
           ease: 'none',
           scrollTrigger: {
             trigger: '#hero',
@@ -114,49 +108,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
 
-      // 2C. Metrics One-Time Count-Up Animation
-      const metricNumbers = document.querySelectorAll('.metric-item__number');
-      if (metricNumbers.length > 0 && typeof ScrollTrigger !== 'undefined') {
-        ScrollTrigger.batch(metricNumbers, {
-          once: true,
-          onEnter: (elements) => {
-            elements.forEach((el) => {
-              const targetVal = parseFloat(el.getAttribute('data-target') || '0');
-              const isDecimal = el.getAttribute('data-decimal') === 'true';
-              const countObj = { val: 0 };
-
-              gsap.to(countObj, {
-                val: targetVal,
-                duration: 1.8,
-                ease: 'power2.out',
-                onUpdate: () => {
-                  if (isDecimal) {
-                    el.textContent = countObj.val.toFixed(1);
-                  } else {
-                    el.textContent = Math.round(countObj.val).toLocaleString();
-                  }
-                }
-              });
-            });
-          }
-        });
-      }
-
-      // 2D. Subtle Section Header & Grid Item Scroll Reveals
+      // 2C. Section Header & Key Element Scroll Reveals
       if (typeof ScrollTrigger !== 'undefined') {
         const revealElements = document.querySelectorAll(
-          '.section-header, .capability-card, .cinema-player, .video-playlist'
+          '.section-header, .capability-card, .cinema-player, .video-playlist, .project-item'
         );
 
         revealElements.forEach((el) => {
           gsap.from(el, {
-            y: 35,
+            y: 30,
             opacity: 0,
-            duration: 0.85,
+            duration: 0.75,
             ease: 'power2.out',
             scrollTrigger: {
               trigger: el,
-              start: 'top 85%',
+              start: 'top 88%',
               once: true
             }
           });
@@ -168,7 +134,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // 3. Initialize Interactive Components
   initNavigation();
   initCategoryGallery();
-  initTimeline();
   initVideoPlayer();
   initProjects();
   initEnquiry();
