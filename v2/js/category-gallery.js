@@ -1,8 +1,8 @@
 /**
  * HYPER STEEL — SIGNATURE ACCORDION GALLERY MODULE
  * Architectural Horizontal Flex Accordion.
- * Class-driven flex transition system ensuring zero layout jumping, zero container overflow,
- * fluid pointer traversal, keyboard navigation, and mobile touch support.
+ * Fluid flex transition system with unified active-state management.
+ * Supports desktop hover, keyboard navigation, and touchscreen tapping.
  */
 
 export function initCategoryGallery() {
@@ -12,125 +12,68 @@ export function initCategoryGallery() {
   const panels = Array.from(gallery.querySelectorAll('.category-panel'));
   if (panels.length === 0) return;
 
-  let activeIndex = 0; // Default active panel: 0 (Entrances)
-  let isMobile = window.innerWidth <= 800;
-  let resetDebounce = null;
-
   /**
-   * Set the active panel by index
+   * Robust Active Panel Management
+   * Toggles active state cleanly on panels and synchronizes ARIA attributes.
    */
-  function setPanel(index) {
-    if (index < 0 || index >= panels.length) return;
-    clearTimeout(resetDebounce);
-    activeIndex = index;
+  function setActivePanel(activePanel) {
+    if (!activePanel) return;
 
-    gallery.classList.add('has-active');
-
-    panels.forEach((panel, i) => {
-      if (i === index) {
-        panel.classList.add('is-expanded');
-        panel.classList.remove('is-shrunk');
-        panel.setAttribute('aria-expanded', 'true');
-      } else {
-        panel.classList.remove('is-expanded');
-        panel.classList.add('is-shrunk');
-        panel.setAttribute('aria-expanded', 'false');
-      }
+    panels.forEach((panel) => {
+      const isActive = panel === activePanel;
+      panel.classList.toggle('is-active', isActive);
+      panel.classList.toggle('is-expanded', isActive);
+      panel.classList.remove('is-shrunk');
+      panel.setAttribute('aria-expanded', String(isActive));
     });
   }
 
-  /**
-   * Reset to deliberate default state (panel 0 expanded)
-   */
-  function resetToDefault() {
-    clearTimeout(resetDebounce);
-    resetDebounce = setTimeout(() => {
-      if (!isMobile) {
-        setPanel(0);
-      }
-    }, 180);
-  }
+  // Initialize with the first panel expanded by default
+  setActivePanel(panels[0]);
 
-  // Set initial default panel
-  setPanel(0);
-
-  // Responsive breakpoint tracking
-  window.addEventListener('resize', () => {
-    const nextIsMobile = window.innerWidth <= 800;
-    if (nextIsMobile !== isMobile) {
-      isMobile = nextIsMobile;
-      if (isMobile) {
-        gallery.classList.remove('has-active');
-        panels.forEach((p, i) => {
-          if (i === 0) {
-            p.classList.add('is-expanded');
-            p.setAttribute('aria-expanded', 'true');
-          } else {
-            p.classList.remove('is-expanded', 'is-shrunk');
-            p.setAttribute('aria-expanded', 'false');
-          }
-        });
-      } else {
-        setPanel(activeIndex);
-      }
-    }
-  });
-
+  // Attach event handlers to each panel
   panels.forEach((panel, index) => {
-    // Desktop pointer enter
-    panel.addEventListener('pointerenter', (e) => {
-      if (e.pointerType === 'mouse' && !isMobile) {
-        setPanel(index);
+    // 1. Desktop Hover: mouseenter & mouseover & pointerenter
+    panel.addEventListener('mouseenter', () => {
+      setActivePanel(panel);
+    });
+
+    panel.addEventListener('pointerenter', () => {
+      setActivePanel(panel);
+    });
+
+    panel.addEventListener('mouseover', (e) => {
+      if (e.target === panel || panel.contains(e.target)) {
+        setActivePanel(panel);
       }
     });
 
-    // Keyboard focus activation
+    // 2. Click / Touch Tap: expands clicked panel
+    panel.addEventListener('click', () => {
+      setActivePanel(panel);
+    });
+
+    // 3. Keyboard Focus
     panel.addEventListener('focus', () => {
-      setPanel(index);
+      setActivePanel(panel);
     });
 
-    // Click & Touch activation
-    panel.addEventListener('click', (e) => {
-      if (isMobile) {
-        const isCurrentExpanded = panel.classList.contains('is-expanded');
-        panels.forEach((p) => {
-          p.classList.remove('is-expanded', 'is-shrunk');
-          p.setAttribute('aria-expanded', 'false');
-        });
-        if (!isCurrentExpanded) {
-          panel.classList.add('is-expanded');
-          panel.setAttribute('aria-expanded', 'true');
-        }
-      } else {
-        setPanel(index);
-      }
-    });
-
-    // Accessible keyboard arrow navigation
+    // 4. Accessible Keyboard Arrow Navigation
     panel.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        setPanel(index);
+        setActivePanel(panel);
       } else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
         e.preventDefault();
-        const next = (index + 1) % panels.length;
-        panels[next].focus();
-        setPanel(next);
+        const nextIndex = (index + 1) % panels.length;
+        panels[nextIndex].focus();
+        setActivePanel(panels[nextIndex]);
       } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
         e.preventDefault();
-        const prev = (index - 1 + panels.length) % panels.length;
-        panels[prev].focus();
-        setPanel(prev);
-      } else if (e.key === 'Escape') {
-        resetToDefault();
+        const prevIndex = (index - 1 + panels.length) % panels.length;
+        panels[prevIndex].focus();
+        setActivePanel(panels[prevIndex]);
       }
     });
-  });
-
-  // Pointer leaves entire accordion container
-  gallery.addEventListener('pointerleave', (e) => {
-    if (e.pointerType === 'mouse' && !isMobile) {
-      resetToDefault();
-    }
   });
 }
