@@ -2,8 +2,88 @@
  * HYPER STEEL — CINEMA VIDEO PLAYER MODULE
  * Unified Primary Video Player with Dynamic Clip Switching,
  * Native Media Event Synchronization, Promise-Safe Play/Pause,
- * and Permanent Muting Enforcement.
+ * Race-Condition Protected Selection, and Permanent Muting Enforcement.
  */
+
+export const VIDEO_PLAYLIST = [
+  {
+    id: 'sliding-door',
+    src: 'assets/sliding_door.mp4',
+    poster: 'assets/video_posters/sliding_door_poster.jpg',
+    title: 'Multi-Track Sliding Steel Grille Door',
+    subtitle: 'Smooth effortless glide mechanism tested in front of architectural spiral stair'
+  },
+  {
+    id: 'stylish-door',
+    src: 'assets/stylish_door.mp4',
+    poster: 'assets/video_posters/stylish_door_poster.jpg',
+    title: 'Matte Black Louvered Architectural Entrance',
+    subtitle: 'Cinematic upward reveal of a multi-panel black steel pivot entrance door'
+  },
+  {
+    id: 'metal-gate-showcase',
+    src: 'assets/metal_gate_showcase.mp4',
+    poster: 'assets/video_posters/metal_gate_showcase_poster.jpg',
+    title: 'Botanical Laser CNC Compound Gate',
+    subtitle: 'Detailed panning view of laser-cut botanical steel panels with mirror backplate'
+  },
+  {
+    id: 'exterior-work',
+    src: 'assets/exterior_work.mp4',
+    poster: 'assets/video_posters/exterior_work_poster.jpg',
+    title: 'Architectural Villa Exterior Fabrication',
+    subtitle: 'Full architectural villa exterior showcasing integrated steel facade screens'
+  },
+  {
+    id: 'balcony-view',
+    src: 'assets/balcony_view.mp4',
+    poster: 'assets/video_posters/balcony_view_poster.jpg',
+    title: 'Golden Louvered Balcony Shading',
+    subtitle: 'Dynamic interior and exterior perspective of geometric golden steel facade louvers'
+  },
+  {
+    id: 'roof-work',
+    src: 'assets/roof_work.mp4',
+    poster: 'assets/video_posters/roof_work_poster.jpg',
+    title: 'Structural Glass Pergola & Canopy',
+    subtitle: 'Walkthrough inspection of a steel framework supporting laminated safety glass on terrace'
+  },
+  {
+    id: 'roof-work-2',
+    src: 'assets/roof_work_2.mp4',
+    poster: 'assets/video_posters/roof_work_2_poster.jpg',
+    title: 'Terrace Canopy Beam Installation',
+    subtitle: 'Close-up inspection of heavy tubular steel beams and glass seal gaskets'
+  },
+  {
+    id: 'stylish-gate-2',
+    src: 'assets/stylish_gate_2.mp4',
+    poster: 'assets/video_posters/stylish_gate_2_poster.jpg',
+    title: 'Double-Swing Compound Gate Test',
+    subtitle: 'Operational swing motion test of black steel framed gate with vertical timber inserts'
+  },
+  {
+    id: 'stylish-gate-3',
+    src: 'assets/stylish_gate_3.mp4',
+    poster: 'assets/video_posters/stylish_gate_3_poster.jpg',
+    title: 'Compound Gate Full Perspective',
+    subtitle: 'Full compound perspective showing vehicle gate and matching pedestrian entrance wicket'
+  },
+  {
+    id: 'finished-exterior-2',
+    src: 'assets/finished_exterior_2.mp4',
+    poster: 'assets/video_posters/finished_exterior_2_poster.jpg',
+    title: 'Contemporary Villa Exterior Overview',
+    subtitle: 'Overview of finished residence showing completed compound gate and balcony balustrades'
+  },
+  {
+    id: 'finished-exterior-3',
+    src: 'assets/finished_exterior_3.mp4',
+    poster: 'assets/video_posters/finished_exterior_3_poster.jpg',
+    title: 'Architectural Compound Integration',
+    subtitle: 'Wide site view demonstrating harmonized steel perimeter fencing and entrance gate'
+  }
+];
 
 export function initVideoPlayer() {
   const cinemaPlayer = document.querySelector('.cinema-player');
@@ -19,7 +99,7 @@ export function initVideoPlayer() {
   let currentSelectionId = 0;
 
   /**
-   * Enforce muted state permanently across all playback and volume events
+   * Enforce muted state permanently across all playback and volume changes
    */
   function enforceMuted() {
     videoPlayer.muted = true;
@@ -64,7 +144,7 @@ export function initVideoPlayer() {
   /**
    * Update the playlist cards UI to reflect active selection
    */
-  function updateSelectedVideoUI(activeCard, title, caption) {
+  function updateSelectedVideoUI(activeCard, title, subtitle) {
     playlistCards.forEach((card) => {
       const isSelected = card === activeCard;
       card.classList.toggle('is-active', isSelected);
@@ -72,22 +152,14 @@ export function initVideoPlayer() {
     });
 
     if (playerTitle && title) playerTitle.textContent = title;
-    if (playerCaption && caption) playerCaption.textContent = caption;
+    if (playerCaption && subtitle) playerCaption.textContent = subtitle;
   }
 
   /**
    * Select and load new video footage into the primary player
    */
-  async function selectVideo(card) {
-    if (!card) return;
+  async function selectVideo(videoData, cardElement) {
     const selectionId = ++currentSelectionId;
-
-    const src = card.getAttribute('data-video-src');
-    const poster = card.getAttribute('data-video-poster');
-    const title = card.getAttribute('data-video-title');
-    const caption = card.getAttribute('data-video-caption');
-
-    if (!src) return;
 
     // 1. Pause existing playback immediately
     try {
@@ -98,11 +170,13 @@ export function initVideoPlayer() {
     enforceMuted();
 
     // 3. Assign new source and poster
-    if (poster) videoPlayer.setAttribute('poster', poster);
-    videoPlayer.src = src;
+    if (videoData.poster) {
+      videoPlayer.setAttribute('poster', videoData.poster);
+    }
+    videoPlayer.src = videoData.src;
 
     // 4. Update UI before network load
-    updateSelectedVideoUI(card, title, caption);
+    updateSelectedVideoUI(cardElement, videoData.title, videoData.subtitle);
     updatePlaybackButton(false);
 
     // 5. Explicitly load the new media source
@@ -122,7 +196,7 @@ export function initVideoPlayer() {
     } catch (error) {
       if (selectionId !== currentSelectionId) return;
       updatePlaybackButton(false);
-      console.info('Autoplay deferred or user interaction required:', error);
+      console.info('Playback requires user interaction or autoplay deferred:', error);
     }
   }
 
@@ -166,16 +240,24 @@ export function initVideoPlayer() {
   });
 
   // Attach selection listeners to all thumbnail cards
-  playlistCards.forEach((card) => {
+  playlistCards.forEach((card, index) => {
+    // Match card to playlist item by data attributes or index
+    const videoData = VIDEO_PLAYLIST[index] || {
+      src: card.getAttribute('data-video-src'),
+      poster: card.getAttribute('data-video-poster'),
+      title: card.getAttribute('data-video-title'),
+      subtitle: card.getAttribute('data-video-caption')
+    };
+
     card.addEventListener('click', (e) => {
       e.preventDefault();
-      selectVideo(card);
+      selectVideo(videoData, card);
     });
 
     card.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        selectVideo(card);
+        selectVideo(videoData, card);
       }
     });
   });

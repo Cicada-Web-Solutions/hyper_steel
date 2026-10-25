@@ -1,8 +1,8 @@
 /**
  * HYPER STEEL — NAVIGATION & ACTIVE-SECTION HIGHLIGHTING MODULE
- * Bidirectional, scroll-aware navigation indicator with IntersectionObserver
- * and robust reading-point geometry.
+ * Bidirectional, scroll-aware navigation indicator.
  * Synchronizes desktop navbar and mobile drawer with zero flickering.
+ * Supports clicking, manual scrolling down, and scrolling back up.
  */
 
 export function initNavigation() {
@@ -15,8 +15,8 @@ export function initNavigation() {
   const backToTopBtn = document.querySelector('.back-to-top');
   const heroSection = document.querySelector('#hero');
 
-  // The 5 primary navbar destinations and their corresponding section anchors
-  // Note: craft-videos is part of the Craft section experience and maps to #craft.
+  // Tracked sections and their navbar href mappings.
+  // Note: craft-videos belongs to the Craft section experience and maps to #craft.
   const trackedSections = [
     { id: 'hero', targetHref: '#hero' },
     { id: 'craft', targetHref: '#craft' },
@@ -28,7 +28,7 @@ export function initNavigation() {
 
   let isManualScrolling = false;
   let manualScrollTimeout = null;
-  let currentActiveHref = '#hero';
+  let currentActiveHref = null;
 
   /**
    * Set active link visually on both desktop and mobile navigation
@@ -49,7 +49,7 @@ export function initNavigation() {
   }
 
   /**
-   * Force active nav directly (used on click and init)
+   * Force active nav directly (used on link click)
    */
   function forceActiveNav(targetHref) {
     currentActiveHref = targetHref;
@@ -62,9 +62,9 @@ export function initNavigation() {
   }
 
   /**
-   * Calculate Active Section based on viewport reading position
-   * Accounts for fixed header height (80px), variable section heights,
-   * scrolling down, scrolling up, and document boundaries.
+   * Calculate Active Section based on viewport reading position.
+   * Handles sections of different heights, scrolling down, scrolling up,
+   * fixed header offset, and the bottom of the page for #contact.
    */
   function updateActiveSection() {
     if (isManualScrolling) return;
@@ -75,41 +75,63 @@ export function initNavigation() {
 
     const windowHeight = window.innerHeight;
     const docHeight = document.documentElement.scrollHeight;
+    const maxScroll = docHeight - windowHeight;
 
-    // 1. Top of page boundary -> Home is active
-    if (scrollY < 120) {
+    // 1. Top of page boundary -> Home (#hero) is active
+    if (scrollY <= 80) {
       setActiveNav('#hero');
       return;
     }
 
-    // 2. Bottom of page boundary -> Contact is active
-    if (scrollY + windowHeight >= docHeight - 50) {
-      setActiveNav('#contact');
-      return;
+    // 2. Bottom of page boundary or footer in view -> Contact (#contact) is active
+    const contactEl = document.getElementById('contact');
+    if (contactEl) {
+      const contactRect = contactEl.getBoundingClientRect();
+      // If user is near the bottom of scroll OR footer occupies lower screen
+      if (scrollY >= maxScroll - 80 || contactRect.top <= windowHeight * 0.65) {
+        setActiveNav('#contact');
+        return;
+      }
     }
 
-    // 3. Viewport reading line (just below the fixed header, at ~35% viewport depth)
-    const headerOffset = 80;
-    const readingY = headerOffset + Math.min(180, windowHeight * 0.25);
+    // 3. Viewport reading line just below fixed header (accounting for ~80px header)
+    const headerHeight = header ? header.offsetHeight : 80;
+    const readingY = headerHeight + Math.min(160, windowHeight * 0.22);
 
-    // Find the latest tracked section whose top has crossed the reading line
-    let matchedItem = trackedSections[0];
+    // Find which tracked section currently contains the reading line
+    let matchedItem = null;
 
-    for (let i = 0; i < trackedSections.length; i++) {
+    for (let i = trackedSections.length - 1; i >= 0; i--) {
       const item = trackedSections[i];
       const el = document.getElementById(item.id);
       if (el) {
         const rect = el.getBoundingClientRect();
-        // If the top of the section is at or above the reading line,
-        // and its bottom is still below the top of the viewport (not completely scrolled away)
-        if (rect.top <= readingY && rect.bottom > 0) {
+        if (rect.top <= readingY && rect.bottom > readingY) {
           matchedItem = item;
+          break;
+        }
+      }
+    }
+
+    // Fallback: if in between sections (e.g. metrics section), find the latest section above reading line
+    if (!matchedItem) {
+      for (let i = trackedSections.length - 1; i >= 0; i--) {
+        const item = trackedSections[i];
+        const el = document.getElementById(item.id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= readingY) {
+            matchedItem = item;
+            break;
+          }
         }
       }
     }
 
     if (matchedItem) {
       setActiveNav(matchedItem.targetHref);
+    } else {
+      setActiveNav('#hero');
     }
   }
 
@@ -139,29 +161,10 @@ export function initNavigation() {
     updateActiveSection();
   }
 
+  // Attach scroll listeners
   window.addEventListener('scroll', handleScroll, { passive: true });
   if (window.lenis) {
     window.lenis.on('scroll', handleScroll);
-  }
-
-  // Set up IntersectionObserver as a reactive watcher for section visibility shifts
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver(
-      () => {
-        if (!isManualScrolling) {
-          updateActiveSection();
-        }
-      },
-      {
-        rootMargin: '-80px 0px -40% 0px',
-        threshold: [0, 0.2, 0.5]
-      }
-    );
-
-    trackedSections.forEach(({ id }) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
   }
 
   // Mobile menu open / close
@@ -191,7 +194,7 @@ export function initNavigation() {
     }
   });
 
-  // Smooth scroll and auto-close mobile drawer on link click
+  // Smooth scroll and active underline on navigation click
   allNavLinks.forEach((link) => {
     link.addEventListener('click', (e) => {
       const targetId = link.getAttribute('href');
@@ -205,21 +208,31 @@ export function initNavigation() {
 
           isManualScrolling = true;
           clearTimeout(manualScrollTimeout);
-          manualScrollTimeout = setTimeout(() => {
-            isManualScrolling = false;
-            updateActiveSection();
-          }, 950);
 
           const headerOffset = 76;
+          const onScrollFinish = () => {
+            isManualScrolling = false;
+            updateActiveSection();
+          };
+
+          manualScrollTimeout = setTimeout(onScrollFinish, 1000);
+
           if (targetId === '#hero') {
             if (window.lenis) {
-              window.lenis.scrollTo(0, { duration: 0.9 });
+              window.lenis.scrollTo(0, {
+                duration: 0.9,
+                onComplete: onScrollFinish
+              });
             } else {
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }
           } else {
             if (window.lenis) {
-              window.lenis.scrollTo(targetEl, { offset: -headerOffset, duration: 0.9 });
+              window.lenis.scrollTo(targetEl, {
+                offset: -headerOffset,
+                duration: 0.9,
+                onComplete: onScrollFinish
+              });
             } else {
               const targetPosition =
                 targetEl.getBoundingClientRect().top + window.pageYOffset - headerOffset;
@@ -243,5 +256,5 @@ export function initNavigation() {
 
   // Initial calculation on load
   forceActiveNav('#hero');
-  setTimeout(updateActiveSection, 100);
+  updateActiveSection();
 }
