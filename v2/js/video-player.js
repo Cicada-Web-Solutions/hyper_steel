@@ -1,8 +1,15 @@
 /**
  * HYPER STEEL — CINEMA VIDEO PLAYER MODULE
- * Unified Primary Video Player with Dynamic Clip Switching,
- * Native Media Event Synchronization, Promise-Safe Play/Pause,
- * Race-Condition Protected Selection, and Permanent Muting Enforcement.
+ * Authoritative Single Native HTML5 Video Player.
+ * 
+ * Features:
+ * - Clean professional inline SVG pause/play icons (no text characters or Unicode symbols)
+ * - Rock-solid video switching: reads source directly from selector element or dataset,
+ *   immediately marks active selector, pauses old footage, sets src on same video element,
+ *   calls video.load(), updates title/subtitle, enforces muted, safely attempts play().
+ * - Event delegation on playlist container + direct card listeners for maximum compatibility.
+ * - Race-condition protected clip switching.
+ * - Native HTML5 media event synchronization (playing, pause, ended, error).
  */
 
 export const VIDEO_PLAYLIST = [
@@ -85,183 +92,207 @@ export const VIDEO_PLAYLIST = [
   }
 ];
 
+// Clean inline SVG icons: pause with two vertical rounded bars, play with right-pointing triangle
+const PAUSE_SVG = `<svg class="control-btn__icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><rect x="5.5" y="4" width="3.5" height="16" rx="1.5"/><rect x="15" y="4" width="3.5" height="16" rx="1.5"/></svg>`;
+const PLAY_SVG = `<svg class="control-btn__icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><polygon points="6,4 20,12 6,20"/></svg>`;
+
 export function initVideoPlayer() {
   const cinemaPlayer = document.querySelector('.cinema-player');
-  const videoPlayer = document.querySelector('.cinema-player__video');
+  const videoElement = document.querySelector('.cinema-player__video');
   const playToggleBtn = document.querySelector('.js-play-toggle');
   const playerTitle = document.querySelector('.cinema-player__title');
   const playerCaption = document.querySelector('.cinema-player__caption');
+  const playlistContainer = document.querySelector('.video-playlist');
   const playlistCards = Array.from(document.querySelectorAll('.video-thumb-card'));
   const videoWrapper = document.querySelector('.cinema-player__video-wrapper');
 
-  if (!cinemaPlayer || !videoPlayer) return;
+  if (!cinemaPlayer || !videoElement) return;
 
   let currentSelectionId = 0;
 
   /**
-   * Enforce muted state permanently across all playback and volume changes
+   * Enforce muted property permanently across playback
    */
-  function enforceMuted() {
-    videoPlayer.muted = true;
-    videoPlayer.defaultMuted = true;
-    videoPlayer.volume = 0;
+  function ensureMuted() {
+    videoElement.muted = true;
+    videoElement.defaultMuted = true;
+    videoElement.volume = 0;
   }
-  enforceMuted();
-  videoPlayer.addEventListener('volumechange', enforceMuted);
+  ensureMuted();
+  videoElement.addEventListener('volumechange', ensureMuted);
 
   /**
-   * Synchronize Play / Pause button UI and Accessible Label
+   * Synchronize the play/pause toggle button with actual playback state
    */
-  function updatePlaybackButton(isPlaying) {
+  function updateButtonUI(isPlaying) {
     if (!playToggleBtn) return;
     if (isPlaying) {
       cinemaPlayer.classList.add('is-playing');
       playToggleBtn.setAttribute('aria-label', 'Pause video');
-      playToggleBtn.innerHTML = `
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
-          <rect x="6" y="4" width="4" height="16"/>
-          <rect x="14" y="4" width="4" height="16"/>
-        </svg>
-      `;
+      playToggleBtn.innerHTML = PAUSE_SVG;
     } else {
       cinemaPlayer.classList.remove('is-playing');
       playToggleBtn.setAttribute('aria-label', 'Play video');
-      playToggleBtn.innerHTML = `
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
-          <polygon points="6 4 20 12 6 20 6 4"/>
-        </svg>
-      `;
+      playToggleBtn.innerHTML = PLAY_SVG;
     }
   }
 
-  // Synchronize button UI with real HTML5 video media events
-  videoPlayer.addEventListener('play', () => updatePlaybackButton(true));
-  videoPlayer.addEventListener('playing', () => updatePlaybackButton(true));
-  videoPlayer.addEventListener('pause', () => updatePlaybackButton(false));
-  videoPlayer.addEventListener('ended', () => updatePlaybackButton(false));
-  videoPlayer.addEventListener('error', () => updatePlaybackButton(false));
+  // Native media events drive interface synchronization
+  videoElement.addEventListener('playing', () => updateButtonUI(true));
+  videoElement.addEventListener('pause', () => updateButtonUI(false));
+  videoElement.addEventListener('ended', () => updateButtonUI(false));
+  videoElement.addEventListener('error', () => updateButtonUI(false));
 
   /**
-   * Update the playlist cards UI to reflect active selection
+   * Handles selection of a video from a card element
+   * Follows the exact 9-step specification:
+   * 1. Immediately mark newly selected selector as active
+   * 2. Pause currently playing video
+   * 3. Read correct source path from selector's actual data or configuration
+   * 4. Assign new source to SAME video element
+   * 5. Call video.load() after changing source
+   * 6. Update title and subtitle
+   * 7. Keep video muted
+   * 8. Attempt playback with error handling
+   * 9. Prevent previous video from continuing
    */
-  function updateSelectedVideoUI(activeCard, title, subtitle) {
-    playlistCards.forEach((card) => {
-      const isSelected = card === activeCard;
-      card.classList.toggle('is-active', isSelected);
-      card.setAttribute('aria-selected', String(isSelected));
-    });
-
-    if (playerTitle && title) playerTitle.textContent = title;
-    if (playerCaption && subtitle) playerCaption.textContent = subtitle;
-  }
-
-  /**
-   * Select and load new video footage into the primary player
-   */
-  async function selectVideo(videoData, cardElement) {
+  async function selectCard(card) {
+    if (!card) return;
     const selectionId = ++currentSelectionId;
 
-    // 1. Pause existing playback immediately
+    // 1. Immediately mark newly selected selector as active
+    playlistCards.forEach((c) => {
+      const isSelected = (c === card);
+      c.classList.toggle('is-active', isSelected);
+      c.setAttribute('aria-selected', String(isSelected));
+    });
+
+    // 2. Pause currently playing video
     try {
-      videoPlayer.pause();
+      videoElement.pause();
     } catch (e) {}
 
-    // 2. Ensure strictly muted
-    enforceMuted();
+    // 3. Read correct source path from selector's actual data or configuration
+    const cardIndex = playlistCards.indexOf(card);
+    const config = (cardIndex >= 0 && VIDEO_PLAYLIST[cardIndex]) ? VIDEO_PLAYLIST[cardIndex] : null;
 
-    // 3. Assign new source and poster
-    if (videoData.poster) {
-      videoPlayer.setAttribute('poster', videoData.poster);
+    const src = card.getAttribute('data-video-src') || card.dataset.videoSrc || config?.src;
+    const poster = card.getAttribute('data-video-poster') || card.dataset.videoPoster || config?.poster;
+    const title = card.getAttribute('data-video-title') || card.dataset.videoTitle || config?.title;
+    const subtitle = card.getAttribute('data-video-caption') || card.dataset.videoCaption || config?.subtitle;
+
+    if (!src) return;
+
+    // 4. Assign new source to the SAME video element
+    if (poster) {
+      videoElement.poster = poster;
+      videoElement.setAttribute('poster', poster);
     }
-    videoPlayer.src = videoData.src;
 
-    // 4. Update UI before network load
-    updateSelectedVideoUI(cardElement, videoData.title, videoData.subtitle);
-    updatePlaybackButton(false);
+    // Remove any nested <source> tags to ensure video.src is authoritative
+    const childSources = videoElement.querySelectorAll('source');
+    childSources.forEach(s => s.remove());
 
-    // 5. Explicitly load the new media source
-    videoPlayer.load();
+    videoElement.src = src;
+    videoElement.setAttribute('src', src);
+    videoElement.currentTime = 0;
 
-    // 6. Attempt playback with promise handling
+    // 5. Call video.load() after changing source
+    videoElement.load();
+
+    // 6. Update title and subtitle to match selected video
+    if (playerTitle && title) {
+      playerTitle.textContent = title;
+    }
+    if (playerCaption && subtitle) {
+      playerCaption.textContent = subtitle;
+    }
+
+    // 7. Keep video muted
+    ensureMuted();
+
+    // 8. Attempt playback and handle any rejected play() promise
     try {
-      const playPromise = videoPlayer.play();
+      const playPromise = videoElement.play();
       if (playPromise !== undefined) {
         await playPromise;
-
-        // Ignore outdated playback results from an earlier selection
-        if (selectionId !== currentSelectionId) return;
-
-        updatePlaybackButton(!videoPlayer.paused);
       }
-    } catch (error) {
+    } catch (err) {
       if (selectionId !== currentSelectionId) return;
-      updatePlaybackButton(false);
-      console.info('Playback requires user interaction or autoplay deferred:', error);
+      updateButtonUI(false);
+      return;
     }
+
+    // 9. Ensure previous video cannot overwrite or interfere
+    if (selectionId !== currentSelectionId) return;
+
+    updateButtonUI(!videoElement.paused);
   }
 
   /**
-   * Master Play / Pause Toggle Function
+   * Master play/pause toggle
    */
   async function togglePlay() {
-    enforceMuted();
-    if (videoPlayer.paused || videoPlayer.ended) {
-      if (videoPlayer.ended) {
-        videoPlayer.currentTime = 0;
+    ensureMuted();
+    if (videoElement.paused || videoElement.ended) {
+      if (videoElement.ended) {
+        videoElement.currentTime = 0;
       }
       try {
-        const playPromise = videoPlayer.play();
+        const playPromise = videoElement.play();
         if (playPromise !== undefined) {
           await playPromise;
-          updatePlaybackButton(!videoPlayer.paused);
         }
       } catch (err) {
-        updatePlaybackButton(false);
+        updateButtonUI(false);
       }
     } else {
       try {
-        videoPlayer.pause();
+        videoElement.pause();
       } catch (err) {}
-      updatePlaybackButton(false);
+      updateButtonUI(false);
     }
   }
 
-  // Play / Pause button click
+  // Toggle button click listener
   playToggleBtn?.addEventListener('click', (e) => {
     e.preventDefault();
     e.stopPropagation();
     togglePlay();
   });
 
-  // Video canvas click
+  // Video canvas click listener
   videoWrapper?.addEventListener('click', (e) => {
     e.preventDefault();
     togglePlay();
   });
 
-  // Attach selection listeners to all thumbnail cards
-  playlistCards.forEach((card, index) => {
-    // Match card to playlist item by data attributes or index
-    const videoData = VIDEO_PLAYLIST[index] || {
-      src: card.getAttribute('data-video-src'),
-      poster: card.getAttribute('data-video-poster'),
-      title: card.getAttribute('data-video-title'),
-      subtitle: card.getAttribute('data-video-caption')
-    };
+  // Event Delegation on Playlist Container (catches clicks on images, text, badges, cards)
+  playlistContainer?.addEventListener('click', (e) => {
+    const card = e.target.closest('.video-thumb-card');
+    if (!card) return;
+    e.preventDefault();
+    selectCard(card);
+  });
 
+  // Direct card click and keyboard listeners (double guarantee across all environments)
+  playlistCards.forEach((card) => {
     card.addEventListener('click', (e) => {
       e.preventDefault();
-      selectVideo(videoData, card);
+      selectCard(card);
     });
 
     card.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        selectVideo(videoData, card);
+        selectCard(card);
       }
     });
   });
 
-  // Initial UI synchronization based on initial video state
-  updatePlaybackButton(!videoPlayer.paused);
+  // Select first valid video on initial page load
+  const firstCard = playlistCards[0];
+  if (firstCard) {
+    selectCard(firstCard);
+  }
 }

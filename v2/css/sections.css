@@ -886,18 +886,27 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
   color: var(--color-gold);
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   flex-shrink: 0;
   transition: all var(--duration-fast) ease;
+  user-select: none;
+  font-family: inherit;
 }
 
 .control-btn:hover {
   background-color: var(--color-gold);
   color: var(--color-black);
   border-color: var(--color-gold);
+}
+
+.control-btn__icon {
+  width: 20px;
+  height: 20px;
+  display: block;
+  pointer-events: none;
 }
 
 /* Video Playlist Grid / Thumbnails */
