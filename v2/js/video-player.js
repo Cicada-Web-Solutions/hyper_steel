@@ -1,298 +1,226 @@
+
 /**
- * HYPER STEEL — CINEMA VIDEO PLAYER MODULE
- * Authoritative Single Native HTML5 Video Player.
- * 
- * Features:
- * - Clean professional inline SVG pause/play icons (no text characters or Unicode symbols)
- * - Rock-solid video switching: reads source directly from selector element or dataset,
- *   immediately marks active selector, pauses old footage, sets src on same video element,
- *   calls video.load(), updates title/subtitle, enforces muted, safely attempts play().
- * - Event delegation on playlist container + direct card listeners for maximum compatibility.
- * - Race-condition protected clip switching.
- * - Native HTML5 media event synchronization (playing, pause, ended, error).
+ * Hyper Steel Fabrication — Video Player
+ * One native video element, one play/pause handler,
+ * and one delegated playlist click handler.
  */
 
-export const VIDEO_PLAYLIST = [
-  {
-    id: 'sliding-door',
-    src: 'assets/sliding_door.mp4',
-    poster: 'assets/video_posters/sliding_door_poster.jpg',
-    title: 'Multi-Track Sliding Steel Grille Door',
-    subtitle: 'Smooth effortless glide mechanism tested in front of architectural spiral stair'
-  },
-  {
-    id: 'stylish-door',
-    src: 'assets/stylish_door.mp4',
-    poster: 'assets/video_posters/stylish_door_poster.jpg',
-    title: 'Matte Black Louvered Architectural Entrance',
-    subtitle: 'Cinematic upward reveal of a multi-panel black steel pivot entrance door'
-  },
-  {
-    id: 'metal-gate-showcase',
-    src: 'assets/metal_gate_showcase.mp4',
-    poster: 'assets/video_posters/metal_gate_showcase_poster.jpg',
-    title: 'Botanical Laser CNC Compound Gate',
-    subtitle: 'Detailed panning view of laser-cut botanical steel panels with mirror backplate'
-  },
-  {
-    id: 'exterior-work',
-    src: 'assets/exterior_work.mp4',
-    poster: 'assets/video_posters/exterior_work_poster.jpg',
-    title: 'Architectural Villa Exterior Fabrication',
-    subtitle: 'Full architectural villa exterior showcasing integrated steel facade screens'
-  },
-  {
-    id: 'balcony-view',
-    src: 'assets/balcony_view.mp4',
-    poster: 'assets/video_posters/balcony_view_poster.jpg',
-    title: 'Golden Louvered Balcony Shading',
-    subtitle: 'Dynamic interior and exterior perspective of geometric golden steel facade louvers'
-  },
-  {
-    id: 'roof-work',
-    src: 'assets/roof_work.mp4',
-    poster: 'assets/video_posters/roof_work_poster.jpg',
-    title: 'Structural Glass Pergola & Canopy',
-    subtitle: 'Walkthrough inspection of a steel framework supporting laminated safety glass on terrace'
-  },
-  {
-    id: 'roof-work-2',
-    src: 'assets/roof_work_2.mp4',
-    poster: 'assets/video_posters/roof_work_2_poster.jpg',
-    title: 'Terrace Canopy Beam Installation',
-    subtitle: 'Close-up inspection of heavy tubular steel beams and glass seal gaskets'
-  },
-  {
-    id: 'stylish-gate-2',
-    src: 'assets/stylish_gate_2.mp4',
-    poster: 'assets/video_posters/stylish_gate_2_poster.jpg',
-    title: 'Double-Swing Compound Gate Test',
-    subtitle: 'Operational swing motion test of black steel framed gate with vertical timber inserts'
-  },
-  {
-    id: 'stylish-gate-3',
-    src: 'assets/stylish_gate_3.mp4',
-    poster: 'assets/video_posters/stylish_gate_3_poster.jpg',
-    title: 'Compound Gate Full Perspective',
-    subtitle: 'Full compound perspective showing vehicle gate and matching pedestrian entrance wicket'
-  },
-  {
-    id: 'finished-exterior-2',
-    src: 'assets/finished_exterior_2.mp4',
-    poster: 'assets/video_posters/finished_exterior_2_poster.jpg',
-    title: 'Contemporary Villa Exterior Overview',
-    subtitle: 'Overview of finished residence showing completed compound gate and balcony balustrades'
-  },
-  {
-    id: 'finished-exterior-3',
-    src: 'assets/finished_exterior_3.mp4',
-    poster: 'assets/video_posters/finished_exterior_3_poster.jpg',
-    title: 'Architectural Compound Integration',
-    subtitle: 'Wide site view demonstrating harmonized steel perimeter fencing and entrance gate'
-  }
-];
-
-// Clean inline SVG icons: pause with two vertical rounded bars, play with right-pointing triangle
-const PAUSE_SVG = `<svg class="control-btn__icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><rect x="5.5" y="4" width="3.5" height="16" rx="1.5"/><rect x="15" y="4" width="3.5" height="16" rx="1.5"/></svg>`;
-const PLAY_SVG = `<svg class="control-btn__icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><polygon points="6,4 20,12 6,20"/></svg>`;
-
 export function initVideoPlayer() {
-  const cinemaPlayer = document.querySelector('.cinema-player');
-  const videoElement = document.querySelector('.cinema-player__video');
-  const playToggleBtn = document.querySelector('.js-play-toggle');
-  const playerTitle = document.querySelector('.cinema-player__title');
-  const playerCaption = document.querySelector('.cinema-player__caption');
-  const playlistContainer = document.querySelector('.video-playlist');
-  const playlistCards = Array.from(document.querySelectorAll('.video-thumb-card'));
-  const videoWrapper = document.querySelector('.cinema-player__video-wrapper');
+  const player = document.querySelector(".cinema-player");
+  if (!player || player.dataset.playerReady === "true") return;
 
-  if (!cinemaPlayer || !videoElement) return;
+  const video = player.querySelector(".cinema-player__video");
+  const playButton = player.querySelector(".js-play-toggle");
+  const title = player.querySelector(".cinema-player__title");
+  const caption = player.querySelector(".cinema-player__caption");
+  const playlist = document.querySelector(".video-playlist");
 
-  let currentSelectionId = 0;
-
-  /**
-   * Enforce muted property permanently across playback
-   */
-  function ensureMuted() {
-    videoElement.muted = true;
-    videoElement.defaultMuted = true;
-    videoElement.volume = 0;
-  }
-  ensureMuted();
-  videoElement.addEventListener('volumechange', ensureMuted);
-
-  /**
-   * Synchronize the play/pause toggle button with actual playback state
-   */
-  function updateButtonUI(isPlaying) {
-    if (!playToggleBtn) return;
-    if (isPlaying) {
-      cinemaPlayer.classList.add('is-playing');
-      playToggleBtn.setAttribute('aria-label', 'Pause video');
-      playToggleBtn.innerHTML = PAUSE_SVG;
-    } else {
-      cinemaPlayer.classList.remove('is-playing');
-      playToggleBtn.setAttribute('aria-label', 'Play video');
-      playToggleBtn.innerHTML = PLAY_SVG;
-    }
+  if (!video || !playButton || !playlist) {
+    console.error("[HyperSteel Player] Required HTML elements are missing.");
+    return;
   }
 
-  // Native media events drive interface synchronization
-  videoElement.addEventListener('playing', () => updateButtonUI(true));
-  videoElement.addEventListener('pause', () => updateButtonUI(false));
-  videoElement.addEventListener('ended', () => updateButtonUI(false));
-  videoElement.addEventListener('error', () => updateButtonUI(false));
+  const cards = [...playlist.querySelectorAll(".video-thumb-card")];
 
-  /**
-   * Handles selection of a video from a card element
-   * Follows the exact 9-step specification:
-   * 1. Immediately mark newly selected selector as active
-   * 2. Pause currently playing video
-   * 3. Read correct source path from selector's actual data or configuration
-   * 4. Assign new source to SAME video element
-   * 5. Call video.load() after changing source
-   * 6. Update title and subtitle
-   * 7. Keep video muted
-   * 8. Attempt playback with error handling
-   * 9. Prevent previous video from continuing
-   */
-  async function selectCard(card) {
-    if (!card) return;
-    const selectionId = ++currentSelectionId;
+  if (!cards.length) {
+    console.error("[HyperSteel Player] No video cards found.");
+    return;
+  }
 
-    // 1. Immediately mark newly selected selector as active
-    playlistCards.forEach((c) => {
-      const isSelected = (c === card);
-      c.classList.toggle('is-active', isSelected);
-      c.setAttribute('aria-selected', String(isSelected));
+  player.dataset.playerReady = "true";
+
+  // Prevent autoplay/loop attributes from interfering with controls.
+  video.autoplay = false;
+  video.loop = false;
+  video.removeAttribute("autoplay");
+  video.removeAttribute("loop");
+  video.controls = false;
+  video.playsInline = true;
+  video.setAttribute("playsinline", "");
+
+  const PLAY_ICON = `
+    <svg class="control-btn__icon" viewBox="0 0 24 24"
+      width="20" height="20" fill="currentColor" aria-hidden="true">
+      <polygon points="6,4 20,12 6,20"></polygon>
+    </svg>`;
+
+  const PAUSE_ICON = `
+    <svg class="control-btn__icon" viewBox="0 0 24 24"
+      width="20" height="20" fill="currentColor" aria-hidden="true">
+      <rect x="5.5" y="4" width="3.5" height="16" rx="1.5"></rect>
+      <rect x="15" y="4" width="3.5" height="16" rx="1.5"></rect>
+    </svg>`;
+
+  let activeCard = null;
+  let requestId = 0;
+
+  function updateControls() {
+    const playing = !video.paused && !video.ended;
+
+    player.classList.toggle("is-playing", playing);
+    playButton.innerHTML = playing ? PAUSE_ICON : PLAY_ICON;
+    playButton.setAttribute(
+      "aria-label",
+      playing ? "Pause video" : "Play video"
+    );
+    playButton.setAttribute("aria-pressed", String(playing));
+  }
+
+  function markActiveCard(card) {
+    cards.forEach((item) => {
+      const active = item === card;
+
+      item.classList.toggle("is-active", active);
+      item.setAttribute("aria-selected", String(active));
     });
+  }
 
-    // 2. Pause currently playing video
+  async function playVideo() {
+    const thisRequest = ++requestId;
+
     try {
-      videoElement.pause();
-    } catch (e) {}
+      await video.play();
 
-    // 3. Read correct source path from selector's actual data or configuration
-    const cardIndex = playlistCards.indexOf(card);
-    const config = (cardIndex >= 0 && VIDEO_PLAYLIST[cardIndex]) ? VIDEO_PLAYLIST[cardIndex] : null;
+      // Ignore an old playback request after another action.
+      if (thisRequest !== requestId) return;
 
-    const src = card.getAttribute('data-video-src') || card.dataset.videoSrc || config?.src;
-    const poster = card.getAttribute('data-video-poster') || card.dataset.videoPoster || config?.poster;
-    const title = card.getAttribute('data-video-title') || card.dataset.videoTitle || config?.title;
-    const subtitle = card.getAttribute('data-video-caption') || card.dataset.videoCaption || config?.subtitle;
+      updateControls();
+    } catch (error) {
+      if (thisRequest !== requestId) return;
 
-    if (!src) return;
-
-    // 4. Assign new source to the SAME video element
-    if (poster) {
-      videoElement.poster = poster;
-      videoElement.setAttribute('poster', poster);
+      updateControls();
+      console.error(
+        "[HyperSteel Player] Could not play video:",
+        video.currentSrc || video.src,
+        error
+      );
     }
+  }
 
-    // Remove any nested <source> tags to ensure video.src is authoritative
-    const childSources = videoElement.querySelectorAll('source');
-    childSources.forEach(s => s.remove());
+  function pauseVideo() {
+    // Invalidates any earlier pending play request.
+    requestId++;
+    video.pause();
+    updateControls();
+  }
 
-    videoElement.src = src;
-    videoElement.setAttribute('src', src);
-    videoElement.currentTime = 0;
+  async function selectVideo(card) {
+    if (!card || !playlist.contains(card)) return;
 
-    // 5. Call video.load() after changing source
-    videoElement.load();
+    const src = card.getAttribute("data-video-src");
+    const poster = card.getAttribute("data-video-poster");
+    const newTitle = card.getAttribute("data-video-title");
+    const newCaption = card.getAttribute("data-video-caption");
 
-    // 6. Update title and subtitle to match selected video
-    if (playerTitle && title) {
-      playerTitle.textContent = title;
-    }
-    if (playerCaption && subtitle) {
-      playerCaption.textContent = subtitle;
-    }
-
-    // 7. Keep video muted
-    ensureMuted();
-
-    // 8. Attempt playback and handle any rejected play() promise
-    try {
-      const playPromise = videoElement.play();
-      if (playPromise !== undefined) {
-        await playPromise;
-      }
-    } catch (err) {
-      if (selectionId !== currentSelectionId) return;
-      updateButtonUI(false);
+    if (!src) {
+      console.error("[HyperSteel Player] This card has no data-video-src:", card);
       return;
     }
 
-    // 9. Ensure previous video cannot overwrite or interfere
-    if (selectionId !== currentSelectionId) return;
+    // Invalidate any pending playback request and stop the current clip.
+    requestId++;
+    video.pause();
 
-    updateButtonUI(!videoElement.paused);
+    activeCard = card;
+    markActiveCard(card);
+
+    if (title && newTitle) title.textContent = newTitle;
+    if (caption && newCaption) caption.textContent = newCaption;
+
+    if (poster) video.poster = new URL(poster, document.baseURI).href;
+
+    // Load the selected file into the same video element.
+    video.removeAttribute("src");
+    video.src = new URL(src, document.baseURI).href;
+    video.load();
+
+    updateControls();
+
+    // Play the newly selected clip.
+    await playVideo();
   }
 
-  /**
-   * Master play/pause toggle
-   */
-  async function togglePlay() {
-    ensureMuted();
-    if (videoElement.paused || videoElement.ended) {
-      if (videoElement.ended) {
-        videoElement.currentTime = 0;
-      }
-      try {
-        const playPromise = videoElement.play();
-        if (playPromise !== undefined) {
-          await playPromise;
-        }
-      } catch (err) {
-        updateButtonUI(false);
-      }
+  // Playlist: a single click listener, no duplicate per-card listeners.
+  playlist.addEventListener("click", (event) => {
+    const card = event.target.closest(".video-thumb-card");
+    if (!card || !playlist.contains(card)) return;
+
+    selectVideo(card);
+  });
+
+  // Keyboard support for the custom thumbnail cards.
+  playlist.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" && event.key !== " ") return;
+
+    const card = event.target.closest(".video-thumb-card");
+    if (!card || !playlist.contains(card)) return;
+
+    event.preventDefault();
+    selectVideo(card);
+  });
+
+  // Play/pause button.
+  playButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    if (video.paused || video.ended) {
+      if (video.ended) video.currentTime = 0;
+      playVideo();
     } else {
-      try {
-        videoElement.pause();
-      } catch (err) {}
-      updateButtonUI(false);
+      pauseVideo();
     }
-  }
-
-  // Toggle button click listener
-  playToggleBtn?.addEventListener('click', (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    togglePlay();
   });
 
-  // Video canvas click listener
-  videoWrapper?.addEventListener('click', (e) => {
-    e.preventDefault();
-    togglePlay();
+  // Clicking the video itself also toggles playback.
+  video.addEventListener("click", () => {
+    if (video.paused || video.ended) {
+      if (video.ended) video.currentTime = 0;
+      playVideo();
+    } else {
+      pauseVideo();
+    }
   });
 
-  // Event Delegation on Playlist Container (catches clicks on images, text, badges, cards)
-  playlistContainer?.addEventListener('click', (e) => {
-    const card = e.target.closest('.video-thumb-card');
-    if (!card) return;
-    e.preventDefault();
-    selectCard(card);
-  });
+  // Let actual browser media events control the button state.
+  video.addEventListener("play", updateControls);
+  video.addEventListener("playing", updateControls);
+  video.addEventListener("pause", updateControls);
+  video.addEventListener("ended", updateControls);
+  video.addEventListener("waiting", updateControls);
 
-  // Direct card click and keyboard listeners (double guarantee across all environments)
-  playlistCards.forEach((card) => {
-    card.addEventListener('click', (e) => {
-      e.preventDefault();
-      selectCard(card);
-    });
+  video.addEventListener("error", () => {
+    updateControls();
 
-    card.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        selectCard(card);
-      }
+    console.error("[HyperSteel Player] Video file failed to load.", {
+      source: video.currentSrc || video.src,
+      errorCode: video.error?.code,
+      errorMessage: video.error?.message
     });
   });
 
-  // Select first valid video on initial page load
-  const firstCard = playlistCards[0];
-  if (firstCard) {
-    selectCard(firstCard);
+  // Keep the initial card selected without autoplaying the video.
+  const initialCard =
+    cards.find((card) => card.classList.contains("is-active")) || cards[0];
+
+  const initialSrc = initialCard.getAttribute("data-video-src");
+  const initialPoster = initialCard.getAttribute("data-video-poster");
+
+  activeCard = initialCard;
+  markActiveCard(initialCard);
+
+  if (initialSrc) {
+    video.src = new URL(initialSrc, document.baseURI).href;
+    if (initialPoster) {
+      video.poster = new URL(initialPoster, document.baseURI).href;
+    }
+    video.load();
   }
+
+  updateControls();
+
+  console.info("[HyperSteel Player] Initialized.", {
+    playlistCards: cards.length,
+    initialSource: video.src
+  });
 }

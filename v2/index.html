@@ -1,1345 +1,2139 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Hyper Steel Fabrication — Premium architectural steel in Madurai, Tamil Nadu. Bespoke doors, automated gates, floating staircases, helical stairs, canopies, and architectural metalwork.">
-  <meta name="theme-color" content="#000000">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Hyper Steel Fabrication — Premium architectural steel in Madurai, Tamil Nadu. Bespoke doors, automated gates, floating staircases, helical stairs, canopies, and architectural metalwork."
+    />
+    <meta name="theme-color" content="#000000" />
 
-  <!-- Open Graph / Meta -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Hyper Steel — The Art of Architectural Steel · Madurai">
-  <meta property="og:description" content="From bold entrances to defining details, we make steel part of the architecture. Bespoke architectural steel fabrication in Madurai, Tamil Nadu.">
-  <meta property="og:image" content="assets/stylish_gate.jpeg">
+    <!-- Open Graph / Meta -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Hyper Steel — The Art of Architectural Steel · Madurai"
+    />
+    <meta
+      property="og:description"
+      content="From bold entrances to defining details, we make steel part of the architecture. Bespoke architectural steel fabrication in Madurai, Tamil Nadu."
+    />
+    <meta property="og:image" content="assets/stylish_gate.jpeg" />
 
-  <title>Hyper Steel — The Art of Architectural Steel · Madurai</title>
-  <link rel="icon" type="image/svg+xml" href="assets/logo_vector.svg">
+    <title>Hyper Steel — The Art of Architectural Steel · Madurai</title>
+    <link rel="icon" type="image/svg+xml" href="assets/logo_vector.svg" />
 
-  <!-- Google Fonts: Archivo (Headings) & Inter (Body/UI) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Archivo (Headings) & Inter (Body/UI) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Core Design Tokens & Stylesheets (Dark Architectural Theme) -->
-  <link rel="stylesheet" href="css/tokens.css">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/sections.css">
-</head>
-<body>
-
-  <!-- ========================================================================
+    <!-- Core Design Tokens & Stylesheets (Dark Architectural Theme) -->
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/sections.css" />
+  </head>
+  <body>
+    <!-- ========================================================================
        01 — HEADER & NAVBAR (5-ITEM NAVIGATION)
        ======================================================================== -->
-  <header class="site-header" role="banner">
-    <div class="container">
-      <div class="site-header__inner">
-        <!-- Brand Mark: Vector SVG with C Symbol Preserved + Business Name -->
-        <a href="#hero" class="brand-logo" aria-label="Hyper Steel Home">
-          <img src="assets/logo_vector.svg" alt="Hyper Steel Logo" class="brand-logo__img" width="46" height="46">
-          <span class="brand-logo__text">HYPER STEEL</span>
-        </a>
+    <header class="site-header" role="banner">
+      <div class="container">
+        <div class="site-header__inner">
+          <!-- Brand Mark: Vector SVG with C Symbol Preserved + Business Name -->
+          <a href="#hero" class="brand-logo" aria-label="Hyper Steel Home">
+            <img
+              src="assets/logo_vector.svg"
+              alt="Hyper Steel Logo"
+              class="brand-logo__img"
+              width="46"
+              height="46"
+            />
+            <span class="brand-logo__text">HYPER STEEL</span>
+          </a>
 
-        <!-- Desktop Navigation: Exactly 5 items with automatic active state -->
-        <nav class="site-nav" role="navigation" aria-label="Primary Navigation">
-          <a href="#hero" class="site-nav__link is-active">Home</a>
-          <a href="#craft" class="site-nav__link">Craft</a>
-          <a href="#projects" class="site-nav__link">Our Work</a>
-          <a href="#capabilities" class="site-nav__link">Capabilities</a>
-          <a href="#contact" class="site-nav__link">Contact</a>
-        </nav>
+          <!-- Desktop Navigation: Exactly 5 items with automatic active state -->
+          <nav
+            class="site-nav"
+            role="navigation"
+            aria-label="Primary Navigation"
+          >
+            <a href="#hero" class="site-nav__link is-active">Home</a>
+            <a href="#craft" class="site-nav__link">Craft</a>
+            <a href="#projects" class="site-nav__link">Our Work</a>
+            <a href="#capabilities" class="site-nav__link">Capabilities</a>
+            <a href="#contact" class="site-nav__link">Contact</a>
+          </nav>
 
-        <!-- Actions -->
-        <div class="header-actions">
-          <button type="button" class="btn btn--primary js-open-enquiry" data-service="Architectural Consultation">
-            <span>Discuss a Project</span>
-            <span class="btn__icon" aria-hidden="true">↗</span>
-          </button>
-
-          <!-- Mobile Hamburger Toggle -->
-          <button type="button" class="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-drawer">
-            <span class="mobile-menu-btn__line" aria-hidden="true"></span>
-            <span class="mobile-menu-btn__line" aria-hidden="true"></span>
-            <span class="mobile-menu-btn__line" aria-hidden="true"></span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <!-- Mobile Drawer Menu: Synchronized 5 navigation items -->
-  <div id="mobile-drawer" class="mobile-drawer" role="dialog" aria-modal="true" aria-label="Navigation Menu">
-    <nav class="mobile-drawer__nav">
-      <a href="#hero" class="mobile-drawer__link is-active">Home</a>
-      <a href="#craft" class="mobile-drawer__link">Craft</a>
-      <a href="#projects" class="mobile-drawer__link">Our Work</a>
-      <a href="#capabilities" class="mobile-drawer__link">Capabilities</a>
-      <a href="#contact" class="mobile-drawer__link">Contact</a>
-    </nav>
-
-    <button type="button" class="btn btn--primary js-open-enquiry" data-service="Mobile Consultation">
-      <span>Discuss a Project</span>
-      <span class="btn__icon" aria-hidden="true">↗</span>
-    </button>
-  </div>
-
-  <!-- ========================================================================
-       MAIN WEBSITE CONTENT
-       ======================================================================== -->
-  <main id="main-content">
-    
-    <!-- ======================================================================
-         02 — HERO: CINEMATIC ARCHITECTURAL OPENING
-         ====================================================================== -->
-    <section id="hero" class="hero" aria-label="Introduction">
-      <div class="hero__bg" aria-hidden="true"></div>
-      <div class="hero__overlay" aria-hidden="true"></div>
-
-      <div class="container hero__inner">
-        <div class="hero__content">
-          <h1 class="hero__headline">
-            <span class="hero__headline-line">The Art of</span>
-            <span class="hero__headline-line">Architectural <span class="hero__steel-word">STEEL.</span></span>
-          </h1>
-
-          <p class="hero__lead">
-            From bold entrances to defining details, we make steel part of the architecture. Precision-crafted bespoke doors, automated gate systems, helical staircases, and custom metalwork designed around your space.
-          </p>
-
-          <div class="hero__actions">
-            <button type="button" class="btn btn--primary js-open-enquiry" data-service="Hero Consultation">
+          <!-- Actions -->
+          <div class="header-actions">
+            <button
+              type="button"
+              class="btn btn--primary js-open-enquiry"
+              data-service="Architectural Consultation"
+            >
               <span>Discuss a Project</span>
               <span class="btn__icon" aria-hidden="true">↗</span>
             </button>
 
-            <a href="#craft" class="btn btn--secondary btn--down">
-              <span>Explore Our Work</span>
-              <span class="btn__icon" aria-hidden="true">↓</span>
-            </a>
+            <!-- Mobile Hamburger Toggle -->
+            <button
+              type="button"
+              class="mobile-menu-btn"
+              aria-label="Toggle navigation menu"
+              aria-expanded="false"
+              aria-controls="mobile-drawer"
+            >
+              <span class="mobile-menu-btn__line" aria-hidden="true"></span>
+              <span class="mobile-menu-btn__line" aria-hidden="true"></span>
+              <span class="mobile-menu-btn__line" aria-hidden="true"></span>
+            </button>
           </div>
         </div>
       </div>
+    </header>
 
-      <!-- Architectural Scroll Indicator -->
-      <div class="hero__scroll-indicator" aria-hidden="true">
-        <span>Scroll to Explore</span>
-        <span class="hero__scroll-line"></span>
-      </div>
-    </section>
+    <!-- Mobile Drawer Menu: Synchronized 5 navigation items -->
+    <div
+      id="mobile-drawer"
+      class="mobile-drawer"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Navigation Menu"
+    >
+      <nav class="mobile-drawer__nav">
+        <a href="#hero" class="mobile-drawer__link is-active">Home</a>
+        <a href="#craft" class="mobile-drawer__link">Craft</a>
+        <a href="#projects" class="mobile-drawer__link">Our Work</a>
+        <a href="#capabilities" class="mobile-drawer__link">Capabilities</a>
+        <a href="#contact" class="mobile-drawer__link">Contact</a>
+      </nav>
 
-    <!-- ======================================================================
+      <button
+        type="button"
+        class="btn btn--primary js-open-enquiry"
+        data-service="Mobile Consultation"
+      >
+        <span>Discuss a Project</span>
+        <span class="btn__icon" aria-hidden="true">↗</span>
+      </button>
+    </div>
+
+    <!-- ========================================================================
+       MAIN WEBSITE CONTENT
+       ======================================================================== -->
+    <main id="main-content">
+      <!-- ======================================================================
+         02 — HERO: CINEMATIC ARCHITECTURAL OPENING
+         ====================================================================== -->
+      <section id="hero" class="hero" aria-label="Introduction">
+        <div class="hero__bg" aria-hidden="true"></div>
+        <div class="hero__overlay" aria-hidden="true"></div>
+
+        <div class="container hero__inner">
+          <div class="hero__content">
+            <h1 class="hero__headline">
+              <span class="hero__headline-line">The Art of</span>
+              <span class="hero__headline-line"
+                >Architectural
+                <span class="hero__steel-word">STEEL.</span></span
+              >
+            </h1>
+
+            <p class="hero__lead">
+              From bold entrances to defining details, we make steel part of the
+              architecture. Precision-crafted bespoke doors, automated gate
+              systems, helical staircases, and custom metalwork designed around
+              your space.
+            </p>
+
+            <div class="hero__actions">
+              <button
+                type="button"
+                class="btn btn--primary js-open-enquiry"
+                data-service="Hero Consultation"
+              >
+                <span>Discuss a Project</span>
+                <span class="btn__icon" aria-hidden="true">↗</span>
+              </button>
+
+              <a href="#craft" class="btn btn--secondary btn--down">
+                <span>Explore Our Work</span>
+                <span class="btn__icon" aria-hidden="true">↓</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Architectural Scroll Indicator -->
+        <div class="hero__scroll-indicator" aria-hidden="true">
+          <span>Scroll to Explore</span>
+          <span class="hero__scroll-line"></span>
+        </div>
+      </section>
+
+      <!-- ======================================================================
          03 — METRICS: PROOF OF CRAFTSMANSHIP
          ====================================================================== -->
-    <section class="metrics-section" aria-label="Fabrication Metrics">
-      <div class="container">
-        <div class="metrics-grid">
-          <div class="metric-item">
-            <div class="metric-item__value-wrap">
-              <span class="metric-item__number">15</span>
-              <span class="metric-item__accent">+</span>
+      <section class="metrics-section" aria-label="Fabrication Metrics">
+        <div class="container">
+          <div class="metrics-grid">
+            <div class="metric-item">
+              <div class="metric-item__value-wrap">
+                <span class="metric-item__number">15</span>
+                <span class="metric-item__accent">+</span>
+              </div>
+              <div class="metric-item__label">Years of Fabrication</div>
+              <p class="metric-item__desc">
+                Bespoke architectural steelwork crafted across Tamil Nadu.
+              </p>
             </div>
-            <div class="metric-item__label">Years of Fabrication</div>
-            <p class="metric-item__desc">Bespoke architectural steelwork crafted across Tamil Nadu.</p>
-          </div>
 
-          <div class="metric-item">
-            <div class="metric-item__value-wrap">
-              <span class="metric-item__number">1,500</span>
-              <span class="metric-item__accent">T</span>
+            <div class="metric-item">
+              <div class="metric-item__value-wrap">
+                <span class="metric-item__number">1,500</span>
+                <span class="metric-item__accent">T</span>
+              </div>
+              <div class="metric-item__label">Tons of Steel Shaped</div>
+              <p class="metric-item__desc">
+                High-grade structural, ornamental, and precision metalwork.
+              </p>
             </div>
-            <div class="metric-item__label">Tons of Steel Shaped</div>
-            <p class="metric-item__desc">High-grade structural, ornamental, and precision metalwork.</p>
-          </div>
 
-          <div class="metric-item">
-            <div class="metric-item__value-wrap">
-              <span class="metric-item__number">0.5</span>
-              <span class="metric-item__accent">mm</span>
+            <div class="metric-item">
+              <div class="metric-item__value-wrap">
+                <span class="metric-item__number">0.5</span>
+                <span class="metric-item__accent">mm</span>
+              </div>
+              <div class="metric-item__label">Fabrication Precision</div>
+              <p class="metric-item__desc">
+                CNC laser profiling, cold bending, and seamless joint tolerance.
+              </p>
             </div>
-            <div class="metric-item__label">Fabrication Precision</div>
-            <p class="metric-item__desc">CNC laser profiling, cold bending, and seamless joint tolerance.</p>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- ======================================================================
+      <!-- ======================================================================
          04 — ACCORDION GALLERY: ONE MATERIAL
          ====================================================================== -->
-    <section id="craft" class="gallery-section" aria-label="Signature Categories">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">One Material. Infinite Form.</h2>
-          <p class="section-lead">
-            Every architectural space demands a distinct response in steel. Select or hover any discipline below to reveal its architectural detailing and execution.
-          </p>
+      <section
+        id="craft"
+        class="gallery-section"
+        aria-label="Signature Categories"
+      >
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">One Material. Infinite Form.</h2>
+            <p class="section-lead">
+              Every architectural space demands a distinct response in steel.
+              Select or hover any discipline below to reveal its architectural
+              detailing and execution.
+            </p>
+          </div>
+
+          <!-- 7 Narrow Architectural Flex Accordion Panels -->
+          <div
+            class="category-gallery"
+            role="tablist"
+            aria-label="Steel Disciplines"
+          >
+            <!-- Panel 1: Bespoke Entrances -->
+            <div
+              class="category-panel"
+              role="tab"
+              tabindex="0"
+              aria-expanded="false"
+              aria-label="Architectural Entrances"
+            >
+              <div class="category-panel__media-bg">
+                <img
+                  src="assets/stylish_gate.jpeg"
+                  alt="Architectural blackened steel entrance gate with vertical timber panels"
+                  class="category-panel__img"
+                  loading="lazy"
+                />
+                <div class="category-panel__overlay"></div>
+              </div>
+
+              <div class="category-panel__collapsed-label" aria-hidden="true">
+                <span class="panel-index">01</span>
+                <span class="panel-vertical-title">Entrances</span>
+              </div>
+
+              <div class="category-panel__expanded-content">
+                <div class="expanded-top">
+                  <span class="expanded-micro-label">Made with Steel</span>
+                </div>
+                <div class="expanded-bottom">
+                  <h3 class="expanded-title">
+                    Entrance Portals &amp; Bespoke Gates
+                  </h3>
+                  <p class="expanded-desc">
+                    Monumental steel gates and pivot portals combining robust
+                    structural hollow sections with warm vertical hardwood
+                    louvers and integrated precision mechanical latches.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel 2: Automated Gates -->
+            <div
+              class="category-panel"
+              role="tab"
+              tabindex="0"
+              aria-expanded="false"
+              aria-label="Automated Gates"
+            >
+              <div class="category-panel__media-bg">
+                <img
+                  src="assets/automated_gate.jpeg"
+                  alt="Automated motorized compound gate with laser cut decorative panel"
+                  class="category-panel__img"
+                  loading="lazy"
+                />
+                <div class="category-panel__overlay"></div>
+              </div>
+
+              <div class="category-panel__collapsed-label" aria-hidden="true">
+                <span class="panel-index">02</span>
+                <span class="panel-vertical-title">Automated Gates</span>
+              </div>
+
+              <div class="category-panel__expanded-content">
+                <div class="expanded-top">
+                  <span class="expanded-micro-label">Engineered Motion</span>
+                </div>
+                <div class="expanded-bottom">
+                  <h3 class="expanded-title">
+                    Motorized Cantilever &amp; Sliding Gates
+                  </h3>
+                  <p class="expanded-desc">
+                    Heavy-duty electric automation drives engineered within
+                    architectural facades, featuring CNC geometric screens,
+                    Italian rack-and-pinion actuators, and smart remote
+                    integration.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel 3: Cantilever & Floating Stairs -->
+            <div
+              class="category-panel"
+              role="tab"
+              tabindex="0"
+              aria-expanded="false"
+              aria-label="Floating Stairs"
+            >
+              <div class="category-panel__media-bg">
+                <img
+                  src="assets/floating_staircase.jpeg"
+                  alt="Floating steel mono-stringer staircase with solid teakwood steps against brick wall"
+                  class="category-panel__img"
+                  loading="lazy"
+                />
+                <div class="category-panel__overlay"></div>
+              </div>
+
+              <div class="category-panel__collapsed-label" aria-hidden="true">
+                <span class="panel-index">03</span>
+                <span class="panel-vertical-title">Floating Stairs</span>
+              </div>
+
+              <div class="category-panel__expanded-content">
+                <div class="expanded-top">
+                  <span class="expanded-micro-label">Built to Rise</span>
+                </div>
+                <div class="expanded-bottom">
+                  <h3 class="expanded-title">
+                    Cantilever &amp; Mono-Stringers
+                  </h3>
+                  <p class="expanded-desc">
+                    Sculpted central steel mono-stringers and wall-cantilevered
+                    brackets paired with solid hardwood treads, creating an
+                    open, weightless architectural ascent.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel 4: Curved & Helical Stairways -->
+            <div
+              class="category-panel"
+              role="tab"
+              tabindex="0"
+              aria-expanded="false"
+              aria-label="Curved Stairways"
+            >
+              <div class="category-panel__media-bg">
+                <img
+                  src="assets/stylish_curved_staircase.jpeg"
+                  alt="Helical curved steel staircase with curved glass balustrade and timber handrail"
+                  class="category-panel__img"
+                  loading="lazy"
+                />
+                <div class="category-panel__overlay"></div>
+              </div>
+
+              <div class="category-panel__collapsed-label" aria-hidden="true">
+                <span class="panel-index">04</span>
+                <span class="panel-vertical-title">Helical Stairs</span>
+              </div>
+
+              <div class="category-panel__expanded-content">
+                <div class="expanded-top">
+                  <span class="expanded-micro-label">Form in Motion</span>
+                </div>
+                <div class="expanded-bottom">
+                  <h3 class="expanded-title">Curved &amp; Helical Stairways</h3>
+                  <p class="expanded-desc">
+                    Monumental double-height helical steel staircases engineered
+                    with rolled plate stringers, radius-bent curved laminated
+                    glass balustrades, and luxury timber handrails.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel 5: Facade Louvers & Shading -->
+            <div
+              class="category-panel"
+              role="tab"
+              tabindex="0"
+              aria-expanded="false"
+              aria-label="Facade Louvers"
+            >
+              <div class="category-panel__media-bg">
+                <img
+                  src="assets/balcony.jpeg"
+                  alt="Modern villa facade with architectural steel vertical louvers"
+                  class="category-panel__img"
+                  loading="lazy"
+                />
+                <div class="category-panel__overlay"></div>
+              </div>
+
+              <div class="category-panel__collapsed-label" aria-hidden="true">
+                <span class="panel-index">05</span>
+                <span class="panel-vertical-title">Facade Louvers</span>
+              </div>
+
+              <div class="category-panel__expanded-content">
+                <div class="expanded-top">
+                  <span class="expanded-micro-label">Architectural Screen</span>
+                </div>
+                <div class="expanded-bottom">
+                  <h3 class="expanded-title">
+                    Solar Shading &amp; Facade Screens
+                  </h3>
+                  <p class="expanded-desc">
+                    Custom geometric steel facade louvers finished in
+                    architectural golden coating, providing natural tropical
+                    shading, ventilation, and distinct modernist exterior
+                    identity.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel 6: Decorative Detailing -->
+            <div
+              class="category-panel"
+              role="tab"
+              tabindex="0"
+              aria-expanded="false"
+              aria-label="Decorative Steelwork"
+            >
+              <div class="category-panel__media-bg">
+                <img
+                  src="assets/metal_gate.jpeg"
+                  alt="Black powder coated laser cut botanical steel gate with mirror backing"
+                  class="category-panel__img"
+                  loading="lazy"
+                />
+                <div class="category-panel__overlay"></div>
+              </div>
+
+              <div class="category-panel__collapsed-label" aria-hidden="true">
+                <span class="panel-index">06</span>
+                <span class="panel-vertical-title">Decorative Steel</span>
+              </div>
+
+              <div class="category-panel__expanded-content">
+                <div class="expanded-top">
+                  <span class="expanded-micro-label">Detail Matters</span>
+                </div>
+                <div class="expanded-bottom">
+                  <h3 class="expanded-title">Precision CNC Laser Gates</h3>
+                  <p class="expanded-desc">
+                    Architectural metal screens with botanical and geometric
+                    motifs, precision cut with fiber laser accuracy and backed
+                    by mirror stainless inserts for elevated privacy.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel 7: Canopies & Roofs -->
+            <div
+              class="category-panel"
+              role="tab"
+              tabindex="0"
+              aria-expanded="false"
+              aria-label="Canopies and Pergolas"
+            >
+              <div class="category-panel__media-bg">
+                <img
+                  src="assets/rooftop_canopy_work.jpeg"
+                  alt="Steel and structural glass canopy roof installation on terrace"
+                  class="category-panel__img"
+                  loading="lazy"
+                />
+                <div class="category-panel__overlay"></div>
+              </div>
+
+              <div class="category-panel__collapsed-label" aria-hidden="true">
+                <span class="panel-index">07</span>
+                <span class="panel-vertical-title">Canopies &amp; Roofs</span>
+              </div>
+
+              <div class="category-panel__expanded-content">
+                <div class="expanded-top">
+                  <span class="expanded-micro-label">Strength Above</span>
+                </div>
+                <div class="expanded-bottom">
+                  <h3 class="expanded-title">
+                    Glass Pergolas &amp; Steel Canopies
+                  </h3>
+                  <p class="expanded-desc">
+                    Engineered structural steel framework supporting laminated
+                    safety glass, designed to withstand weather, tropical
+                    monsoons, and thermal expansion.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </section>
 
-        <!-- 7 Narrow Architectural Flex Accordion Panels -->
-        <div class="category-gallery" role="tablist" aria-label="Steel Disciplines">
-          
-          <!-- Panel 1: Bespoke Entrances -->
-          <div class="category-panel" role="tab" tabindex="0" aria-expanded="false" aria-label="Architectural Entrances">
-            <div class="category-panel__media-bg">
-              <img src="assets/stylish_gate.jpeg" alt="Architectural blackened steel entrance gate with vertical timber panels" class="category-panel__img" loading="lazy">
-              <div class="category-panel__overlay"></div>
-            </div>
-
-            <div class="category-panel__collapsed-label" aria-hidden="true">
-              <span class="panel-index">01</span>
-              <span class="panel-vertical-title">Entrances</span>
-            </div>
-
-            <div class="category-panel__expanded-content">
-              <div class="expanded-top">
-                <span class="expanded-micro-label">Made with Steel</span>
-              </div>
-              <div class="expanded-bottom">
-                <h3 class="expanded-title">Entrance Portals &amp; Bespoke Gates</h3>
-                <p class="expanded-desc">
-                  Monumental steel gates and pivot portals combining robust structural hollow sections with warm vertical hardwood louvers and integrated precision mechanical latches.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Panel 2: Automated Gates -->
-          <div class="category-panel" role="tab" tabindex="0" aria-expanded="false" aria-label="Automated Gates">
-            <div class="category-panel__media-bg">
-              <img src="assets/automated_gate.jpeg" alt="Automated motorized compound gate with laser cut decorative panel" class="category-panel__img" loading="lazy">
-              <div class="category-panel__overlay"></div>
-            </div>
-
-            <div class="category-panel__collapsed-label" aria-hidden="true">
-              <span class="panel-index">02</span>
-              <span class="panel-vertical-title">Automated Gates</span>
-            </div>
-
-            <div class="category-panel__expanded-content">
-              <div class="expanded-top">
-                <span class="expanded-micro-label">Engineered Motion</span>
-              </div>
-              <div class="expanded-bottom">
-                <h3 class="expanded-title">Motorized Cantilever &amp; Sliding Gates</h3>
-                <p class="expanded-desc">
-                  Heavy-duty electric automation drives engineered within architectural facades, featuring CNC geometric screens, Italian rack-and-pinion actuators, and smart remote integration.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Panel 3: Cantilever & Floating Stairs -->
-          <div class="category-panel" role="tab" tabindex="0" aria-expanded="false" aria-label="Floating Stairs">
-            <div class="category-panel__media-bg">
-              <img src="assets/floating_staircase.jpeg" alt="Floating steel mono-stringer staircase with solid teakwood steps against brick wall" class="category-panel__img" loading="lazy">
-              <div class="category-panel__overlay"></div>
-            </div>
-
-            <div class="category-panel__collapsed-label" aria-hidden="true">
-              <span class="panel-index">03</span>
-              <span class="panel-vertical-title">Floating Stairs</span>
-            </div>
-
-            <div class="category-panel__expanded-content">
-              <div class="expanded-top">
-                <span class="expanded-micro-label">Built to Rise</span>
-              </div>
-              <div class="expanded-bottom">
-                <h3 class="expanded-title">Cantilever &amp; Mono-Stringers</h3>
-                <p class="expanded-desc">
-                  Sculpted central steel mono-stringers and wall-cantilevered brackets paired with solid hardwood treads, creating an open, weightless architectural ascent.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Panel 4: Curved & Helical Stairways -->
-          <div class="category-panel" role="tab" tabindex="0" aria-expanded="false" aria-label="Curved Stairways">
-            <div class="category-panel__media-bg">
-              <img src="assets/stylish_curved_staircase.jpeg" alt="Helical curved steel staircase with curved glass balustrade and timber handrail" class="category-panel__img" loading="lazy">
-              <div class="category-panel__overlay"></div>
-            </div>
-
-            <div class="category-panel__collapsed-label" aria-hidden="true">
-              <span class="panel-index">04</span>
-              <span class="panel-vertical-title">Helical Stairs</span>
-            </div>
-
-            <div class="category-panel__expanded-content">
-              <div class="expanded-top">
-                <span class="expanded-micro-label">Form in Motion</span>
-              </div>
-              <div class="expanded-bottom">
-                <h3 class="expanded-title">Curved &amp; Helical Stairways</h3>
-                <p class="expanded-desc">
-                  Monumental double-height helical steel staircases engineered with rolled plate stringers, radius-bent curved laminated glass balustrades, and luxury timber handrails.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Panel 5: Facade Louvers & Shading -->
-          <div class="category-panel" role="tab" tabindex="0" aria-expanded="false" aria-label="Facade Louvers">
-            <div class="category-panel__media-bg">
-              <img src="assets/balcony.jpeg" alt="Modern villa facade with architectural steel vertical louvers" class="category-panel__img" loading="lazy">
-              <div class="category-panel__overlay"></div>
-            </div>
-
-            <div class="category-panel__collapsed-label" aria-hidden="true">
-              <span class="panel-index">05</span>
-              <span class="panel-vertical-title">Facade Louvers</span>
-            </div>
-
-            <div class="category-panel__expanded-content">
-              <div class="expanded-top">
-                <span class="expanded-micro-label">Architectural Screen</span>
-              </div>
-              <div class="expanded-bottom">
-                <h3 class="expanded-title">Solar Shading &amp; Facade Screens</h3>
-                <p class="expanded-desc">
-                  Custom geometric steel facade louvers finished in architectural golden coating, providing natural tropical shading, ventilation, and distinct modernist exterior identity.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Panel 6: Decorative Detailing -->
-          <div class="category-panel" role="tab" tabindex="0" aria-expanded="false" aria-label="Decorative Steelwork">
-            <div class="category-panel__media-bg">
-              <img src="assets/metal_gate.jpeg" alt="Black powder coated laser cut botanical steel gate with mirror backing" class="category-panel__img" loading="lazy">
-              <div class="category-panel__overlay"></div>
-            </div>
-
-            <div class="category-panel__collapsed-label" aria-hidden="true">
-              <span class="panel-index">06</span>
-              <span class="panel-vertical-title">Decorative Steel</span>
-            </div>
-
-            <div class="category-panel__expanded-content">
-              <div class="expanded-top">
-                <span class="expanded-micro-label">Detail Matters</span>
-              </div>
-              <div class="expanded-bottom">
-                <h3 class="expanded-title">Precision CNC Laser Gates</h3>
-                <p class="expanded-desc">
-                  Architectural metal screens with botanical and geometric motifs, precision cut with fiber laser accuracy and backed by mirror stainless inserts for elevated privacy.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Panel 7: Canopies & Roofs -->
-          <div class="category-panel" role="tab" tabindex="0" aria-expanded="false" aria-label="Canopies and Pergolas">
-            <div class="category-panel__media-bg">
-              <img src="assets/rooftop_canopy_work.jpeg" alt="Steel and structural glass canopy roof installation on terrace" class="category-panel__img" loading="lazy">
-              <div class="category-panel__overlay"></div>
-            </div>
-
-            <div class="category-panel__collapsed-label" aria-hidden="true">
-              <span class="panel-index">07</span>
-              <span class="panel-vertical-title">Canopies &amp; Roofs</span>
-            </div>
-
-            <div class="category-panel__expanded-content">
-              <div class="expanded-top">
-                <span class="expanded-micro-label">Strength Above</span>
-              </div>
-              <div class="expanded-bottom">
-                <h3 class="expanded-title">Glass Pergolas &amp; Steel Canopies</h3>
-                <p class="expanded-desc">
-                  Engineered structural steel framework supporting laminated safety glass, designed to withstand weather, tropical monsoons, and thermal expansion.
-                </p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ======================================================================
+      <!-- ======================================================================
          05 — VIDEO SHOWCASE: FABRICATION IN MOTION
          ====================================================================== -->
-    <section id="craft-videos" class="videos-section" aria-label="Process Films">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Fabrication in Motion.</h2>
-          <p class="section-lead">
-            Live shop testing, mechanism trials, and architectural installations captured across our Madurai workshop and field installations.
-          </p>
-        </div>
+      <section
+        id="craft-videos"
+        class="videos-section"
+        aria-label="Process Films"
+      >
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Fabrication in Motion.</h2>
+            <p class="section-lead">
+              Live shop testing, mechanism trials, and architectural
+              installations captured across our Madurai workshop and field
+              installations.
+            </p>
+          </div>
 
-        <div class="video-showcase-grid">
-          <!-- Primary Cinema Video Player -->
-          <div class="cinema-player" aria-label="Cinema Video Player">
-            <div class="cinema-player__video-wrapper">
-              <video 
-                class="cinema-player__video" 
-                src="assets/sliding_door.mp4" 
-                poster="assets/video_posters/sliding_door_poster.jpg"
-                autoplay 
-                loop 
-                muted 
-                playsinline 
-                preload="metadata">
-                <p>Your browser does not support HTML5 video.</p>
-              </video>
+          <div class="video-showcase-grid">
+            <!-- Primary Cinema Video Player -->
+            <div class="cinema-player" aria-label="Cinema Video Player">
+              <div class="cinema-player__video-wrapper">
+                <video
+  class="cinema-player__video"
+  src="assets/sliding_door.mp4"
+  poster="assets/video_posters/sliding_door_poster.jpg"
+  muted
+  playsinline
+  preload="metadata"
+>
+  <p>Your browser does not support HTML5 video.</p>
+</video>
+              </div>
+
+              <!-- Video Player Controls Bar: Title, Subtitle & Real Play/Pause Control -->
+              <div class="cinema-player__controls">
+                <div class="cinema-player__info">
+                  <span class="cinema-player__title"
+                    >Multi-Track Sliding Steel Grille Door</span
+                  >
+                  <span class="cinema-player__caption"
+                    >Smooth effortless glide mechanism tested in front of
+                    architectural spiral stair</span
+                  >
+                </div>
+                <div class="cinema-player__actions">
+                  <button
+                    type="button"
+                    class="control-btn js-play-toggle"
+                    aria-label="Pause video"
+                  >
+                    <svg
+                      class="control-btn__icon"
+                      viewBox="0 0 24 24"
+                      width="20"
+                      height="20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <rect x="5.5" y="4" width="3.5" height="16" rx="1.5" />
+                      <rect x="15" y="4" width="3.5" height="16" rx="1.5" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
             </div>
 
-            <!-- Video Player Controls Bar: Title, Subtitle & Real Play/Pause Control -->
-            <div class="cinema-player__controls">
-              <div class="cinema-player__info">
-                <span class="cinema-player__title">Multi-Track Sliding Steel Grille Door</span>
-                <span class="cinema-player__caption">Smooth effortless glide mechanism tested in front of architectural spiral stair</span>
+            <!-- Video Selector / Thumbnails (Mapped to all 11 real video files) -->
+            <div class="video-playlist">
+              <div class="video-playlist__header">
+                Select Footage to Preview (11 Clips)
               </div>
-              <div class="cinema-player__actions">
-                <button type="button" class="control-btn js-play-toggle" aria-label="Pause video">
-                  <svg class="control-btn__icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
-                    <rect x="5.5" y="4" width="3.5" height="16" rx="1.5"/>
-                    <rect x="15" y="4" width="3.5" height="16" rx="1.5"/>
-                  </svg>
-                </button>
+
+              <!-- Clip 1: Sliding Door -->
+              <div
+                class="video-thumb-card is-active"
+                role="button"
+                tabindex="0"
+                aria-selected="true"
+                data-video-src="assets/sliding_door.mp4"
+                data-video-poster="assets/video_posters/sliding_door_poster.jpg"
+                data-video-title="Multi-Track Sliding Steel Grille Door"
+                data-video-caption="Smooth effortless glide mechanism tested in front of architectural spiral stair"
+              >
+                <div class="video-thumb-card__media">
+                  <img
+                    src="assets/video_posters/sliding_door_poster.jpg"
+                    alt="Sliding door glide test"
+                    class="video-thumb-card__img"
+                    loading="lazy"
+                  />
+                  <span class="video-thumb-card__badge">00:10</span>
+                </div>
+                <div class="video-thumb-card__body">
+                  <div class="video-thumb-card__title">
+                    Sliding Door Glide Test
+                  </div>
+                  <p class="video-thumb-card__desc">
+                    Precision multi-track rolling tolerance &amp; latching
+                  </p>
+                </div>
+              </div>
+
+              <!-- Clip 2: Stylish Door -->
+              <div
+                class="video-thumb-card"
+                role="button"
+                tabindex="0"
+                aria-selected="false"
+                data-video-src="assets/stylish_door.mp4"
+                data-video-poster="assets/video_posters/stylish_door_poster.jpg"
+                data-video-title="Matte Black Louvered Architectural Entrance"
+                data-video-caption="Cinematic upward reveal of a multi-panel black steel pivot entrance door"
+              >
+                <div class="video-thumb-card__media">
+                  <img
+                    src="assets/video_posters/stylish_door_poster.jpg"
+                    alt="Matte black entrance door"
+                    class="video-thumb-card__img"
+                    loading="lazy"
+                  />
+                  <span class="video-thumb-card__badge">00:09</span>
+                </div>
+                <div class="video-thumb-card__body">
+                  <div class="video-thumb-card__title">
+                    Louvered Entrance Portal
+                  </div>
+                  <p class="video-thumb-card__desc">
+                    Double-panel powder-coated security entrance door
+                  </p>
+                </div>
+              </div>
+
+              <!-- Clip 3: Botanical Gate Showcase -->
+              <div
+                class="video-thumb-card"
+                role="button"
+                tabindex="0"
+                aria-selected="false"
+                data-video-src="assets/metal_gate_showcase.mp4"
+                data-video-poster="assets/video_posters/metal_gate_showcase_poster.jpg"
+                data-video-title="Botanical Laser CNC Compound Gate"
+                data-video-caption="Detailed panning view of laser-cut botanical steel panels with mirror backplate"
+              >
+                <div class="video-thumb-card__media">
+                  <img
+                    src="assets/video_posters/metal_gate_showcase_poster.jpg"
+                    alt="Botanical gate preview"
+                    class="video-thumb-card__img"
+                    loading="lazy"
+                  />
+                  <span class="video-thumb-card__badge">00:09</span>
+                </div>
+                <div class="video-thumb-card__body">
+                  <div class="video-thumb-card__title">
+                    Botanical Gate Showcase
+                  </div>
+                  <p class="video-thumb-card__desc">
+                    Laser-cut organic motifs and mirror backplate
+                  </p>
+                </div>
+              </div>
+
+              <!-- Clip 4: Exterior Work -->
+              <div
+                class="video-thumb-card"
+                role="button"
+                tabindex="0"
+                aria-selected="false"
+                data-video-src="assets/exterior_work.mp4"
+                data-video-poster="assets/video_posters/exterior_work_poster.jpg"
+                data-video-title="Architectural Villa Exterior Fabrication"
+                data-video-caption="Full architectural villa exterior showcasing integrated steel facade screens"
+              >
+                <div class="video-thumb-card__media">
+                  <img
+                    src="assets/video_posters/exterior_work_poster.jpg"
+                    alt="Exterior facade screen"
+                    class="video-thumb-card__img"
+                    loading="lazy"
+                  />
+                  <span class="video-thumb-card__badge">00:10</span>
+                </div>
+                <div class="video-thumb-card__body">
+                  <div class="video-thumb-card__title">
+                    Villa Exterior Elevation
+                  </div>
+                  <p class="video-thumb-card__desc">
+                    Full-facade architectural metal screening installation
+                  </p>
+                </div>
+              </div>
+
+              <!-- Clip 5: Balcony View -->
+              <div
+                class="video-thumb-card"
+                role="button"
+                tabindex="0"
+                aria-selected="false"
+                data-video-src="assets/balcony_view.mp4"
+                data-video-poster="assets/video_posters/balcony_view_poster.jpg"
+                data-video-title="Golden Louvered Balcony Shading"
+                data-video-caption="Dynamic interior and exterior perspective of geometric golden steel facade louvers"
+              >
+                <div class="video-thumb-card__media">
+                  <img
+                    src="assets/video_posters/balcony_view_poster.jpg"
+                    alt="Balcony louvers preview"
+                    class="video-thumb-card__img"
+                    loading="lazy"
+                  />
+                  <span class="video-thumb-card__badge">00:18</span>
+                </div>
+                <div class="video-thumb-card__body">
+                  <div class="video-thumb-card__title">
+                    Golden Balcony Louvers
+                  </div>
+                  <p class="video-thumb-card__desc">
+                    Modernist solar shading and architectural privacy screen
+                  </p>
+                </div>
+              </div>
+
+              <!-- Clip 6: Roof Work Canopy -->
+              <div
+                class="video-thumb-card"
+                role="button"
+                tabindex="0"
+                aria-selected="false"
+                data-video-src="assets/roof_work.mp4"
+                data-video-poster="assets/video_posters/roof_work_poster.jpg"
+                data-video-title="Structural Glass Pergola &amp; Canopy"
+                data-video-caption="Walkthrough inspection of a steel framework supporting laminated safety glass on terrace"
+              >
+                <div class="video-thumb-card__media">
+                  <img
+                    src="assets/video_posters/roof_work_poster.jpg"
+                    alt="Canopy glass inspection"
+                    class="video-thumb-card__img"
+                    loading="lazy"
+                  />
+                  <span class="video-thumb-card__badge">00:06</span>
+                </div>
+                <div class="video-thumb-card__body">
+                  <div class="video-thumb-card__title">
+                    Glass Canopy Walkthrough
+                  </div>
+                  <p class="video-thumb-card__desc">
+                    Weather-sealed structural glass and steel pergola roof
+                  </p>
+                </div>
+              </div>
+
+              <!-- Clip 7: Roof Work 2 -->
+              <div
+                class="video-thumb-card"
+                role="button"
+                tabindex="0"
+                aria-selected="false"
+                data-video-src="assets/roof_work_2.mp4"
+                data-video-poster="assets/video_posters/roof_work_2_poster.jpg"
+                data-video-title="Terrace Canopy Beam Installation"
+                data-video-caption="Close-up inspection of heavy tubular steel beams and glass seal gaskets"
+              >
+                <div class="video-thumb-card__media">
+                  <img
+                    src="assets/video_posters/roof_work_2_poster.jpg"
+                    alt="Canopy beam preview"
+                    class="video-thumb-card__img"
+                    loading="lazy"
+                  />
+                  <span class="video-thumb-card__badge">00:08</span>
+                </div>
+                <div class="video-thumb-card__body">
+                  <div class="video-thumb-card__title">
+                    Canopy Beam Detailing
+                  </div>
+                  <p class="video-thumb-card__desc">
+                    Structural roof grid alignment and weatherproofing
+                  </p>
+                </div>
+              </div>
+
+              <!-- Clip 8: Stylish Gate 2 -->
+              <div
+                class="video-thumb-card"
+                role="button"
+                tabindex="0"
+                aria-selected="false"
+                data-video-src="assets/stylish_gate_2.mp4"
+                data-video-poster="assets/video_posters/stylish_gate_2_poster.jpg"
+                data-video-title="Double-Swing Compound Gate Test"
+                data-video-caption="Operational swing motion test of black steel framed gate with vertical timber inserts"
+              >
+                <div class="video-thumb-card__media">
+                  <img
+                    src="assets/video_posters/stylish_gate_2_poster.jpg"
+                    alt="Swing gate preview"
+                    class="video-thumb-card__img"
+                    loading="lazy"
+                  />
+                  <span class="video-thumb-card__badge">00:05</span>
+                </div>
+                <div class="video-thumb-card__body">
+                  <div class="video-thumb-card__title">
+                    Timber &amp; Steel Swing Gate
+                  </div>
+                  <p class="video-thumb-card__desc">
+                    Hinge balance and dual-leaf swing tolerance test
+                  </p>
+                </div>
+              </div>
+
+              <!-- Clip 9: Stylish Gate 3 -->
+              <div
+                class="video-thumb-card"
+                role="button"
+                tabindex="0"
+                aria-selected="false"
+                data-video-src="assets/stylish_gate_3.mp4"
+                data-video-poster="assets/video_posters/stylish_gate_3_poster.jpg"
+                data-video-title="Compound Gate Full Perspective"
+                data-video-caption="Full compound perspective showing vehicle gate and matching pedestrian entrance wicket"
+              >
+                <div class="video-thumb-card__media">
+                  <img
+                    src="assets/video_posters/stylish_gate_3_poster.jpg"
+                    alt="Compound gate preview"
+                    class="video-thumb-card__img"
+                    loading="lazy"
+                  />
+                  <span class="video-thumb-card__badge">00:10</span>
+                </div>
+                <div class="video-thumb-card__body">
+                  <div class="video-thumb-card__title">
+                    Compound Gate Perspective
+                  </div>
+                  <p class="video-thumb-card__desc">
+                    Integrated driveway sliding gate &amp; pedestrian entry
+                  </p>
+                </div>
+              </div>
+
+              <!-- Clip 10: Finished Exterior 2 -->
+              <div
+                class="video-thumb-card"
+                role="button"
+                tabindex="0"
+                aria-selected="false"
+                data-video-src="assets/finished_exterior_2.mp4"
+                data-video-poster="assets/video_posters/finished_exterior_2_poster.jpg"
+                data-video-title="Contemporary Villa Exterior Overview"
+                data-video-caption="Overview of finished residence showing completed compound gate and balcony balustrades"
+              >
+                <div class="video-thumb-card__media">
+                  <img
+                    src="assets/video_posters/finished_exterior_2_poster.jpg"
+                    alt="Finished villa preview"
+                    class="video-thumb-card__img"
+                    loading="lazy"
+                  />
+                  <span class="video-thumb-card__badge">00:09</span>
+                </div>
+                <div class="video-thumb-card__body">
+                  <div class="video-thumb-card__title">
+                    Villa Exterior Architecture
+                  </div>
+                  <p class="video-thumb-card__desc">
+                    Complete residential exterior metalwork installation
+                  </p>
+                </div>
+              </div>
+
+              <!-- Clip 11: Finished Exterior 3 -->
+              <div
+                class="video-thumb-card"
+                role="button"
+                tabindex="0"
+                aria-selected="false"
+                data-video-src="assets/finished_exterior_3.mp4"
+                data-video-poster="assets/video_posters/finished_exterior_3_poster.jpg"
+                data-video-title="Architectural Compound Integration"
+                data-video-caption="Wide site view demonstrating harmonized steel perimeter fencing and entrance gate"
+              >
+                <div class="video-thumb-card__media">
+                  <img
+                    src="assets/video_posters/finished_exterior_3_poster.jpg"
+                    alt="Compound integration preview"
+                    class="video-thumb-card__img"
+                    loading="lazy"
+                  />
+                  <span class="video-thumb-card__badge">00:11</span>
+                </div>
+                <div class="video-thumb-card__body">
+                  <div class="video-thumb-card__title">
+                    Perimeter Gate Integration
+                  </div>
+                  <p class="video-thumb-card__desc">
+                    Site overview of perimeter boundary wall and entrance portal
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-
-          <!-- Video Selector / Thumbnails (Mapped to all 11 real video files) -->
-          <div class="video-playlist">
-            <div class="video-playlist__header">Select Footage to Preview (11 Clips)</div>
-
-            <!-- Clip 1: Sliding Door -->
-            <div class="video-thumb-card is-active" 
-                 role="button" 
-                 tabindex="0"
-                 aria-selected="true"
-                 data-video-src="assets/sliding_door.mp4" 
-                 data-video-poster="assets/video_posters/sliding_door_poster.jpg"
-                 data-video-title="Multi-Track Sliding Steel Grille Door"
-                 data-video-caption="Smooth effortless glide mechanism tested in front of architectural spiral stair">
-              <div class="video-thumb-card__media">
-                <img src="assets/video_posters/sliding_door_poster.jpg" alt="Sliding door glide test" class="video-thumb-card__img" loading="lazy">
-                <span class="video-thumb-card__badge">00:10</span>
-              </div>
-              <div class="video-thumb-card__body">
-                <div class="video-thumb-card__title">Sliding Door Glide Test</div>
-                <p class="video-thumb-card__desc">Precision multi-track rolling tolerance &amp; latching</p>
-              </div>
-            </div>
-
-            <!-- Clip 2: Stylish Door -->
-            <div class="video-thumb-card" 
-                 role="button" 
-                 tabindex="0"
-                 aria-selected="false"
-                 data-video-src="assets/stylish_door.mp4" 
-                 data-video-poster="assets/video_posters/stylish_door_poster.jpg"
-                 data-video-title="Matte Black Louvered Architectural Entrance"
-                 data-video-caption="Cinematic upward reveal of a multi-panel black steel pivot entrance door">
-              <div class="video-thumb-card__media">
-                <img src="assets/video_posters/stylish_door_poster.jpg" alt="Matte black entrance door" class="video-thumb-card__img" loading="lazy">
-                <span class="video-thumb-card__badge">00:09</span>
-              </div>
-              <div class="video-thumb-card__body">
-                <div class="video-thumb-card__title">Louvered Entrance Portal</div>
-                <p class="video-thumb-card__desc">Double-panel powder-coated security entrance door</p>
-              </div>
-            </div>
-
-            <!-- Clip 3: Botanical Gate Showcase -->
-            <div class="video-thumb-card" 
-                 role="button" 
-                 tabindex="0"
-                 aria-selected="false"
-                 data-video-src="assets/metal_gate_showcase.mp4" 
-                 data-video-poster="assets/video_posters/metal_gate_showcase_poster.jpg"
-                 data-video-title="Botanical Laser CNC Compound Gate"
-                 data-video-caption="Detailed panning view of laser-cut botanical steel panels with mirror backplate">
-              <div class="video-thumb-card__media">
-                <img src="assets/video_posters/metal_gate_showcase_poster.jpg" alt="Botanical gate preview" class="video-thumb-card__img" loading="lazy">
-                <span class="video-thumb-card__badge">00:09</span>
-              </div>
-              <div class="video-thumb-card__body">
-                <div class="video-thumb-card__title">Botanical Gate Showcase</div>
-                <p class="video-thumb-card__desc">Laser-cut organic motifs and mirror backplate</p>
-              </div>
-            </div>
-
-            <!-- Clip 4: Exterior Work -->
-            <div class="video-thumb-card" 
-                 role="button" 
-                 tabindex="0"
-                 aria-selected="false"
-                 data-video-src="assets/exterior_work.mp4" 
-                 data-video-poster="assets/video_posters/exterior_work_poster.jpg"
-                 data-video-title="Architectural Villa Exterior Fabrication"
-                 data-video-caption="Full architectural villa exterior showcasing integrated steel facade screens">
-              <div class="video-thumb-card__media">
-                <img src="assets/video_posters/exterior_work_poster.jpg" alt="Exterior facade screen" class="video-thumb-card__img" loading="lazy">
-                <span class="video-thumb-card__badge">00:10</span>
-              </div>
-              <div class="video-thumb-card__body">
-                <div class="video-thumb-card__title">Villa Exterior Elevation</div>
-                <p class="video-thumb-card__desc">Full-facade architectural metal screening installation</p>
-              </div>
-            </div>
-
-            <!-- Clip 5: Balcony View -->
-            <div class="video-thumb-card" 
-                 role="button" 
-                 tabindex="0"
-                 aria-selected="false"
-                 data-video-src="assets/balcony_view.mp4" 
-                 data-video-poster="assets/video_posters/balcony_view_poster.jpg"
-                 data-video-title="Golden Louvered Balcony Shading"
-                 data-video-caption="Dynamic interior and exterior perspective of geometric golden steel facade louvers">
-              <div class="video-thumb-card__media">
-                <img src="assets/video_posters/balcony_view_poster.jpg" alt="Balcony louvers preview" class="video-thumb-card__img" loading="lazy">
-                <span class="video-thumb-card__badge">00:18</span>
-              </div>
-              <div class="video-thumb-card__body">
-                <div class="video-thumb-card__title">Golden Balcony Louvers</div>
-                <p class="video-thumb-card__desc">Modernist solar shading and architectural privacy screen</p>
-              </div>
-            </div>
-
-            <!-- Clip 6: Roof Work Canopy -->
-            <div class="video-thumb-card" 
-                 role="button" 
-                 tabindex="0"
-                 aria-selected="false"
-                 data-video-src="assets/roof_work.mp4" 
-                 data-video-poster="assets/video_posters/roof_work_poster.jpg"
-                 data-video-title="Structural Glass Pergola &amp; Canopy"
-                 data-video-caption="Walkthrough inspection of a steel framework supporting laminated safety glass on terrace">
-              <div class="video-thumb-card__media">
-                <img src="assets/video_posters/roof_work_poster.jpg" alt="Canopy glass inspection" class="video-thumb-card__img" loading="lazy">
-                <span class="video-thumb-card__badge">00:06</span>
-              </div>
-              <div class="video-thumb-card__body">
-                <div class="video-thumb-card__title">Glass Canopy Walkthrough</div>
-                <p class="video-thumb-card__desc">Weather-sealed structural glass and steel pergola roof</p>
-              </div>
-            </div>
-
-            <!-- Clip 7: Roof Work 2 -->
-            <div class="video-thumb-card" 
-                 role="button" 
-                 tabindex="0"
-                 aria-selected="false"
-                 data-video-src="assets/roof_work_2.mp4" 
-                 data-video-poster="assets/video_posters/roof_work_2_poster.jpg"
-                 data-video-title="Terrace Canopy Beam Installation"
-                 data-video-caption="Close-up inspection of heavy tubular steel beams and glass seal gaskets">
-              <div class="video-thumb-card__media">
-                <img src="assets/video_posters/roof_work_2_poster.jpg" alt="Canopy beam preview" class="video-thumb-card__img" loading="lazy">
-                <span class="video-thumb-card__badge">00:08</span>
-              </div>
-              <div class="video-thumb-card__body">
-                <div class="video-thumb-card__title">Canopy Beam Detailing</div>
-                <p class="video-thumb-card__desc">Structural roof grid alignment and weatherproofing</p>
-              </div>
-            </div>
-
-            <!-- Clip 8: Stylish Gate 2 -->
-            <div class="video-thumb-card" 
-                 role="button" 
-                 tabindex="0"
-                 aria-selected="false"
-                 data-video-src="assets/stylish_gate_2.mp4" 
-                 data-video-poster="assets/video_posters/stylish_gate_2_poster.jpg"
-                 data-video-title="Double-Swing Compound Gate Test"
-                 data-video-caption="Operational swing motion test of black steel framed gate with vertical timber inserts">
-              <div class="video-thumb-card__media">
-                <img src="assets/video_posters/stylish_gate_2_poster.jpg" alt="Swing gate preview" class="video-thumb-card__img" loading="lazy">
-                <span class="video-thumb-card__badge">00:05</span>
-              </div>
-              <div class="video-thumb-card__body">
-                <div class="video-thumb-card__title">Timber &amp; Steel Swing Gate</div>
-                <p class="video-thumb-card__desc">Hinge balance and dual-leaf swing tolerance test</p>
-              </div>
-            </div>
-
-            <!-- Clip 9: Stylish Gate 3 -->
-            <div class="video-thumb-card" 
-                 role="button" 
-                 tabindex="0"
-                 aria-selected="false"
-                 data-video-src="assets/stylish_gate_3.mp4" 
-                 data-video-poster="assets/video_posters/stylish_gate_3_poster.jpg"
-                 data-video-title="Compound Gate Full Perspective"
-                 data-video-caption="Full compound perspective showing vehicle gate and matching pedestrian entrance wicket">
-              <div class="video-thumb-card__media">
-                <img src="assets/video_posters/stylish_gate_3_poster.jpg" alt="Compound gate preview" class="video-thumb-card__img" loading="lazy">
-                <span class="video-thumb-card__badge">00:10</span>
-              </div>
-              <div class="video-thumb-card__body">
-                <div class="video-thumb-card__title">Compound Gate Perspective</div>
-                <p class="video-thumb-card__desc">Integrated driveway sliding gate &amp; pedestrian entry</p>
-              </div>
-            </div>
-
-            <!-- Clip 10: Finished Exterior 2 -->
-            <div class="video-thumb-card" 
-                 role="button" 
-                 tabindex="0"
-                 aria-selected="false"
-                 data-video-src="assets/finished_exterior_2.mp4" 
-                 data-video-poster="assets/video_posters/finished_exterior_2_poster.jpg"
-                 data-video-title="Contemporary Villa Exterior Overview"
-                 data-video-caption="Overview of finished residence showing completed compound gate and balcony balustrades">
-              <div class="video-thumb-card__media">
-                <img src="assets/video_posters/finished_exterior_2_poster.jpg" alt="Finished villa preview" class="video-thumb-card__img" loading="lazy">
-                <span class="video-thumb-card__badge">00:09</span>
-              </div>
-              <div class="video-thumb-card__body">
-                <div class="video-thumb-card__title">Villa Exterior Architecture</div>
-                <p class="video-thumb-card__desc">Complete residential exterior metalwork installation</p>
-              </div>
-            </div>
-
-            <!-- Clip 11: Finished Exterior 3 -->
-            <div class="video-thumb-card" 
-                 role="button" 
-                 tabindex="0"
-                 aria-selected="false"
-                 data-video-src="assets/finished_exterior_3.mp4" 
-                 data-video-poster="assets/video_posters/finished_exterior_3_poster.jpg"
-                 data-video-title="Architectural Compound Integration"
-                 data-video-caption="Wide site view demonstrating harmonized steel perimeter fencing and entrance gate">
-              <div class="video-thumb-card__media">
-                <img src="assets/video_posters/finished_exterior_3_poster.jpg" alt="Compound integration preview" class="video-thumb-card__img" loading="lazy">
-                <span class="video-thumb-card__badge">00:11</span>
-              </div>
-              <div class="video-thumb-card__body">
-                <div class="video-thumb-card__title">Perimeter Gate Integration</div>
-                <p class="video-thumb-card__desc">Site overview of perimeter boundary wall and entrance portal</p>
-              </div>
-            </div>
-
-          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- ======================================================================
+      <!-- ======================================================================
          06 — SELECTED ARCHITECTURAL WORKS (EDITORIAL GALLERY)
          ====================================================================== -->
-    <section id="projects" class="projects-section" aria-label="Completed Projects">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Selected Architectural Works.</h2>
-          <p class="section-lead">
-            A curated survey of executed installations across Madurai and Tamil Nadu, demonstrating structural integrity, bespoke detailing, and architectural proportion. Click any project to inspect construction details.
-          </p>
+      <section
+        id="projects"
+        class="projects-section"
+        aria-label="Completed Projects"
+      >
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Selected Architectural Works.</h2>
+            <p class="section-lead">
+              A curated survey of executed installations across Madurai and
+              Tamil Nadu, demonstrating structural integrity, bespoke detailing,
+              and architectural proportion. Click any project to inspect
+              construction details.
+            </p>
+          </div>
+
+          <!-- Asymmetric Editorial Portfolio Grid (Filtering removed as requested) -->
+          <div class="projects-masonry">
+            <!-- Project 1: Luxury Villa Helical Spiral Stairway (Col 7, Tall) -->
+            <div
+              class="project-item project-item--col-7 project-item--tall"
+              tabindex="0"
+              data-detail-desc="Monumental curved helical staircase featuring rolled black steel plate outer stringer, precision curved tubular balustrade, and integrated step treads rising through a double-height luxury atrium foyer."
+            >
+              <div class="project-item__media">
+                <img
+                  src="assets/spiral_staircase_2.jpeg"
+                  alt="Double-Height Curved Steel Spiral Staircase"
+                  class="project-item__img"
+                  loading="lazy"
+                />
+                <div class="project-item__overlay">
+                  <span class="project-item__tag"
+                    >Helical Staircase · Luxury Residence</span
+                  >
+                  <h3 class="project-item__title">Helical Atrium Stairway</h3>
+                  <span class="project-item__location"
+                    >Madurai · Custom Curved Steel &amp; Glass</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 2: Contemporary Villa Elevation & Gate (Col 5, Tall) -->
+            <div
+              class="project-item project-item--col-5 project-item--tall"
+              tabindex="0"
+              data-detail-desc="Integrated residential metalwork installation featuring automated motorized entrance gate with geometric laser motifs, structural balcony glass railings, and custom steel rooftop pergola on an architectural villa."
+            >
+              <div class="project-item__media">
+                <img
+                  src="assets/exterior_2.jpeg"
+                  alt="Contemporary villa architectural steel facade and automated entrance gate"
+                  class="project-item__img"
+                  loading="lazy"
+                />
+                <div class="project-item__overlay">
+                  <span class="project-item__tag"
+                    >Residential Elevation · Steel &amp; Glass</span
+                  >
+                  <h3 class="project-item__title">
+                    Residential Exterior Works
+                  </h3>
+                  <span class="project-item__location"
+                    >Madurai · Integrated Metal Architecture</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 3: Geometric Brick & Steel Facade Louvers (Col 5) -->
+            <div
+              class="project-item project-item--col-5"
+              tabindex="0"
+              data-detail-desc="Custom-engineered architectural steel vertical louver fins flanking a brick-faced monumental arch, engineered for natural ventilation, privacy, and bold shadow lines on a contemporary residence."
+            >
+              <div class="project-item__media">
+                <img
+                  src="assets/exterior_1.jpeg"
+                  alt="Architectural vertical steel louvers and brick arch facade"
+                  class="project-item__img"
+                  loading="lazy"
+                />
+                <div class="project-item__overlay">
+                  <span class="project-item__tag"
+                    >Facade Screen · Vertical Louvers</span
+                  >
+                  <h3 class="project-item__title">
+                    Monumental Arch Steel Louvers
+                  </h3>
+                  <span class="project-item__location"
+                    >Contemporary Residence · Charcoal Matte Coating</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 4: Sunset Terrace Steel Pergola (Col 7) -->
+            <div
+              class="project-item project-item--col-7"
+              tabindex="0"
+              data-detail-desc="Geometric basketweave steel canopy structure providing architectural shading on a luxury villa rooftop terrace, finished with UV-stabilized exterior matte powder coat overlooking the Madurai skyline."
+            >
+              <div class="project-item__media">
+                <img
+                  src="assets/terrace_work.jpeg"
+                  alt="Sunset rooftop terrace architectural steel pergola structure"
+                  class="project-item__img"
+                  loading="lazy"
+                />
+                <div class="project-item__overlay">
+                  <span class="project-item__tag"
+                    >Outdoor Architecture · Steel Pergola</span
+                  >
+                  <h3 class="project-item__title">Sunset Terrace Pergola</h3>
+                  <span class="project-item__location"
+                    >Rooftop Terrace · Geometric Basketweave Steel</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 5: Center-Column Spiral Stair (Col 6) -->
+            <div
+              class="project-item project-item--col-6"
+              tabindex="0"
+              data-detail-desc="Continuous center-column steel spiral staircase rising to an open circular skylight with curved tubular steel balustrade and non-slip perforated treads in a modern architectural residence."
+            >
+              <div class="project-item__media">
+                <img
+                  src="assets/spiral_staircase_1.jpeg"
+                  alt="Center-column steel spiral staircase rising to circular skylight"
+                  class="project-item__img"
+                  loading="lazy"
+                />
+                <div class="project-item__overlay">
+                  <span class="project-item__tag"
+                    >Custom Fabrication · Spiral Stair</span
+                  >
+                  <h3 class="project-item__title">
+                    Skylight Rooftop Spiral Stair
+                  </h3>
+                  <span class="project-item__location"
+                    >Private Residence · Matte Black Steel</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 6: Minimalist Cantilever Staircase (Col 6) -->
+            <div
+              class="project-item project-item--col-6"
+              tabindex="0"
+              data-detail-desc="Weightless zigzag steel stringer staircase anchored directly into structural concrete wall without vertical ground posts, facing floor-to-ceiling glass."
+            >
+              <div class="project-item__media">
+                <img
+                  src="assets/supportless_steel_staircase.jpeg"
+                  alt="Cantilevered zigzag steel staircase"
+                  class="project-item__img"
+                  loading="lazy"
+                />
+                <div class="project-item__overlay">
+                  <span class="project-item__tag"
+                    >Structural Innovation · Cantilever</span
+                  >
+                  <h3 class="project-item__title">
+                    Supportless Architectural Cantilever
+                  </h3>
+                  <span class="project-item__location"
+                    >Modern Villa · Zero Ground Columns</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 7: Completed Residential Facade (Col 7) -->
+            <div
+              class="project-item project-item--col-7"
+              tabindex="0"
+              data-detail-desc="Full residential facade metalwork installation featuring custom boundary gates, precision balcony glass handrails, and protective entrance overhang."
+            >
+              <div class="project-item__media">
+                <img
+                  src="assets/finished_exterior.jpeg"
+                  alt="Completed modern residential facade metalwork"
+                  class="project-item__img"
+                  loading="lazy"
+                />
+                <div class="project-item__overlay">
+                  <span class="project-item__tag"
+                    >Residential Architecture · Metalwork</span
+                  >
+                  <h3 class="project-item__title">
+                    Modern Residence Metalwork
+                  </h3>
+                  <span class="project-item__location"
+                    >Madurai · Complete Exterior Commission</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 8: Architectural Railings & Handrails (Col 5) -->
+            <div
+              class="project-item project-item--col-5"
+              tabindex="0"
+              data-detail-desc="Custom-engineered architectural steel and stainless handrails with minimal vertical posts and integrated glass clamp mounts."
+            >
+              <div class="project-item__media">
+                <img
+                  src="assets/railing_1.jpeg"
+                  alt="Architectural steel handrails"
+                  class="project-item__img"
+                  loading="lazy"
+                />
+                <div class="project-item__overlay">
+                  <span class="project-item__tag"
+                    >Detailing · Handrails &amp; Balustrades</span
+                  >
+                  <h3 class="project-item__title">
+                    Architectural Glass Balustrades
+                  </h3>
+                  <span class="project-item__location"
+                    >Luxury Villa · Precision Stainless Detailing</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </section>
 
-        <!-- Asymmetric Editorial Portfolio Grid (Filtering removed as requested) -->
-        <div class="projects-masonry">
-          
-          <!-- Project 1: Luxury Villa Helical Spiral Stairway (Col 7, Tall) -->
-          <div class="project-item project-item--col-7 project-item--tall" 
-               tabindex="0"
-               data-detail-desc="Monumental curved helical staircase featuring rolled black steel plate outer stringer, precision curved tubular balustrade, and integrated step treads rising through a double-height luxury atrium foyer.">
-            <div class="project-item__media">
-              <img src="assets/spiral_staircase_2.jpeg" alt="Double-Height Curved Steel Spiral Staircase" class="project-item__img" loading="lazy">
-              <div class="project-item__overlay">
-                <span class="project-item__tag">Helical Staircase · Luxury Residence</span>
-                <h3 class="project-item__title">Helical Atrium Stairway</h3>
-                <span class="project-item__location">Madurai · Custom Curved Steel &amp; Glass</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 2: Contemporary Villa Elevation & Gate (Col 5, Tall) -->
-          <div class="project-item project-item--col-5 project-item--tall" 
-               tabindex="0"
-               data-detail-desc="Integrated residential metalwork installation featuring automated motorized entrance gate with geometric laser motifs, structural balcony glass railings, and custom steel rooftop pergola on an architectural villa.">
-            <div class="project-item__media">
-              <img src="assets/exterior_2.jpeg" alt="Contemporary villa architectural steel facade and automated entrance gate" class="project-item__img" loading="lazy">
-              <div class="project-item__overlay">
-                <span class="project-item__tag">Residential Elevation · Steel &amp; Glass</span>
-                <h3 class="project-item__title">Residential Exterior Works</h3>
-                <span class="project-item__location">Madurai · Integrated Metal Architecture</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 3: Geometric Brick & Steel Facade Louvers (Col 5) -->
-          <div class="project-item project-item--col-5" 
-               tabindex="0"
-               data-detail-desc="Custom-engineered architectural steel vertical louver fins flanking a brick-faced monumental arch, engineered for natural ventilation, privacy, and bold shadow lines on a contemporary residence.">
-            <div class="project-item__media">
-              <img src="assets/exterior_1.jpeg" alt="Architectural vertical steel louvers and brick arch facade" class="project-item__img" loading="lazy">
-              <div class="project-item__overlay">
-                <span class="project-item__tag">Facade Screen · Vertical Louvers</span>
-                <h3 class="project-item__title">Monumental Arch Steel Louvers</h3>
-                <span class="project-item__location">Contemporary Residence · Charcoal Matte Coating</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 4: Sunset Terrace Steel Pergola (Col 7) -->
-          <div class="project-item project-item--col-7" 
-               tabindex="0"
-               data-detail-desc="Geometric basketweave steel canopy structure providing architectural shading on a luxury villa rooftop terrace, finished with UV-stabilized exterior matte powder coat overlooking the Madurai skyline.">
-            <div class="project-item__media">
-              <img src="assets/terrace_work.jpeg" alt="Sunset rooftop terrace architectural steel pergola structure" class="project-item__img" loading="lazy">
-              <div class="project-item__overlay">
-                <span class="project-item__tag">Outdoor Architecture · Steel Pergola</span>
-                <h3 class="project-item__title">Sunset Terrace Pergola</h3>
-                <span class="project-item__location">Rooftop Terrace · Geometric Basketweave Steel</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 5: Center-Column Spiral Stair (Col 6) -->
-          <div class="project-item project-item--col-6" 
-               tabindex="0"
-               data-detail-desc="Continuous center-column steel spiral staircase rising to an open circular skylight with curved tubular steel balustrade and non-slip perforated treads in a modern architectural residence.">
-            <div class="project-item__media">
-              <img src="assets/spiral_staircase_1.jpeg" alt="Center-column steel spiral staircase rising to circular skylight" class="project-item__img" loading="lazy">
-              <div class="project-item__overlay">
-                <span class="project-item__tag">Custom Fabrication · Spiral Stair</span>
-                <h3 class="project-item__title">Skylight Rooftop Spiral Stair</h3>
-                <span class="project-item__location">Private Residence · Matte Black Steel</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 6: Minimalist Cantilever Staircase (Col 6) -->
-          <div class="project-item project-item--col-6" 
-               tabindex="0"
-               data-detail-desc="Weightless zigzag steel stringer staircase anchored directly into structural concrete wall without vertical ground posts, facing floor-to-ceiling glass.">
-            <div class="project-item__media">
-              <img src="assets/supportless_steel_staircase.jpeg" alt="Cantilevered zigzag steel staircase" class="project-item__img" loading="lazy">
-              <div class="project-item__overlay">
-                <span class="project-item__tag">Structural Innovation · Cantilever</span>
-                <h3 class="project-item__title">Supportless Architectural Cantilever</h3>
-                <span class="project-item__location">Modern Villa · Zero Ground Columns</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 7: Completed Residential Facade (Col 7) -->
-          <div class="project-item project-item--col-7" 
-               tabindex="0"
-               data-detail-desc="Full residential facade metalwork installation featuring custom boundary gates, precision balcony glass handrails, and protective entrance overhang.">
-            <div class="project-item__media">
-              <img src="assets/finished_exterior.jpeg" alt="Completed modern residential facade metalwork" class="project-item__img" loading="lazy">
-              <div class="project-item__overlay">
-                <span class="project-item__tag">Residential Architecture · Metalwork</span>
-                <h3 class="project-item__title">Modern Residence Metalwork</h3>
-                <span class="project-item__location">Madurai · Complete Exterior Commission</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 8: Architectural Railings & Handrails (Col 5) -->
-          <div class="project-item project-item--col-5" 
-               tabindex="0"
-               data-detail-desc="Custom-engineered architectural steel and stainless handrails with minimal vertical posts and integrated glass clamp mounts.">
-            <div class="project-item__media">
-              <img src="assets/railing_1.jpeg" alt="Architectural steel handrails" class="project-item__img" loading="lazy">
-              <div class="project-item__overlay">
-                <span class="project-item__tag">Detailing · Handrails &amp; Balustrades</span>
-                <h3 class="project-item__title">Architectural Glass Balustrades</h3>
-                <span class="project-item__location">Luxury Villa · Precision Stainless Detailing</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ======================================================================
+      <!-- ======================================================================
          07 — CAPABILITIES: 12 SPECIALIST DISCIPLINES
          ====================================================================== -->
-    <section id="capabilities" class="capabilities-section" aria-label="Capabilities and Services">
-      <div class="container">
-        <div class="section-header section-header--center">
-          <h2 class="section-title">Fabrication &amp; Architectural Capabilities.</h2>
-          <p class="section-lead">
-            Specialist metalworking disciplines for architects, builders, and custom residential commissions across Tamil Nadu.
-          </p>
+      <section
+        id="capabilities"
+        class="capabilities-section"
+        aria-label="Capabilities and Services"
+      >
+        <div class="container">
+          <div class="section-header section-header--center">
+            <h2 class="section-title">
+              Fabrication &amp; Architectural Capabilities.
+            </h2>
+            <p class="section-lead">
+              Specialist metalworking disciplines for architects, builders, and
+              custom residential commissions across Tamil Nadu.
+            </p>
+          </div>
+
+          <div class="capabilities-grid">
+            <!-- 1: Steel Fabrication -->
+            <div class="capability-card">
+              <div class="capability-card__top">
+                <div class="capability-card__icon" aria-hidden="true">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M4 4h16M4 8h16M10 8v8M14 8v8M4 16h16M4 20h16" />
+                    <circle cx="7" cy="6" r="0.75" fill="currentColor" />
+                    <circle cx="17" cy="6" r="0.75" fill="currentColor" />
+                    <circle cx="7" cy="18" r="0.75" fill="currentColor" />
+                    <circle cx="17" cy="18" r="0.75" fill="currentColor" />
+                  </svg>
+                </div>
+                <span class="capability-card__num">01</span>
+              </div>
+              <div class="capability-card__content">
+                <h3 class="capability-card__title">Steel Fabrication</h3>
+                <p class="capability-card__desc">
+                  Heavy structural steelwork, customized trusses, structural
+                  frames, and precision CNC metal profiling crafted to
+                  millimeter tolerances.
+                </p>
+              </div>
+              <button
+                type="button"
+                class="text-link capability-card__link js-open-enquiry"
+                data-service="Steel Fabrication"
+              >
+                <span>Discuss Fabrication</span>
+                <span class="text-link__arrow" aria-hidden="true">→</span>
+              </button>
+            </div>
+
+            <!-- 2: Custom Steel Doors -->
+            <div class="capability-card">
+              <div class="capability-card__top">
+                <div class="capability-card__icon" aria-hidden="true">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <rect x="3" y="2" width="18" height="20" rx="1" />
+                    <path d="M8 2v20" />
+                    <path d="M12 2v20" />
+                    <line x1="15" y1="10" x2="15" y2="14" stroke-width="2.5" />
+                    <circle cx="15" cy="12" r="0.5" fill="currentColor" />
+                  </svg>
+                </div>
+                <span class="capability-card__num">02</span>
+              </div>
+              <div class="capability-card__content">
+                <h3 class="capability-card__title">Custom Steel Doors</h3>
+                <p class="capability-card__desc">
+                  Monumental pivot doors, French steel entryways, and
+                  thermal-break metal doors with custom push pulls and acoustic
+                  sealing.
+                </p>
+              </div>
+              <button
+                type="button"
+                class="text-link capability-card__link js-open-enquiry"
+                data-service="Custom Steel Doors"
+              >
+                <span>Commission Doors</span>
+                <span class="text-link__arrow" aria-hidden="true">→</span>
+              </button>
+            </div>
+
+            <!-- 3: Metal Staircases -->
+            <div class="capability-card">
+              <div class="capability-card__top">
+                <div class="capability-card__icon" aria-hidden="true">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M3 19h5v-4h5v-4h5V7h3" />
+                    <path d="M5 19v-4h5v-4h5V7h3V4" />
+                    <line x1="3" y1="15" x2="3" y2="19" />
+                  </svg>
+                </div>
+                <span class="capability-card__num">03</span>
+              </div>
+              <div class="capability-card__content">
+                <h3 class="capability-card__title">Metal Staircases</h3>
+                <p class="capability-card__desc">
+                  Cantilevered floating treads, sawtooth plate stringers, and
+                  structural spine staircases designed as sculptural
+                  centerpieces.
+                </p>
+              </div>
+              <button
+                type="button"
+                class="text-link capability-card__link js-open-enquiry"
+                data-service="Metal Staircases"
+              >
+                <span>Explore Staircases</span>
+                <span class="text-link__arrow" aria-hidden="true">→</span>
+              </button>
+            </div>
+
+            <!-- 4: Spiral Staircases -->
+            <div class="capability-card">
+              <div class="capability-card__top">
+                <div class="capability-card__icon" aria-hidden="true">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <line
+                      x1="12"
+                      y1="2"
+                      x2="12"
+                      y2="22"
+                      stroke-dasharray="1 1"
+                    />
+                    <path d="M12 5c4 0 7 1.5 7 3s-3 3-7 3-7-1.5-7-3 3-3 7-3z" />
+                    <path
+                      d="M12 11c4 0 7 1.5 7 3s-3 3-7 3-7-1.5-7-3 3-3 7-3z"
+                    />
+                    <path
+                      d="M12 17c4 0 7 1.5 7 3s-3 3-7 3-7-1.5-7-3 3-3 7-3z"
+                    />
+                  </svg>
+                </div>
+                <span class="capability-card__num">04</span>
+              </div>
+              <div class="capability-card__content">
+                <h3 class="capability-card__title">Spiral Staircases</h3>
+                <p class="capability-card__desc">
+                  Continuous center-column spirals and curved helical stairways
+                  crafted with seamless rolled pipe handrails and non-slip
+                  treads.
+                </p>
+              </div>
+              <button
+                type="button"
+                class="text-link capability-card__link js-open-enquiry"
+                data-service="Spiral Staircases"
+              >
+                <span>Commission Spiral Stairs</span>
+                <span class="text-link__arrow" aria-hidden="true">→</span>
+              </button>
+            </div>
+
+            <!-- 5: Interior Steel Work -->
+            <div class="capability-card">
+              <div class="capability-card__top">
+                <div class="capability-card__icon" aria-hidden="true">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <rect x="3" y="3" width="18" height="18" rx="1" />
+                    <line x1="12" y1="3" x2="12" y2="21" />
+                    <line x1="3" y1="9" x2="21" y2="9" />
+                    <line x1="3" y1="15" x2="21" y2="15" />
+                  </svg>
+                </div>
+                <span class="capability-card__num">05</span>
+              </div>
+              <div class="capability-card__content">
+                <h3 class="capability-card__title">Interior Steel Work</h3>
+                <p class="capability-card__desc">
+                  Bespoke steel-and-glass room dividers, mezzanine platforms,
+                  decorative partition screens, and architectural furniture
+                  frames.
+                </p>
+              </div>
+              <button
+                type="button"
+                class="text-link capability-card__link js-open-enquiry"
+                data-service="Interior Steel Work"
+              >
+                <span>Inquire Interior Work</span>
+                <span class="text-link__arrow" aria-hidden="true">→</span>
+              </button>
+            </div>
+
+            <!-- 6: Exterior Steel Work -->
+            <div class="capability-card">
+              <div class="capability-card__top">
+                <div class="capability-card__icon" aria-hidden="true">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <rect x="3" y="3" width="18" height="18" rx="1" />
+                    <line x1="3" y1="3" x2="21" y2="21" />
+                    <line x1="21" y1="3" x2="3" y2="21" />
+                    <circle cx="12" cy="12" r="2" fill="currentColor" />
+                  </svg>
+                </div>
+                <span class="capability-card__num">06</span>
+              </div>
+              <div class="capability-card__content">
+                <h3 class="capability-card__title">Exterior Steel Work</h3>
+                <p class="capability-card__desc">
+                  Weather-resistant perimeter railings, structural pergolas,
+                  security grilles, and heavy-duty compound architectural
+                  framework.
+                </p>
+              </div>
+              <button
+                type="button"
+                class="text-link capability-card__link js-open-enquiry"
+                data-service="Exterior Steel Work"
+              >
+                <span>Explore Exterior Work</span>
+                <span class="text-link__arrow" aria-hidden="true">→</span>
+              </button>
+            </div>
+
+            <!-- 7: Architectural Elevation Work -->
+            <div class="capability-card">
+              <div class="capability-card__top">
+                <div class="capability-card__icon" aria-hidden="true">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M2 21h20" />
+                    <path d="M5 21V7l7-4 7 4v14" />
+                    <line x1="9" y1="10" x2="9" y2="17" />
+                    <line x1="12" y1="8" x2="12" y2="17" />
+                    <line x1="15" y1="10" x2="15" y2="17" />
+                  </svg>
+                </div>
+                <span class="capability-card__num">07</span>
+              </div>
+              <div class="capability-card__content">
+                <h3 class="capability-card__title">
+                  Architectural Elevation Work
+                </h3>
+                <p class="capability-card__desc">
+                  Engineered vertical louver fins, bespoke building facades,
+                  decorative 3D metal cladding, and monumental architectural
+                  arches.
+                </p>
+              </div>
+              <button
+                type="button"
+                class="text-link capability-card__link js-open-enquiry"
+                data-service="Architectural Elevation Work"
+              >
+                <span>Discuss Facades</span>
+                <span class="text-link__arrow" aria-hidden="true">→</span>
+              </button>
+            </div>
+
+            <!-- 8: Canopies -->
+            <div class="capability-card">
+              <div class="capability-card__top">
+                <div class="capability-card__icon" aria-hidden="true">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M3 3v18" />
+                    <path d="M3 7l16-3v2L3 11" />
+                    <path d="M3 15l16-3" />
+                    <line x1="19" y1="4" x2="19" y2="12" />
+                  </svg>
+                </div>
+                <span class="capability-card__num">08</span>
+              </div>
+              <div class="capability-card__content">
+                <h3 class="capability-card__title">Canopies</h3>
+                <p class="capability-card__desc">
+                  Cantilevered entrance porticos, rooftop terrace shade
+                  structures, and glass-covered steel pergolas built for monsoon
+                  endurance.
+                </p>
+              </div>
+              <button
+                type="button"
+                class="text-link capability-card__link js-open-enquiry"
+                data-service="Canopies"
+              >
+                <span>Commission Canopies</span>
+                <span class="text-link__arrow" aria-hidden="true">→</span>
+              </button>
+            </div>
+
+            <!-- 9: Automated Gates & Doors -->
+            <div class="capability-card">
+              <div class="capability-card__top">
+                <div class="capability-card__icon" aria-hidden="true">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <rect x="2" y="6" width="14" height="12" rx="1" />
+                    <line x1="2" y1="10" x2="16" y2="10" />
+                    <line x1="2" y1="14" x2="16" y2="14" />
+                    <circle cx="19" cy="15" r="3" />
+                    <path d="M19 13v4M17 15h4" />
+                    <line x1="2" y1="20" x2="22" y2="20" stroke-width="2" />
+                  </svg>
+                </div>
+                <span class="capability-card__num">09</span>
+              </div>
+              <div class="capability-card__content">
+                <h3 class="capability-card__title">
+                  Automated Gates &amp; Doors
+                </h3>
+                <p class="capability-card__desc">
+                  Telescopic track systems, cantilever sliding gates, and
+                  motorized swing gates with heavy-duty smart automation motors.
+                </p>
+              </div>
+              <button
+                type="button"
+                class="text-link capability-card__link js-open-enquiry"
+                data-service="Automated Gates &amp; Doors"
+              >
+                <span>Explore Automation</span>
+                <span class="text-link__arrow" aria-hidden="true">→</span>
+              </button>
+            </div>
+
+            <!-- 10: UPVC Work -->
+            <div class="capability-card">
+              <div class="capability-card__top">
+                <div class="capability-card__icon" aria-hidden="true">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <rect x="6" y="6" width="12" height="12" />
+                    <line x1="12" y1="6" x2="12" y2="18" />
+                    <circle cx="10" cy="12" r="1" fill="currentColor" />
+                  </svg>
+                </div>
+                <span class="capability-card__num">10</span>
+              </div>
+              <div class="capability-card__content">
+                <h3 class="capability-card__title">UPVC Work</h3>
+                <p class="capability-card__desc">
+                  Multi-chamber thermal insulated UPVC window and door systems
+                  with high sound attenuation, weather seals, and multi-point
+                  locks.
+                </p>
+              </div>
+              <button
+                type="button"
+                class="text-link capability-card__link js-open-enquiry"
+                data-service="UPVC Work"
+              >
+                <span>Inquire UPVC Solutions</span>
+                <span class="text-link__arrow" aria-hidden="true">→</span>
+              </button>
+            </div>
+
+            <!-- 11: Glass & Toughened Glass Work -->
+            <div class="capability-card">
+              <div class="capability-card__top">
+                <div class="capability-card__icon" aria-hidden="true">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <rect x="4" y="3" width="16" height="18" rx="1" />
+                    <circle cx="7" cy="6" r="1.5" fill="currentColor" />
+                    <circle cx="17" cy="6" r="1.5" fill="currentColor" />
+                    <circle cx="7" cy="18" r="1.5" fill="currentColor" />
+                    <circle cx="17" cy="18" r="1.5" fill="currentColor" />
+                    <line x1="14" y1="7" x2="10" y2="17" />
+                    <line x1="16" y1="9" x2="13" y2="17" />
+                  </svg>
+                </div>
+                <span class="capability-card__num">11</span>
+              </div>
+              <div class="capability-card__content">
+                <h3 class="capability-card__title">
+                  Glass &amp; Toughened Glass Work
+                </h3>
+                <p class="capability-card__desc">
+                  Frameless glass balustrades, spider-fitting curtain walls, and
+                  tempered architectural glass integrated with structural steel.
+                </p>
+              </div>
+              <button
+                type="button"
+                class="text-link capability-card__link js-open-enquiry"
+                data-service="Glass &amp; Toughened Glass Work"
+              >
+                <span>Explore Glass Solutions</span>
+                <span class="text-link__arrow" aria-hidden="true">→</span>
+              </button>
+            </div>
+
+            <!-- 12: Aluminium Work -->
+            <div class="capability-card">
+              <div class="capability-card__top">
+                <div class="capability-card__icon" aria-hidden="true">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M4 4h16v16H4z" />
+                    <path d="M8 8h8v8H8z" />
+                    <line x1="4" y1="8" x2="8" y2="8" />
+                    <line x1="16" y1="8" x2="20" y2="8" />
+                    <line x1="4" y1="16" x2="8" y2="16" />
+                    <line x1="16" y1="16" x2="20" y2="16" />
+                  </svg>
+                </div>
+                <span class="capability-card__num">12</span>
+              </div>
+              <div class="capability-card__content">
+                <h3 class="capability-card__title">Aluminium Work</h3>
+                <p class="capability-card__desc">
+                  Precision aluminium slimline facades, powder-coated partition
+                  systems, structural extrusions, and architectural louvers.
+                </p>
+              </div>
+              <button
+                type="button"
+                class="text-link capability-card__link js-open-enquiry"
+                data-service="Aluminium Work"
+              >
+                <span>Inquire Aluminium Work</span>
+                <span class="text-link__arrow" aria-hidden="true">→</span>
+              </button>
+            </div>
+          </div>
         </div>
+      </section>
+    </main>
 
-        <div class="capabilities-grid">
-          <!-- 1: Steel Fabrication -->
-          <div class="capability-card">
-            <div class="capability-card__top">
-              <div class="capability-card__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M4 4h16M4 8h16M10 8v8M14 8v8M4 16h16M4 20h16"/>
-                  <circle cx="7" cy="6" r="0.75" fill="currentColor"/>
-                  <circle cx="17" cy="6" r="0.75" fill="currentColor"/>
-                  <circle cx="7" cy="18" r="0.75" fill="currentColor"/>
-                  <circle cx="17" cy="18" r="0.75" fill="currentColor"/>
-                </svg>
-              </div>
-              <span class="capability-card__num">01</span>
-            </div>
-            <div class="capability-card__content">
-              <h3 class="capability-card__title">Steel Fabrication</h3>
-              <p class="capability-card__desc">
-                Heavy structural steelwork, customized trusses, structural frames, and precision CNC metal profiling crafted to millimeter tolerances.
-              </p>
-            </div>
-            <button type="button" class="text-link capability-card__link js-open-enquiry" data-service="Steel Fabrication">
-              <span>Discuss Fabrication</span>
-              <span class="text-link__arrow" aria-hidden="true">→</span>
-            </button>
-          </div>
-
-          <!-- 2: Custom Steel Doors -->
-          <div class="capability-card">
-            <div class="capability-card__top">
-              <div class="capability-card__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="3" y="2" width="18" height="20" rx="1"/>
-                  <path d="M8 2v20"/>
-                  <path d="M12 2v20"/>
-                  <line x1="15" y1="10" x2="15" y2="14" stroke-width="2.5"/>
-                  <circle cx="15" cy="12" r="0.5" fill="currentColor"/>
-                </svg>
-              </div>
-              <span class="capability-card__num">02</span>
-            </div>
-            <div class="capability-card__content">
-              <h3 class="capability-card__title">Custom Steel Doors</h3>
-              <p class="capability-card__desc">
-                Monumental pivot doors, French steel entryways, and thermal-break metal doors with custom push pulls and acoustic sealing.
-              </p>
-            </div>
-            <button type="button" class="text-link capability-card__link js-open-enquiry" data-service="Custom Steel Doors">
-              <span>Commission Doors</span>
-              <span class="text-link__arrow" aria-hidden="true">→</span>
-            </button>
-          </div>
-
-          <!-- 3: Metal Staircases -->
-          <div class="capability-card">
-            <div class="capability-card__top">
-              <div class="capability-card__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M3 19h5v-4h5v-4h5V7h3"/>
-                  <path d="M5 19v-4h5v-4h5V7h3V4"/>
-                  <line x1="3" y1="15" x2="3" y2="19"/>
-                </svg>
-              </div>
-              <span class="capability-card__num">03</span>
-            </div>
-            <div class="capability-card__content">
-              <h3 class="capability-card__title">Metal Staircases</h3>
-              <p class="capability-card__desc">
-                Cantilevered floating treads, sawtooth plate stringers, and structural spine staircases designed as sculptural centerpieces.
-              </p>
-            </div>
-            <button type="button" class="text-link capability-card__link js-open-enquiry" data-service="Metal Staircases">
-              <span>Explore Staircases</span>
-              <span class="text-link__arrow" aria-hidden="true">→</span>
-            </button>
-          </div>
-
-          <!-- 4: Spiral Staircases -->
-          <div class="capability-card">
-            <div class="capability-card__top">
-              <div class="capability-card__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="12" y1="2" x2="12" y2="22" stroke-dasharray="1 1"/>
-                  <path d="M12 5c4 0 7 1.5 7 3s-3 3-7 3-7-1.5-7-3 3-3 7-3z"/>
-                  <path d="M12 11c4 0 7 1.5 7 3s-3 3-7 3-7-1.5-7-3 3-3 7-3z"/>
-                  <path d="M12 17c4 0 7 1.5 7 3s-3 3-7 3-7-1.5-7-3 3-3 7-3z"/>
-                </svg>
-              </div>
-              <span class="capability-card__num">04</span>
-            </div>
-            <div class="capability-card__content">
-              <h3 class="capability-card__title">Spiral Staircases</h3>
-              <p class="capability-card__desc">
-                Continuous center-column spirals and curved helical stairways crafted with seamless rolled pipe handrails and non-slip treads.
-              </p>
-            </div>
-            <button type="button" class="text-link capability-card__link js-open-enquiry" data-service="Spiral Staircases">
-              <span>Commission Spiral Stairs</span>
-              <span class="text-link__arrow" aria-hidden="true">→</span>
-            </button>
-          </div>
-
-          <!-- 5: Interior Steel Work -->
-          <div class="capability-card">
-            <div class="capability-card__top">
-              <div class="capability-card__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="3" y="3" width="18" height="18" rx="1"/>
-                  <line x1="12" y1="3" x2="12" y2="21"/>
-                  <line x1="3" y1="9" x2="21" y2="9"/>
-                  <line x1="3" y1="15" x2="21" y2="15"/>
-                </svg>
-              </div>
-              <span class="capability-card__num">05</span>
-            </div>
-            <div class="capability-card__content">
-              <h3 class="capability-card__title">Interior Steel Work</h3>
-              <p class="capability-card__desc">
-                Bespoke steel-and-glass room dividers, mezzanine platforms, decorative partition screens, and architectural furniture frames.
-              </p>
-            </div>
-            <button type="button" class="text-link capability-card__link js-open-enquiry" data-service="Interior Steel Work">
-              <span>Inquire Interior Work</span>
-              <span class="text-link__arrow" aria-hidden="true">→</span>
-            </button>
-          </div>
-
-          <!-- 6: Exterior Steel Work -->
-          <div class="capability-card">
-            <div class="capability-card__top">
-              <div class="capability-card__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="3" y="3" width="18" height="18" rx="1"/>
-                  <line x1="3" y1="3" x2="21" y2="21"/>
-                  <line x1="21" y1="3" x2="3" y2="21"/>
-                  <circle cx="12" cy="12" r="2" fill="currentColor"/>
-                </svg>
-              </div>
-              <span class="capability-card__num">06</span>
-            </div>
-            <div class="capability-card__content">
-              <h3 class="capability-card__title">Exterior Steel Work</h3>
-              <p class="capability-card__desc">
-                Weather-resistant perimeter railings, structural pergolas, security grilles, and heavy-duty compound architectural framework.
-              </p>
-            </div>
-            <button type="button" class="text-link capability-card__link js-open-enquiry" data-service="Exterior Steel Work">
-              <span>Explore Exterior Work</span>
-              <span class="text-link__arrow" aria-hidden="true">→</span>
-            </button>
-          </div>
-
-          <!-- 7: Architectural Elevation Work -->
-          <div class="capability-card">
-            <div class="capability-card__top">
-              <div class="capability-card__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M2 21h20"/>
-                  <path d="M5 21V7l7-4 7 4v14"/>
-                  <line x1="9" y1="10" x2="9" y2="17"/>
-                  <line x1="12" y1="8" x2="12" y2="17"/>
-                  <line x1="15" y1="10" x2="15" y2="17"/>
-                </svg>
-              </div>
-              <span class="capability-card__num">07</span>
-            </div>
-            <div class="capability-card__content">
-              <h3 class="capability-card__title">Architectural Elevation Work</h3>
-              <p class="capability-card__desc">
-                Engineered vertical louver fins, bespoke building facades, decorative 3D metal cladding, and monumental architectural arches.
-              </p>
-            </div>
-            <button type="button" class="text-link capability-card__link js-open-enquiry" data-service="Architectural Elevation Work">
-              <span>Discuss Facades</span>
-              <span class="text-link__arrow" aria-hidden="true">→</span>
-            </button>
-          </div>
-
-          <!-- 8: Canopies -->
-          <div class="capability-card">
-            <div class="capability-card__top">
-              <div class="capability-card__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M3 3v18"/>
-                  <path d="M3 7l16-3v2L3 11"/>
-                  <path d="M3 15l16-3"/>
-                  <line x1="19" y1="4" x2="19" y2="12"/>
-                </svg>
-              </div>
-              <span class="capability-card__num">08</span>
-            </div>
-            <div class="capability-card__content">
-              <h3 class="capability-card__title">Canopies</h3>
-              <p class="capability-card__desc">
-                Cantilevered entrance porticos, rooftop terrace shade structures, and glass-covered steel pergolas built for monsoon endurance.
-              </p>
-            </div>
-            <button type="button" class="text-link capability-card__link js-open-enquiry" data-service="Canopies">
-              <span>Commission Canopies</span>
-              <span class="text-link__arrow" aria-hidden="true">→</span>
-            </button>
-          </div>
-
-          <!-- 9: Automated Gates & Doors -->
-          <div class="capability-card">
-            <div class="capability-card__top">
-              <div class="capability-card__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="2" y="6" width="14" height="12" rx="1"/>
-                  <line x1="2" y1="10" x2="16" y2="10"/>
-                  <line x1="2" y1="14" x2="16" y2="14"/>
-                  <circle cx="19" cy="15" r="3"/>
-                  <path d="M19 13v4M17 15h4"/>
-                  <line x1="2" y1="20" x2="22" y2="20" stroke-width="2"/>
-                </svg>
-              </div>
-              <span class="capability-card__num">09</span>
-            </div>
-            <div class="capability-card__content">
-              <h3 class="capability-card__title">Automated Gates &amp; Doors</h3>
-              <p class="capability-card__desc">
-                Telescopic track systems, cantilever sliding gates, and motorized swing gates with heavy-duty smart automation motors.
-              </p>
-            </div>
-            <button type="button" class="text-link capability-card__link js-open-enquiry" data-service="Automated Gates &amp; Doors">
-              <span>Explore Automation</span>
-              <span class="text-link__arrow" aria-hidden="true">→</span>
-            </button>
-          </div>
-
-          <!-- 10: UPVC Work -->
-          <div class="capability-card">
-            <div class="capability-card__top">
-              <div class="capability-card__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="3" y="3" width="18" height="18" rx="2"/>
-                  <rect x="6" y="6" width="12" height="12"/>
-                  <line x1="12" y1="6" x2="12" y2="18"/>
-                  <circle cx="10" cy="12" r="1" fill="currentColor"/>
-                </svg>
-              </div>
-              <span class="capability-card__num">10</span>
-            </div>
-            <div class="capability-card__content">
-              <h3 class="capability-card__title">UPVC Work</h3>
-              <p class="capability-card__desc">
-                Multi-chamber thermal insulated UPVC window and door systems with high sound attenuation, weather seals, and multi-point locks.
-              </p>
-            </div>
-            <button type="button" class="text-link capability-card__link js-open-enquiry" data-service="UPVC Work">
-              <span>Inquire UPVC Solutions</span>
-              <span class="text-link__arrow" aria-hidden="true">→</span>
-            </button>
-          </div>
-
-          <!-- 11: Glass & Toughened Glass Work -->
-          <div class="capability-card">
-            <div class="capability-card__top">
-              <div class="capability-card__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="4" y="3" width="16" height="18" rx="1"/>
-                  <circle cx="7" cy="6" r="1.5" fill="currentColor"/>
-                  <circle cx="17" cy="6" r="1.5" fill="currentColor"/>
-                  <circle cx="7" cy="18" r="1.5" fill="currentColor"/>
-                  <circle cx="17" cy="18" r="1.5" fill="currentColor"/>
-                  <line x1="14" y1="7" x2="10" y2="17"/>
-                  <line x1="16" y1="9" x2="13" y2="17"/>
-                </svg>
-              </div>
-              <span class="capability-card__num">11</span>
-            </div>
-            <div class="capability-card__content">
-              <h3 class="capability-card__title">Glass &amp; Toughened Glass Work</h3>
-              <p class="capability-card__desc">
-                Frameless glass balustrades, spider-fitting curtain walls, and tempered architectural glass integrated with structural steel.
-              </p>
-            </div>
-            <button type="button" class="text-link capability-card__link js-open-enquiry" data-service="Glass &amp; Toughened Glass Work">
-              <span>Explore Glass Solutions</span>
-              <span class="text-link__arrow" aria-hidden="true">→</span>
-            </button>
-          </div>
-
-          <!-- 12: Aluminium Work -->
-          <div class="capability-card">
-            <div class="capability-card__top">
-              <div class="capability-card__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M4 4h16v16H4z"/>
-                  <path d="M8 8h8v8H8z"/>
-                  <line x1="4" y1="8" x2="8" y2="8"/>
-                  <line x1="16" y1="8" x2="20" y2="8"/>
-                  <line x1="4" y1="16" x2="8" y2="16"/>
-                  <line x1="16" y1="16" x2="20" y2="16"/>
-                </svg>
-              </div>
-              <span class="capability-card__num">12</span>
-            </div>
-            <div class="capability-card__content">
-              <h3 class="capability-card__title">Aluminium Work</h3>
-              <p class="capability-card__desc">
-                Precision aluminium slimline facades, powder-coated partition systems, structural extrusions, and architectural louvers.
-              </p>
-            </div>
-            <button type="button" class="text-link capability-card__link js-open-enquiry" data-service="Aluminium Work">
-              <span>Inquire Aluminium Work</span>
-              <span class="text-link__arrow" aria-hidden="true">→</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ========================================================================
+    <!-- ========================================================================
        08 — REDESIGNED ARCHITECTURAL FOOTER & CONTACT SECTION
        ======================================================================== -->
-  <footer id="contact" class="site-footer" role="contentinfo">
-    <div class="container">
-      <div class="footer-top">
-        <!-- Col 1: Brand Info with Authoritative Logo & Social Links -->
-        <div class="footer-brand">
-          <a href="#hero" class="footer-brand__logo" aria-label="Hyper Steel Home">
-            <img src="assets/logo_vector.svg" alt="Hyper Steel Logo" class="footer-brand__img" width="50" height="50">
-            <span class="footer-brand__name">HYPER STEEL</span>
-          </a>
-          <p class="footer-brand__desc">
-            Custom architectural steel fabrication in Madurai, Tamil Nadu. Bespoke doors, automated entrances, helical staircases, and structural metalwork shaped around your space.
-          </p>
-
-          <!-- Social Links Directly Below Description -->
-          <div class="footer-socials" aria-label="Social Media Links">
-            <!-- Instagram -->
-            <a href="https://www.instagram.com/hyper_steel_innovation_mdu/" 
-               target="_blank" 
-               rel="noopener noreferrer" 
-               class="footer-social-link" 
-               aria-label="Follow Hyper Steel on Instagram">
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-              </svg>
+    <footer id="contact" class="site-footer" role="contentinfo">
+      <div class="container">
+        <div class="footer-top">
+          <!-- Col 1: Brand Info with Authoritative Logo & Social Links -->
+          <div class="footer-brand">
+            <a
+              href="#hero"
+              class="footer-brand__logo"
+              aria-label="Hyper Steel Home"
+            >
+              <img
+                src="assets/logo_vector.svg"
+                alt="Hyper Steel Logo"
+                class="footer-brand__img"
+                width="50"
+                height="50"
+              />
+              <span class="footer-brand__name">HYPER STEEL</span>
             </a>
+            <p class="footer-brand__desc">
+              Custom architectural steel fabrication in Madurai, Tamil Nadu.
+              Bespoke doors, automated entrances, helical staircases, and
+              structural metalwork shaped around your space.
+            </p>
 
-            <!-- Facebook -->
-            <a href="https://www.facebook.com/hypersteelfabrication" 
-               target="_blank" 
-               rel="noopener noreferrer" 
-               class="footer-social-link" 
-               aria-label="Follow Hyper Steel on Facebook">
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
-                <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/>
-              </svg>
-            </a>
+            <!-- Social Links Directly Below Description -->
+            <div class="footer-socials" aria-label="Social Media Links">
+              <!-- Instagram -->
+              <a
+                href="https://www.instagram.com/hyper_steel_innovation_mdu/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="footer-social-link"
+                aria-label="Follow Hyper Steel on Instagram"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  width="20"
+                  height="20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                  />
+                </svg>
+              </a>
 
-            <!-- WhatsApp -->
-            <a href="https://wa.me/919944020815" 
-               target="_blank" 
-               rel="noopener noreferrer" 
-               class="footer-social-link" 
-               aria-label="Chat with Hyper Steel on WhatsApp">
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
-                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-              </svg>
-            </a>
-          </div>
-        </div>
+              <!-- Facebook -->
+              <a
+                href="https://www.facebook.com/hypersteelfabrication"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="footer-social-link"
+                aria-label="Follow Hyper Steel on Facebook"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  width="20"
+                  height="20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"
+                  />
+                </svg>
+              </a>
 
-        <!-- Col 2: Navigation Links -->
-        <div class="footer-col">
-          <div class="footer-col__title">Navigation</div>
-          <ul class="footer-links">
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#craft">Craft</a></li>
-            <li><a href="#projects">Our Work</a></li>
-            <li><a href="#capabilities">Capabilities</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-
-        <!-- Col 3: Contact Details (Both Phones, Email, Instagram, Address) -->
-        <div class="footer-col">
-          <div class="footer-col__title">Workshop &amp; Direct Contact</div>
-          <address class="footer-address">
-            <div class="footer-contact-row">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" class="footer-contact-icon" aria-hidden="true">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                <circle cx="12" cy="10" r="3"></circle>
-              </svg>
-              <span>Rajalakshmi Hall, Vaigai Vadakarai, Near Sha Theatre, Madurai – 20</span>
+              <!-- WhatsApp -->
+              <a
+                href="https://wa.me/919944020815"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="footer-social-link"
+                aria-label="Chat with Hyper Steel on WhatsApp"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  width="20"
+                  height="20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"
+                  />
+                </svg>
+              </a>
             </div>
+          </div>
 
-            <div class="footer-contact-row">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" class="footer-contact-icon" aria-hidden="true">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-              </svg>
-              <div class="footer-phone-group">
-                <a href="tel:9944020815">+91 99440 20815</a>
-                <span class="footer-phone-sep">·</span>
-                <a href="tel:9442598171">+91 94425 98171</a>
+          <!-- Col 2: Navigation Links -->
+          <div class="footer-col">
+            <div class="footer-col__title">Navigation</div>
+            <ul class="footer-links">
+              <li><a href="#hero">Home</a></li>
+              <li><a href="#craft">Craft</a></li>
+              <li><a href="#projects">Our Work</a></li>
+              <li><a href="#capabilities">Capabilities</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Col 3: Contact Details (Both Phones, Email, Instagram, Address) -->
+          <div class="footer-col">
+            <div class="footer-col__title">Workshop &amp; Direct Contact</div>
+            <address class="footer-address">
+              <div class="footer-contact-row">
+                <svg
+                  viewBox="0 0 24 24"
+                  width="18"
+                  height="18"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  class="footer-contact-icon"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+                  ></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <span
+                  >Rajalakshmi Hall, Vaigai Vadakarai, Near Sha Theatre, Madurai
+                  – 20</span
+                >
               </div>
-            </div>
 
-            <div class="footer-contact-row">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" class="footer-contact-icon" aria-hidden="true">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                <polyline points="22,6 12,13 2,6"></polyline>
-              </svg>
-              <a href="mailto:hypersteelfabrication@gmail.com">hypersteelfabrication@gmail.com</a>
-            </div>
+              <div class="footer-contact-row">
+                <svg
+                  viewBox="0 0 24 24"
+                  width="18"
+                  height="18"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  class="footer-contact-icon"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                  ></path>
+                </svg>
+                <div class="footer-phone-group">
+                  <a href="tel:9944020815">+91 99440 20815</a>
+                  <span class="footer-phone-sep">·</span>
+                  <a href="tel:9442598171">+91 94425 98171</a>
+                </div>
+              </div>
 
-            <div class="footer-contact-row">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" class="footer-contact-icon" aria-hidden="true">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-              </svg>
-              <a href="https://www.instagram.com/hyper_steel_innovation_mdu/" target="_blank" rel="noopener noreferrer">@hyper_steel_innovation_mdu</a>
-            </div>
-          </address>
-        </div>
+              <div class="footer-contact-row">
+                <svg
+                  viewBox="0 0 24 24"
+                  width="18"
+                  height="18"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  class="footer-contact-icon"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                  ></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <a href="mailto:hypersteelfabrication@gmail.com"
+                  >hypersteelfabrication@gmail.com</a
+                >
+              </div>
 
-        <!-- Col 4: Responsive Google Maps Embed -->
-        <div class="footer-map-col">
-          <div class="footer-col__title">Workshop Location</div>
-          <div class="footer-map-wrapper">
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1165.484799600486!2d78.13705916958949!3d9.921220020435836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b00c50d910fcd8d%3A0x316d12b221e3efba!2sHYPER%20STEEL%20FABRICATION%20MDU!5e1!3m2!1sen!2sin!4v1792395385458!5m2!1sen!2sin" 
-              width="600" 
-              height="450" 
-              style="border:0;" 
-              allowfullscreen="" 
-              loading="lazy" 
-              referrerpolicy="strict-origin-when-cross-origin" 
-              title="Hyper Steel Fabrication Madurai Location">
-            </iframe>
+              <div class="footer-contact-row">
+                <svg
+                  viewBox="0 0 24 24"
+                  width="18"
+                  height="18"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  class="footer-contact-icon"
+                  aria-hidden="true"
+                >
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path
+                    d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                  ></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+                <a
+                  href="https://www.instagram.com/hyper_steel_innovation_mdu/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >@hyper_steel_innovation_mdu</a
+                >
+              </div>
+            </address>
+          </div>
+
+          <!-- Col 4: Responsive Google Maps Embed -->
+          <div class="footer-map-col">
+            <div class="footer-col__title">Workshop Location</div>
+            <div class="footer-map-wrapper">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1165.484799600486!2d78.13705916958949!3d9.921220020435836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b00c50d910fcd8d%3A0x316d12b221e3efba!2sHYPER%20STEEL%20FABRICATION%20MDU!5e1!3m2!1sen!2sin!4v1792395385458!5m2!1sen!2sin"
+                width="600"
+                height="450"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin"
+                title="Hyper Steel Fabrication Madurai Location"
+              >
+              </iframe>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="footer-bottom">
-        <div>
-          &copy; 2026 Hyper Steel Fabrication. All rights reserved. Madurai, Tamil Nadu.
-        </div>
-        <div class="footer-attribution">
-          Made by Cicada Web Solutions
+        <div class="footer-bottom">
+          <div>
+            &copy; 2026 Hyper Steel Fabrication. All rights reserved. Madurai,
+            Tamil Nadu.
+          </div>
+          <div class="footer-attribution">Made by Cicada Web Solutions</div>
         </div>
       </div>
-    </div>
-  </footer>
+    </footer>
 
-  <!-- ========================================================================
+    <!-- ========================================================================
        09 — FLOATING WHATSAPP BUTTON (FIXED BOTTOM-RIGHT)
        ======================================================================== -->
-  <a href="https://wa.me/919944020815" 
-     target="_blank" 
-     rel="noopener noreferrer" 
-     class="floating-whatsapp" 
-     aria-label="Chat with Hyper Steel on WhatsApp">
-    <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor" aria-hidden="true">
-      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-    </svg>
-  </a>
+    <a
+      href="https://wa.me/919944020815"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="floating-whatsapp"
+      aria-label="Chat with Hyper Steel on WhatsApp"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        width="28"
+        height="28"
+        fill="currentColor"
+        aria-hidden="true"
+      >
+        <path
+          d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"
+        />
+      </svg>
+    </a>
 
-  <!-- ========================================================================
+    <!-- ========================================================================
        10 — BACK TO TOP FLOATING BUTTON
        ======================================================================== -->
-  <button type="button" class="back-to-top" aria-label="Back to top">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <line x1="12" y1="19" x2="12" y2="5"></line>
-      <polyline points="5 12 12 5 19 12"></polyline>
-    </svg>
-  </button>
+    <button type="button" class="back-to-top" aria-label="Back to top">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <line x1="12" y1="19" x2="12" y2="5"></line>
+        <polyline points="5 12 12 5 19 12"></polyline>
+      </svg>
+    </button>
 
-  <!-- ========================================================================
+    <!-- ========================================================================
        11 — PROJECT CONSULTATION MODAL
        ======================================================================== -->
-  <div class="enquiry-modal" role="dialog" aria-modal="true" aria-labelledby="enquiry-title">
-    <div class="enquiry-modal__backdrop" aria-hidden="true"></div>
-    <div class="enquiry-modal__box">
-      <button type="button" class="enquiry-modal__close" aria-label="Close consultation modal">✕</button>
-
-      <div class="eyebrow">
-        <span class="eyebrow__dot" aria-hidden="true"></span>
-        <span>Architectural Consultation</span>
-      </div>
-
-      <h2 id="enquiry-title" class="section-title" style="font-size: 1.75rem; margin-bottom: 0.5rem;">
-        Discuss Your Project
-      </h2>
-
-      <p style="font-size: 0.875rem; color: var(--color-gray-muted); margin-bottom: 1.5rem; line-height: 1.6;">
-        Submit your project details directly to our fabrication team via WhatsApp for instant technical consultation, feasibility analysis, and site estimation.
-      </p>
-
-      <form id="enquiry-form">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="enquiry-name" class="form-label">Architect / Client Name</label>
-            <input type="text" id="enquiry-name" class="form-input" placeholder="e.g. Ar. Rajesh / Senthil Kumar" required>
-          </div>
-
-          <div class="form-group">
-            <label for="enquiry-phone" class="form-label">Phone / WhatsApp Number</label>
-            <input type="tel" id="enquiry-phone" class="form-input" placeholder="+91 99440 20815" required>
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="enquiry-service" class="form-label">Steel Discipline</label>
-            <select id="enquiry-service" class="form-select">
-              <option value="Steel Fabrication">Steel Fabrication</option>
-              <option value="Custom Steel Doors">Custom Steel Doors</option>
-              <option value="Metal Staircases">Metal Staircases</option>
-              <option value="Spiral Staircases">Spiral Staircases</option>
-              <option value="Interior Steel Work">Interior Steel Work</option>
-              <option value="Exterior Steel Work">Exterior Steel Work</option>
-              <option value="Architectural Elevation Work">Architectural Elevation Work</option>
-              <option value="Canopies">Canopies</option>
-              <option value="Automated Gates & Doors">Automated Gates & Doors</option>
-              <option value="UPVC Work">UPVC Work</option>
-              <option value="Glass & Toughened Glass Work">Glass & Toughened Glass Work</option>
-              <option value="Aluminium Work">Aluminium Work</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="enquiry-location" class="form-label">Project Location</label>
-            <input type="text" id="enquiry-location" class="form-input" placeholder="e.g. Madurai / Coimbatore / Chennai" value="Madurai">
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="enquiry-message" class="form-label">Project Scope / Dimensions / Notes</label>
-          <textarea id="enquiry-message" class="form-textarea" rows="3" placeholder="Describe the space, approximate dimensions, material preferences (wood, glass, steel), or timeline..."></textarea>
-        </div>
-
-        <button type="submit" class="btn btn--primary" style="width: 100%; margin-top: 0.5rem;">
-          <span>Send Details via WhatsApp Consultation</span>
-          <span class="btn__icon" aria-hidden="true">↗</span>
+    <div
+      class="enquiry-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="enquiry-title"
+    >
+      <div class="enquiry-modal__backdrop" aria-hidden="true"></div>
+      <div class="enquiry-modal__box">
+        <button
+          type="button"
+          class="enquiry-modal__close"
+          aria-label="Close consultation modal"
+        >
+          ✕
         </button>
-      </form>
-    </div>
-  </div>
 
-  <!-- ========================================================================
+        <div class="eyebrow">
+          <span class="eyebrow__dot" aria-hidden="true"></span>
+          <span>Architectural Consultation</span>
+        </div>
+
+        <h2
+          id="enquiry-title"
+          class="section-title"
+          style="font-size: 1.75rem; margin-bottom: 0.5rem"
+        >
+          Discuss Your Project
+        </h2>
+
+        <p
+          style="
+            font-size: 0.875rem;
+            color: var(--color-gray-muted);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+          "
+        >
+          Submit your project details directly to our fabrication team via
+          WhatsApp for instant technical consultation, feasibility analysis, and
+          site estimation.
+        </p>
+
+        <form id="enquiry-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="enquiry-name" class="form-label"
+                >Architect / Client Name</label
+              >
+              <input
+                type="text"
+                id="enquiry-name"
+                class="form-input"
+                placeholder="e.g. Ar. Rajesh / Senthil Kumar"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="enquiry-phone" class="form-label"
+                >Phone / WhatsApp Number</label
+              >
+              <input
+                type="tel"
+                id="enquiry-phone"
+                class="form-input"
+                placeholder="+91 99440 20815"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="enquiry-service" class="form-label"
+                >Steel Discipline</label
+              >
+              <select id="enquiry-service" class="form-select">
+                <option value="Steel Fabrication">Steel Fabrication</option>
+                <option value="Custom Steel Doors">Custom Steel Doors</option>
+                <option value="Metal Staircases">Metal Staircases</option>
+                <option value="Spiral Staircases">Spiral Staircases</option>
+                <option value="Interior Steel Work">Interior Steel Work</option>
+                <option value="Exterior Steel Work">Exterior Steel Work</option>
+                <option value="Architectural Elevation Work">
+                  Architectural Elevation Work
+                </option>
+                <option value="Canopies">Canopies</option>
+                <option value="Automated Gates & Doors">
+                  Automated Gates & Doors
+                </option>
+                <option value="UPVC Work">UPVC Work</option>
+                <option value="Glass & Toughened Glass Work">
+                  Glass & Toughened Glass Work
+                </option>
+                <option value="Aluminium Work">Aluminium Work</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="enquiry-location" class="form-label"
+                >Project Location</label
+              >
+              <input
+                type="text"
+                id="enquiry-location"
+                class="form-input"
+                placeholder="e.g. Madurai / Coimbatore / Chennai"
+                value="Madurai"
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="enquiry-message" class="form-label"
+              >Project Scope / Dimensions / Notes</label
+            >
+            <textarea
+              id="enquiry-message"
+              class="form-textarea"
+              rows="3"
+              placeholder="Describe the space, approximate dimensions, material preferences (wood, glass, steel), or timeline..."
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="btn btn--primary"
+            style="width: 100%; margin-top: 0.5rem"
+          >
+            <span>Send Details via WhatsApp Consultation</span>
+            <span class="btn__icon" aria-hidden="true">↗</span>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- ========================================================================
        12 — PROJECT LIGHTBOX / DETAIL MODAL
        ======================================================================== -->
-  <div class="project-lightbox" role="dialog" aria-modal="true" aria-label="Project Detail Viewer">
-    <div class="lightbox__backdrop" aria-hidden="true"></div>
-    <div class="lightbox__box">
-      <button type="button" class="lightbox__close" aria-label="Close project inspection">✕</button>
-      <div class="lightbox__media-wrap">
-        <img src="assets/spiral_staircase_2.jpeg" alt="Project detail inspection" class="lightbox__image">
-      </div>
-      <div class="lightbox__info">
-        <span class="badge badge--gold lightbox__tag" style="margin-bottom: 0.5rem;">Category</span>
-        <h3 class="lightbox__title">Project Title</h3>
-        <p class="lightbox__desc">Craftsmanship details...</p>
-        <button type="button" class="btn btn--primary js-open-enquiry" data-service="Project Inquiry">
-          <span>Discuss Similar Project</span>
-          <span class="btn__icon" aria-hidden="true">↗</span>
+    <div
+      class="project-lightbox"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Project Detail Viewer"
+    >
+      <div class="lightbox__backdrop" aria-hidden="true"></div>
+      <div class="lightbox__box">
+        <button
+          type="button"
+          class="lightbox__close"
+          aria-label="Close project inspection"
+        >
+          ✕
         </button>
+        <div class="lightbox__media-wrap">
+          <img
+            src="assets/spiral_staircase_2.jpeg"
+            alt="Project detail inspection"
+            class="lightbox__image"
+          />
+        </div>
+        <div class="lightbox__info">
+          <span
+            class="badge badge--gold lightbox__tag"
+            style="margin-bottom: 0.5rem"
+            >Category</span
+          >
+          <h3 class="lightbox__title">Project Title</h3>
+          <p class="lightbox__desc">Craftsmanship details...</p>
+          <button
+            type="button"
+            class="btn btn--primary js-open-enquiry"
+            data-service="Project Inquiry"
+          >
+            <span>Discuss Similar Project</span>
+            <span class="btn__icon" aria-hidden="true">↗</span>
+          </button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- ========================================================================
+    <!-- ========================================================================
        VENDOR LIBRARIES (GSAP, ScrollTrigger, Lenis)
        ======================================================================== -->
-  <script src="vendor/lenis.min.js"></script>
-  <script src="vendor/gsap.min.js"></script>
-  <script src="vendor/ScrollTrigger.min.js"></script>
+    <script src="vendor/lenis.min.js"></script>
+    <script src="vendor/gsap.min.js"></script>
+    <script src="vendor/ScrollTrigger.min.js"></script>
 
-  <!-- Application Modules -->
-  <script type="module" src="js/main.js"></script>
-</body>
+    <!-- Application Modules -->
+    <script type="module" src="js/main.js"></script>
+  </body>
 </html>
