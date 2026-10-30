@@ -145,7 +145,7 @@ function bootstrap() {
 
           // 3C. Section Header & Key Element Scroll Reveals
           const revealElements = document.querySelectorAll(
-            '.section-header, .capability-card, .project-item'
+            '.section-header, .work-gallery__title, .capability-card, .project-item'
           );
 
           revealElements.forEach((el) => {

@@ -527,409 +527,317 @@
       <!-- ======================================================================
          05 — VIDEO SHOWCASE: FABRICATION IN MOTION
          ====================================================================== -->
-      <section
-        id="craft-videos"
-        class="videos-section"
-        aria-label="Process Films"
+      
+<section class="work-gallery" id="craft-videos" aria-label="Gallery">
+  <div class="container work-gallery__container">
+    <h2 class="work-gallery__title">Gallery</h2>
+
+    <div class="work-gallery__grid">
+
+      <!-- Item 01: Vertical Rectangular (Span 2 rows) -->
+      <button
+        type="button"
+        class="gallery-item gallery-item--vertical"
+        data-video-src="assets/videos/stylish_door.mp4"
+        data-poster="assets/video_posters/stylish_door_poster.jpg"
+        data-orientation="portrait"
+        data-title="Architectural Entrance Door"
+        data-duration="00:09"
+        aria-label="Play video: Architectural Entrance Door"
       >
-        <div class="container">
-          <div class="section-header">
-            <h2 class="section-title">Fabrication in Motion.</h2>
-            <p class="section-lead">
-              Live shop testing, mechanism trials, and architectural
-              installations captured across our Madurai workshop and field
-              installations.
-            </p>
+        <div class="gallery-item__media">
+          <img
+            src="assets/video_posters/stylish_door_poster.jpg"
+            alt="Architectural Entrance Door"
+            class="gallery-item__img"
+            loading="lazy"
+            width="576"
+            height="1024"
+          />
+          <div class="gallery-item__overlay" aria-hidden="true"></div>
+          <div class="gallery-item__play" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+              <polygon points="7,4 20,12 7,20"></polygon>
+            </svg>
           </div>
-
-          <div class="video-showcase-grid">
-            <!-- Primary Cinema Video Player -->
-            <div class="cinema-player" aria-label="Cinema Video Player">
-              <div class="cinema-player__video-wrapper">
-                <video
-  class="cinema-player__video"
-  src="assets/sliding_door.mp4"
-  poster="assets/video_posters/sliding_door_poster.jpg"
-  muted
-  playsinline
-  preload="metadata"
->
-  <p>Your browser does not support HTML5 video.</p>
-</video>
-              </div>
-
-              <!-- Video Player Controls Bar: Title, Subtitle & Real Play/Pause Control -->
-              <div class="cinema-player__controls">
-                <div class="cinema-player__info">
-                  <span class="cinema-player__title"
-                    >Multi-Track Sliding Steel Grille Door</span
-                  >
-                  <span class="cinema-player__caption"
-                    >Smooth effortless glide mechanism tested in front of
-                    architectural spiral stair</span
-                  >
-                </div>
-                <div class="cinema-player__actions">
-                  <button
-                    type="button"
-                    class="control-btn js-play-toggle"
-                    aria-label="Pause video"
-                  >
-                    <svg
-                      class="control-btn__icon"
-                      viewBox="0 0 24 24"
-                      width="20"
-                      height="20"
-                      fill="currentColor"
-                      aria-hidden="true"
-                    >
-                      <rect x="5.5" y="4" width="3.5" height="16" rx="1.5" />
-                      <rect x="15" y="4" width="3.5" height="16" rx="1.5" />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Video Selector / Thumbnails (Mapped to all 11 real video files) -->
-            <div class="video-playlist">
-              <div class="video-playlist__header">
-                Select Footage to Preview (11 Clips)
-              </div>
-
-              <!-- Clip 1: Sliding Door -->
-              <div
-                class="video-thumb-card is-active"
-                role="button"
-                tabindex="0"
-                aria-selected="true"
-                data-video-src="assets/sliding_door.mp4"
-                data-video-poster="assets/video_posters/sliding_door_poster.jpg"
-                data-video-title="Multi-Track Sliding Steel Grille Door"
-                data-video-caption="Smooth effortless glide mechanism tested in front of architectural spiral stair"
-              >
-                <div class="video-thumb-card__media">
-                  <img
-                    src="assets/video_posters/sliding_door_poster.jpg"
-                    alt="Sliding door glide test"
-                    class="video-thumb-card__img"
-                    loading="lazy"
-                  />
-                  <span class="video-thumb-card__badge">00:10</span>
-                </div>
-                <div class="video-thumb-card__body">
-                  <div class="video-thumb-card__title">
-                    Sliding Door Glide Test
-                  </div>
-                  <p class="video-thumb-card__desc">
-                    Precision multi-track rolling tolerance &amp; latching
-                  </p>
-                </div>
-              </div>
-
-              <!-- Clip 2: Stylish Door -->
-              <div
-                class="video-thumb-card"
-                role="button"
-                tabindex="0"
-                aria-selected="false"
-                data-video-src="assets/stylish_door.mp4"
-                data-video-poster="assets/video_posters/stylish_door_poster.jpg"
-                data-video-title="Matte Black Louvered Architectural Entrance"
-                data-video-caption="Cinematic upward reveal of a multi-panel black steel pivot entrance door"
-              >
-                <div class="video-thumb-card__media">
-                  <img
-                    src="assets/video_posters/stylish_door_poster.jpg"
-                    alt="Matte black entrance door"
-                    class="video-thumb-card__img"
-                    loading="lazy"
-                  />
-                  <span class="video-thumb-card__badge">00:09</span>
-                </div>
-                <div class="video-thumb-card__body">
-                  <div class="video-thumb-card__title">
-                    Louvered Entrance Portal
-                  </div>
-                  <p class="video-thumb-card__desc">
-                    Double-panel powder-coated security entrance door
-                  </p>
-                </div>
-              </div>
-
-              <!-- Clip 3: Botanical Gate Showcase -->
-              <div
-                class="video-thumb-card"
-                role="button"
-                tabindex="0"
-                aria-selected="false"
-                data-video-src="assets/metal_gate_showcase.mp4"
-                data-video-poster="assets/video_posters/metal_gate_showcase_poster.jpg"
-                data-video-title="Botanical Laser CNC Compound Gate"
-                data-video-caption="Detailed panning view of laser-cut botanical steel panels with mirror backplate"
-              >
-                <div class="video-thumb-card__media">
-                  <img
-                    src="assets/video_posters/metal_gate_showcase_poster.jpg"
-                    alt="Botanical gate preview"
-                    class="video-thumb-card__img"
-                    loading="lazy"
-                  />
-                  <span class="video-thumb-card__badge">00:09</span>
-                </div>
-                <div class="video-thumb-card__body">
-                  <div class="video-thumb-card__title">
-                    Botanical Gate Showcase
-                  </div>
-                  <p class="video-thumb-card__desc">
-                    Laser-cut organic motifs and mirror backplate
-                  </p>
-                </div>
-              </div>
-
-              <!-- Clip 4: Exterior Work -->
-              <div
-                class="video-thumb-card"
-                role="button"
-                tabindex="0"
-                aria-selected="false"
-                data-video-src="assets/exterior_work.mp4"
-                data-video-poster="assets/video_posters/exterior_work_poster.jpg"
-                data-video-title="Architectural Villa Exterior Fabrication"
-                data-video-caption="Full architectural villa exterior showcasing integrated steel facade screens"
-              >
-                <div class="video-thumb-card__media">
-                  <img
-                    src="assets/video_posters/exterior_work_poster.jpg"
-                    alt="Exterior facade screen"
-                    class="video-thumb-card__img"
-                    loading="lazy"
-                  />
-                  <span class="video-thumb-card__badge">00:10</span>
-                </div>
-                <div class="video-thumb-card__body">
-                  <div class="video-thumb-card__title">
-                    Villa Exterior Elevation
-                  </div>
-                  <p class="video-thumb-card__desc">
-                    Full-facade architectural metal screening installation
-                  </p>
-                </div>
-              </div>
-
-              <!-- Clip 5: Balcony View -->
-              <div
-                class="video-thumb-card"
-                role="button"
-                tabindex="0"
-                aria-selected="false"
-                data-video-src="assets/balcony_view.mp4"
-                data-video-poster="assets/video_posters/balcony_view_poster.jpg"
-                data-video-title="Golden Louvered Balcony Shading"
-                data-video-caption="Dynamic interior and exterior perspective of geometric golden steel facade louvers"
-              >
-                <div class="video-thumb-card__media">
-                  <img
-                    src="assets/video_posters/balcony_view_poster.jpg"
-                    alt="Balcony louvers preview"
-                    class="video-thumb-card__img"
-                    loading="lazy"
-                  />
-                  <span class="video-thumb-card__badge">00:18</span>
-                </div>
-                <div class="video-thumb-card__body">
-                  <div class="video-thumb-card__title">
-                    Golden Balcony Louvers
-                  </div>
-                  <p class="video-thumb-card__desc">
-                    Modernist solar shading and architectural privacy screen
-                  </p>
-                </div>
-              </div>
-
-              <!-- Clip 6: Roof Work Canopy -->
-              <div
-                class="video-thumb-card"
-                role="button"
-                tabindex="0"
-                aria-selected="false"
-                data-video-src="assets/roof_work.mp4"
-                data-video-poster="assets/video_posters/roof_work_poster.jpg"
-                data-video-title="Structural Glass Pergola &amp; Canopy"
-                data-video-caption="Walkthrough inspection of a steel framework supporting laminated safety glass on terrace"
-              >
-                <div class="video-thumb-card__media">
-                  <img
-                    src="assets/video_posters/roof_work_poster.jpg"
-                    alt="Canopy glass inspection"
-                    class="video-thumb-card__img"
-                    loading="lazy"
-                  />
-                  <span class="video-thumb-card__badge">00:06</span>
-                </div>
-                <div class="video-thumb-card__body">
-                  <div class="video-thumb-card__title">
-                    Glass Canopy Walkthrough
-                  </div>
-                  <p class="video-thumb-card__desc">
-                    Weather-sealed structural glass and steel pergola roof
-                  </p>
-                </div>
-              </div>
-
-              <!-- Clip 7: Roof Work 2 -->
-              <div
-                class="video-thumb-card"
-                role="button"
-                tabindex="0"
-                aria-selected="false"
-                data-video-src="assets/roof_work_2.mp4"
-                data-video-poster="assets/video_posters/roof_work_2_poster.jpg"
-                data-video-title="Terrace Canopy Beam Installation"
-                data-video-caption="Close-up inspection of heavy tubular steel beams and glass seal gaskets"
-              >
-                <div class="video-thumb-card__media">
-                  <img
-                    src="assets/video_posters/roof_work_2_poster.jpg"
-                    alt="Canopy beam preview"
-                    class="video-thumb-card__img"
-                    loading="lazy"
-                  />
-                  <span class="video-thumb-card__badge">00:08</span>
-                </div>
-                <div class="video-thumb-card__body">
-                  <div class="video-thumb-card__title">
-                    Canopy Beam Detailing
-                  </div>
-                  <p class="video-thumb-card__desc">
-                    Structural roof grid alignment and weatherproofing
-                  </p>
-                </div>
-              </div>
-
-              <!-- Clip 8: Stylish Gate 2 -->
-              <div
-                class="video-thumb-card"
-                role="button"
-                tabindex="0"
-                aria-selected="false"
-                data-video-src="assets/stylish_gate_2.mp4"
-                data-video-poster="assets/video_posters/stylish_gate_2_poster.jpg"
-                data-video-title="Double-Swing Compound Gate Test"
-                data-video-caption="Operational swing motion test of black steel framed gate with vertical timber inserts"
-              >
-                <div class="video-thumb-card__media">
-                  <img
-                    src="assets/video_posters/stylish_gate_2_poster.jpg"
-                    alt="Swing gate preview"
-                    class="video-thumb-card__img"
-                    loading="lazy"
-                  />
-                  <span class="video-thumb-card__badge">00:05</span>
-                </div>
-                <div class="video-thumb-card__body">
-                  <div class="video-thumb-card__title">
-                    Timber &amp; Steel Swing Gate
-                  </div>
-                  <p class="video-thumb-card__desc">
-                    Hinge balance and dual-leaf swing tolerance test
-                  </p>
-                </div>
-              </div>
-
-              <!-- Clip 9: Stylish Gate 3 -->
-              <div
-                class="video-thumb-card"
-                role="button"
-                tabindex="0"
-                aria-selected="false"
-                data-video-src="assets/stylish_gate_3.mp4"
-                data-video-poster="assets/video_posters/stylish_gate_3_poster.jpg"
-                data-video-title="Compound Gate Full Perspective"
-                data-video-caption="Full compound perspective showing vehicle gate and matching pedestrian entrance wicket"
-              >
-                <div class="video-thumb-card__media">
-                  <img
-                    src="assets/video_posters/stylish_gate_3_poster.jpg"
-                    alt="Compound gate preview"
-                    class="video-thumb-card__img"
-                    loading="lazy"
-                  />
-                  <span class="video-thumb-card__badge">00:10</span>
-                </div>
-                <div class="video-thumb-card__body">
-                  <div class="video-thumb-card__title">
-                    Compound Gate Perspective
-                  </div>
-                  <p class="video-thumb-card__desc">
-                    Integrated driveway sliding gate &amp; pedestrian entry
-                  </p>
-                </div>
-              </div>
-
-              <!-- Clip 10: Finished Exterior 2 -->
-              <div
-                class="video-thumb-card"
-                role="button"
-                tabindex="0"
-                aria-selected="false"
-                data-video-src="assets/finished_exterior_2.mp4"
-                data-video-poster="assets/video_posters/finished_exterior_2_poster.jpg"
-                data-video-title="Contemporary Villa Exterior Overview"
-                data-video-caption="Overview of finished residence showing completed compound gate and balcony balustrades"
-              >
-                <div class="video-thumb-card__media">
-                  <img
-                    src="assets/video_posters/finished_exterior_2_poster.jpg"
-                    alt="Finished villa preview"
-                    class="video-thumb-card__img"
-                    loading="lazy"
-                  />
-                  <span class="video-thumb-card__badge">00:09</span>
-                </div>
-                <div class="video-thumb-card__body">
-                  <div class="video-thumb-card__title">
-                    Villa Exterior Architecture
-                  </div>
-                  <p class="video-thumb-card__desc">
-                    Complete residential exterior metalwork installation
-                  </p>
-                </div>
-              </div>
-
-              <!-- Clip 11: Finished Exterior 3 -->
-              <div
-                class="video-thumb-card"
-                role="button"
-                tabindex="0"
-                aria-selected="false"
-                data-video-src="assets/finished_exterior_3.mp4"
-                data-video-poster="assets/video_posters/finished_exterior_3_poster.jpg"
-                data-video-title="Architectural Compound Integration"
-                data-video-caption="Wide site view demonstrating harmonized steel perimeter fencing and entrance gate"
-              >
-                <div class="video-thumb-card__media">
-                  <img
-                    src="assets/video_posters/finished_exterior_3_poster.jpg"
-                    alt="Compound integration preview"
-                    class="video-thumb-card__img"
-                    loading="lazy"
-                  />
-                  <span class="video-thumb-card__badge">00:11</span>
-                </div>
-                <div class="video-thumb-card__body">
-                  <div class="video-thumb-card__title">
-                    Perimeter Gate Integration
-                  </div>
-                  <p class="video-thumb-card__desc">
-                    Site overview of perimeter boundary wall and entrance portal
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+          <span class="gallery-item__duration">00:09</span>
         </div>
-      </section>
+      </button>
+
+      <!-- Item 02: Square -->
+      <button
+        type="button"
+        class="gallery-item gallery-item--square"
+        data-video-src="assets/videos/metal_gate_showcase.mp4"
+        data-poster="assets/video_posters/metal_gate_showcase_poster.jpg"
+        data-orientation="portrait"
+        data-title="Laser-Cut Compound Gate"
+        data-duration="00:04"
+        aria-label="Play video: Laser-Cut Compound Gate"
+      >
+        <div class="gallery-item__media">
+          <img
+            src="assets/video_posters/metal_gate_showcase_poster.jpg"
+            alt="Laser-Cut Compound Gate"
+            class="gallery-item__img"
+            loading="lazy"
+            width="576"
+            height="1024"
+          />
+          <div class="gallery-item__overlay" aria-hidden="true"></div>
+          <div class="gallery-item__play" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+              <polygon points="7,4 20,12 7,20"></polygon>
+            </svg>
+          </div>
+          <span class="gallery-item__duration">00:04</span>
+        </div>
+      </button>
+
+      <!-- Item 03: Square -->
+      <button
+        type="button"
+        class="gallery-item gallery-item--square"
+        data-video-src="assets/videos/stylish_gate_2.mp4"
+        data-poster="assets/video_posters/stylish_gate_2_poster.jpg"
+        data-orientation="portrait"
+        data-title="Double-Swing Gate Movement Test"
+        data-duration="00:03"
+        aria-label="Play video: Double-Swing Gate Movement Test"
+      >
+        <div class="gallery-item__media">
+          <img
+            src="assets/video_posters/stylish_gate_2_poster.jpg"
+            alt="Double-Swing Gate Movement Test"
+            class="gallery-item__img"
+            loading="lazy"
+            width="576"
+            height="1024"
+          />
+          <div class="gallery-item__overlay" aria-hidden="true"></div>
+          <div class="gallery-item__play" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+              <polygon points="7,4 20,12 7,20"></polygon>
+            </svg>
+          </div>
+          <span class="gallery-item__duration">00:03</span>
+        </div>
+      </button>
+
+      <!-- Item 04: Vertical Rectangular (Span 2 rows) -->
+      <button
+        type="button"
+        class="gallery-item gallery-item--vertical"
+        data-video-src="assets/videos/balcony_view.mp4"
+        data-poster="assets/video_posters/balcony_view_poster.jpg"
+        data-orientation="portrait"
+        data-title="Balcony Balustrade &amp; Metallic Louvers"
+        data-duration="00:10"
+        aria-label="Play video: Balcony Balustrade &amp; Metallic Louvers"
+      >
+        <div class="gallery-item__media">
+          <img
+            src="assets/video_posters/balcony_view_poster.jpg"
+            alt="Balcony Balustrade &amp; Metallic Louvers"
+            class="gallery-item__img"
+            loading="lazy"
+            width="576"
+            height="1024"
+          />
+          <div class="gallery-item__overlay" aria-hidden="true"></div>
+          <div class="gallery-item__play" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+              <polygon points="7,4 20,12 7,20"></polygon>
+            </svg>
+          </div>
+          <span class="gallery-item__duration">00:10</span>
+        </div>
+      </button>
+
+      <!-- Item 05: Wide Landscape (Span 2 columns in row 2) -->
+      <button
+        type="button"
+        class="gallery-item gallery-item--wide"
+        data-video-src="assets/videos/sliding_door.mp4"
+        data-poster="assets/video_posters/sliding_door_poster.jpg"
+        data-orientation="landscape"
+        data-title="Precision Sliding Door Glide Test"
+        data-duration="00:10"
+        aria-label="Play video: Precision Sliding Door Glide Test"
+      >
+        <div class="gallery-item__media">
+          <img
+            src="assets/video_posters/sliding_door_poster.jpg"
+            alt="Precision Sliding Door Glide Test"
+            class="gallery-item__img"
+            loading="lazy"
+            width="1024"
+            height="576"
+          />
+          <div class="gallery-item__overlay" aria-hidden="true"></div>
+          <div class="gallery-item__play" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+              <polygon points="7,4 20,12 7,20"></polygon>
+            </svg>
+          </div>
+          <span class="gallery-item__duration">00:10</span>
+        </div>
+      </button>
+
+      <!-- Item 06: Vertical Rectangular (Span 2 rows) -->
+      <button
+        type="button"
+        class="gallery-item gallery-item--vertical"
+        data-video-src="assets/videos/roof_work.mp4"
+        data-poster="assets/video_posters/roof_work_poster.jpg"
+        data-orientation="portrait"
+        data-title="Glass Pergola Steel Framework"
+        data-duration="00:04"
+        aria-label="Play video: Glass Pergola Steel Framework"
+      >
+        <div class="gallery-item__media">
+          <img
+            src="assets/video_posters/roof_work_poster.jpg"
+            alt="Glass Pergola Steel Framework"
+            class="gallery-item__img"
+            loading="lazy"
+            width="576"
+            height="1024"
+          />
+          <div class="gallery-item__overlay" aria-hidden="true"></div>
+          <div class="gallery-item__play" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+              <polygon points="7,4 20,12 7,20"></polygon>
+            </svg>
+          </div>
+          <span class="gallery-item__duration">00:04</span>
+        </div>
+      </button>
+
+      <!-- Item 07: Square -->
+      <button
+        type="button"
+        class="gallery-item gallery-item--square"
+        data-video-src="assets/videos/stylish_gate_3.mp4"
+        data-poster="assets/video_posters/stylish_gate_3_poster.jpg"
+        data-orientation="portrait"
+        data-title="Boundary Gate &amp; Structural Posts"
+        data-duration="00:07"
+        aria-label="Play video: Boundary Gate &amp; Structural Posts"
+      >
+        <div class="gallery-item__media">
+          <img
+            src="assets/video_posters/stylish_gate_3_poster.jpg"
+            alt="Boundary Gate &amp; Structural Posts"
+            class="gallery-item__img"
+            loading="lazy"
+            width="576"
+            height="1024"
+          />
+          <div class="gallery-item__overlay" aria-hidden="true"></div>
+          <div class="gallery-item__play" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+              <polygon points="7,4 20,12 7,20"></polygon>
+            </svg>
+          </div>
+          <span class="gallery-item__duration">00:07</span>
+        </div>
+      </button>
+
+      <!-- Item 08: Square -->
+      <button
+        type="button"
+        class="gallery-item gallery-item--square"
+        data-video-src="assets/videos/exterior_work.mp4"
+        data-poster="assets/video_posters/exterior_work_poster.jpg"
+        data-orientation="portrait"
+        data-title="Villa Facade Steel Detailing"
+        data-duration="00:04"
+        aria-label="Play video: Villa Facade Steel Detailing"
+      >
+        <div class="gallery-item__media">
+          <img
+            src="assets/video_posters/exterior_work_poster.jpg"
+            alt="Villa Facade Steel Detailing"
+            class="gallery-item__img"
+            loading="lazy"
+            width="576"
+            height="1024"
+          />
+          <div class="gallery-item__overlay" aria-hidden="true"></div>
+          <div class="gallery-item__play" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+              <polygon points="7,4 20,12 7,20"></polygon>
+            </svg>
+          </div>
+          <span class="gallery-item__duration">00:04</span>
+        </div>
+      </button>
+
+      <!-- Item 09: Vertical Rectangular (Span 2 rows) -->
+      <button
+        type="button"
+        class="gallery-item gallery-item--vertical"
+        data-video-src="assets/videos/finished_exterior_2.mp4"
+        data-poster="assets/video_posters/finished_exterior_2_poster.jpg"
+        data-orientation="portrait"
+        data-title="Contemporary Villa Exterior"
+        data-duration="00:05"
+        aria-label="Play video: Contemporary Villa Exterior"
+      >
+        <div class="gallery-item__media">
+          <img
+            src="assets/video_posters/finished_exterior_2_poster.jpg"
+            alt="Contemporary Villa Exterior"
+            class="gallery-item__img"
+            loading="lazy"
+            width="576"
+            height="1024"
+          />
+          <div class="gallery-item__overlay" aria-hidden="true"></div>
+          <div class="gallery-item__play" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+              <polygon points="7,4 20,12 7,20"></polygon>
+            </svg>
+          </div>
+          <span class="gallery-item__duration">00:05</span>
+        </div>
+      </button>
+
+      <!-- Item 10: Wide Landscape (Span 2 columns in row 4) -->
+      <button
+        type="button"
+        class="gallery-item gallery-item--wide"
+        data-video-src="assets/videos/finished_exterior_3.mp4"
+        data-poster="assets/video_posters/finished_exterior_3_poster.jpg"
+        data-orientation="portrait"
+        data-title="Architectural Site Overview"
+        data-duration="00:08"
+        aria-label="Play video: Architectural Site Overview"
+      >
+        <div class="gallery-item__media">
+          <img
+            src="assets/video_posters/finished_exterior_3_poster.jpg"
+            alt="Architectural Site Overview"
+            class="gallery-item__img"
+            loading="lazy"
+            width="464"
+            height="832"
+          />
+          <div class="gallery-item__overlay" aria-hidden="true"></div>
+          <div class="gallery-item__play" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+              <polygon points="7,4 20,12 7,20"></polygon>
+            </svg>
+          </div>
+          <span class="gallery-item__duration">00:08</span>
+        </div>
+      </button>
+
+    </div>
+  </div>
+</section>
+
 
       <!-- ======================================================================
          06 — SELECTED ARCHITECTURAL WORKS (EDITORIAL GALLERY)
@@ -2122,6 +2030,139 @@
             <span>Discuss Similar Project</span>
             <span class="btn__icon" aria-hidden="true">↗</span>
           </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================================================
+       13 — VIDEO SHOWCASE FULLSCREEN MODAL OVERLAY
+       ======================================================================== -->
+    <div
+      class="video-modal"
+      id="videoModal"
+      role="dialog"
+      aria-modal="true"
+      aria-hidden="true"
+      aria-label="Fabrication Video Player"
+    >
+      <div class="video-modal__backdrop" aria-hidden="true"></div>
+
+      <button
+        type="button"
+        class="video-modal__close"
+        id="modalCloseBtn"
+        aria-label="Close video player"
+      >
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="video-modal__dialog">
+        <div class="video-modal__ambient" id="modalAmbient" aria-hidden="true"></div>
+
+        <div class="video-modal__viewport" id="modalViewport" data-orientation="portrait">
+          <video
+            class="video-modal__video"
+            id="modalVideo"
+            playsinline
+            webkit-playsinline
+            muted
+            preload="auto"
+          ></video>
+
+          <button
+            type="button"
+            class="video-modal__center-toggle"
+            id="modalCenterToggle"
+            aria-label="Toggle playback"
+          >
+            <svg class="icon-play" viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+              <polygon points="6,4 20,12 6,20"></polygon>
+            </svg>
+            <svg class="icon-pause" viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+              <rect x="5" y="4" width="4" height="16"></rect>
+              <rect x="15" y="4" width="4" height="16"></rect>
+            </svg>
+          </button>
+
+          <div class="video-modal__controls">
+            <div
+              class="modal-scrubber"
+              id="modalScrubber"
+              role="slider"
+              aria-label="Video scrubber"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow="0"
+              tabindex="0"
+            >
+              <div class="modal-scrubber__buffered" id="modalBuffered"></div>
+              <div class="modal-scrubber__progress" id="modalProgress">
+                <span class="modal-scrubber__handle"></span>
+              </div>
+            </div>
+
+            <div class="modal-controls__row">
+              <div class="modal-controls__left">
+                <button
+                  type="button"
+                  class="modal-btn"
+                  id="modalPlayBtn"
+                  aria-label="Play or pause video"
+                >
+                  <svg class="icon-play" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <polygon points="6,4 20,12 6,20"></polygon>
+                  </svg>
+                  <svg class="icon-pause" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <rect x="5" y="4" width="4" height="16"></rect>
+                    <rect x="15" y="4" width="4" height="16"></rect>
+                  </svg>
+                </button>
+
+                <button
+                  type="button"
+                  class="modal-btn is-muted"
+                  id="modalMuteBtn"
+                  aria-label="Unmute audio"
+                >
+                  <svg class="icon-vol" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                  </svg>
+                  <svg class="icon-muted" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                    <line x1="23" y1="9" x2="17" y2="15"></line>
+                    <line x1="17" y1="9" x2="23" y2="15"></line>
+                  </svg>
+                </button>
+
+                <div class="modal-timecode">
+                  <span id="modalCurrentTime">00:00</span>
+                  <span class="modal-timecode__sep">/</span>
+                  <span id="modalTotalDuration">00:00</span>
+                </div>
+              </div>
+
+              <div class="modal-controls__right">
+                <button
+                  type="button"
+                  class="modal-btn"
+                  id="modalFullscreenBtn"
+                  aria-label="Toggle fullscreen"
+                >
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="video-modal__title-bar">
+          <span class="video-modal__title" id="modalVideoTitle">Fabrication Showcase</span>
         </div>
       </div>
     </div>
