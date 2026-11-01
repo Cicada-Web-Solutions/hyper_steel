@@ -551,62 +551,213 @@
           </div>
 
           <div class="video-player-container">
+            <!-- Main Video Stage with Custom Minimalist Controls -->
             <div class="main-video">
-              <div class="video">
+              <div class="main-video__screen" id="mainVideoScreen">
                 <video
+                  id="mainPlayerVideo"
                   src="assets/videos/balcony_view.mp4"
                   poster="assets/video_posters/balcony_view_poster.jpg"
-                  controls
                   muted
                   autoplay
+                  loop
                   playsinline
                   webkit-playsinline
                   preload="metadata"
                 ></video>
-                <h3 class="title">Balcony View</h3>
+
+                <!-- Center Play/Pause Indicator -->
+                <button
+                  type="button"
+                  class="video-play-center"
+                  id="videoPlayCenter"
+                  aria-label="Toggle video playback"
+                >
+                  <svg class="icon-play" viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+                    <polygon points="6,4 20,12 6,20"></polygon>
+                  </svg>
+                  <svg class="icon-pause" viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+                    <rect x="5" y="4" width="4" height="16"></rect>
+                    <rect x="15" y="4" width="4" height="16"></rect>
+                  </svg>
+                </button>
+
+                <!-- Minimalist Custom Controls Overlay -->
+                <div class="video-controls" id="videoControls">
+                  <!-- Scrubber Bar -->
+                  <div
+                    class="video-scrubber"
+                    id="videoScrubber"
+                    role="slider"
+                    aria-label="Video timeline progress"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                    aria-valuenow="0"
+                    tabindex="0"
+                  >
+                    <div class="video-scrubber__buffered" id="videoBuffered"></div>
+                    <div class="video-scrubber__progress" id="videoProgress">
+                      <span class="video-scrubber__handle"></span>
+                    </div>
+                  </div>
+
+                  <!-- Control Buttons Row -->
+                  <div class="video-controls__bar">
+                    <div class="video-controls__left">
+                      <button
+                        type="button"
+                        class="video-ctrl-btn"
+                        id="videoPlayBtn"
+                        aria-label="Pause video"
+                      >
+                        <svg class="icon-play" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                          <polygon points="6,4 20,12 6,20"></polygon>
+                        </svg>
+                        <svg class="icon-pause" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                          <rect x="5" y="4" width="4" height="16"></rect>
+                          <rect x="15" y="4" width="4" height="16"></rect>
+                        </svg>
+                      </button>
+
+                      <div class="video-timecode">
+                        <span id="videoCurrentTime">00:00</span>
+                        <span class="video-timecode__sep">/</span>
+                        <span id="videoDuration">00:00</span>
+                      </div>
+
+                      <div class="video-mute-badge" title="Audio permanently muted for silent architectural presentation">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                          <line x1="23" y1="9" x2="17" y2="15"></line>
+                          <line x1="17" y1="9" x2="23" y2="15"></line>
+                        </svg>
+                        <span>Muted</span>
+                      </div>
+                    </div>
+
+                    <div class="video-controls__right">
+                      <button
+                        type="button"
+                        class="video-ctrl-btn"
+                        id="videoFullscreenBtn"
+                        aria-label="Toggle fullscreen"
+                      >
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Main Video Information Header -->
+              <div class="main-video__info">
+                <h3 class="title" id="mainVideoTitle">Cantilever Balcony Railing &amp; Glass Elevation</h3>
+                <p class="subheading" id="mainVideoSubheading">Sleek architectural steel balustrade with toughened glass panels overlooking courtyard.</p>
               </div>
             </div>
 
+            <!-- Scrollable Video Playlist Sidebar -->
             <div class="video-list" role="list" aria-label="Video playlist">
-              <div class="vid active" role="button" tabindex="0" aria-label="Play Balcony View">
-                <video src="assets/videos/balcony_view.mp4" poster="assets/video_posters/balcony_view_poster.jpg" muted preload="none"></video>
-                <h3 class="title">Balcony View</h3>
+              <div class="vid active" role="button" tabindex="0" aria-label="Play Cantilever Balcony Railing &amp; Glass Elevation">
+                <div class="vid-thumb">
+                  <video src="assets/videos/balcony_view.mp4" poster="assets/video_posters/balcony_view_poster.jpg" muted preload="none"></video>
+                </div>
+                <div class="vid-info">
+                  <h4 class="title">Cantilever Balcony Railing &amp; Glass Elevation</h4>
+                  <p class="subheading">Sleek architectural steel balustrade with toughened glass panels overlooking courtyard.</p>
+                </div>
               </div>
-              <div class="vid" role="button" tabindex="0" aria-label="Play Exterior Work">
-                <video src="assets/videos/exterior_work.mp4" poster="assets/video_posters/exterior_work_poster.jpg" muted preload="none"></video>
-                <h3 class="title">Exterior Work</h3>
+
+              <div class="vid" role="button" tabindex="0" aria-label="Play Architectural Facade Structural Fitting">
+                <div class="vid-thumb">
+                  <video src="assets/videos/exterior_work.mp4" poster="assets/video_posters/exterior_work_poster.jpg" muted preload="none"></video>
+                </div>
+                <div class="vid-info">
+                  <h4 class="title">Architectural Facade Structural Fitting</h4>
+                  <p class="subheading">On-site structural alignment and precision fitting of architectural steel facade cladding.</p>
+                </div>
               </div>
-              <div class="vid" role="button" tabindex="0" aria-label="Play Finished Exterior 2">
-                <video src="assets/videos/finished_exterior_2.mp4" poster="assets/video_posters/finished_exterior_2_poster.jpg" muted preload="none"></video>
-                <h3 class="title">Finished Exterior 2</h3>
+
+              <div class="vid" role="button" tabindex="0" aria-label="Play Finished Villa Steel Elevation">
+                <div class="vid-thumb">
+                  <video src="assets/videos/finished_exterior_2.mp4" poster="assets/video_posters/finished_exterior_2_poster.jpg" muted preload="none"></video>
+                </div>
+                <div class="vid-info">
+                  <h4 class="title">Finished Villa Steel Elevation</h4>
+                  <p class="subheading">Comprehensive contemporary residential steel installation with boundary gates and balustrades.</p>
+                </div>
               </div>
-              <div class="vid" role="button" tabindex="0" aria-label="Play Finished Exterior 3">
-                <video src="assets/videos/finished_exterior_3.mp4" poster="assets/video_posters/finished_exterior_3_poster.jpg" muted preload="none"></video>
-                <h3 class="title">Finished Exterior 3</h3>
+
+              <div class="vid" role="button" tabindex="0" aria-label="Play Architectural Residence Vertical Elevation">
+                <div class="vid-thumb">
+                  <video src="assets/videos/finished_exterior_3.mp4" poster="assets/video_posters/finished_exterior_3_poster.jpg" muted preload="none"></video>
+                </div>
+                <div class="vid-info">
+                  <h4 class="title">Architectural Residence Vertical Elevation</h4>
+                  <p class="subheading">Multi-level luxury villa metalwork showing integrated exterior steel details.</p>
+                </div>
               </div>
-              <div class="vid" role="button" tabindex="0" aria-label="Play Metal Gate Showcase">
-                <video src="assets/videos/metal_gate_showcase.mp4" poster="assets/video_posters/metal_gate_showcase_poster.jpg" muted preload="none"></video>
-                <h3 class="title">Metal Gate Showcase</h3>
+
+              <div class="vid" role="button" tabindex="0" aria-label="Play Laser-Cut Botanical Screen Showcase">
+                <div class="vid-thumb">
+                  <video src="assets/videos/metal_gate_showcase.mp4" poster="assets/video_posters/metal_gate_showcase_poster.jpg" muted preload="none"></video>
+                </div>
+                <div class="vid-info">
+                  <h4 class="title">Laser-Cut Botanical Screen Showcase</h4>
+                  <p class="subheading">CNC laser cut botanical steel motif with mirror stainless insert backing.</p>
+                </div>
               </div>
-              <div class="vid" role="button" tabindex="0" aria-label="Play Roof Work">
-                <video src="assets/videos/roof_work.mp4" poster="assets/video_posters/roof_work_poster.jpg" muted preload="none"></video>
-                <h3 class="title">Roof Work</h3>
+
+              <div class="vid" role="button" tabindex="0" aria-label="Play Structural Steel Roof Framework &amp; Trusses">
+                <div class="vid-thumb">
+                  <video src="assets/videos/roof_work.mp4" poster="assets/video_posters/roof_work_poster.jpg" muted preload="none"></video>
+                </div>
+                <div class="vid-info">
+                  <h4 class="title">Structural Steel Roof Framework &amp; Trusses</h4>
+                  <p class="subheading">Heavy-gauge fabricated steel roof beams and weather-sealed framework engineered for high spans.</p>
+                </div>
               </div>
-              <div class="vid" role="button" tabindex="0" aria-label="Play Sliding Door">
-                <video src="assets/videos/sliding_door.mp4" poster="assets/video_posters/sliding_door_poster.jpg" muted preload="none"></video>
-                <h3 class="title">Sliding Door</h3>
+
+              <div class="vid" role="button" tabindex="0" aria-label="Play Multi-Track Sliding Steel Grille Door">
+                <div class="vid-thumb">
+                  <video src="assets/videos/sliding_door.mp4" poster="assets/video_posters/sliding_door_poster.jpg" muted preload="none"></video>
+                </div>
+                <div class="vid-info">
+                  <h4 class="title">Multi-Track Sliding Steel Grille Door</h4>
+                  <p class="subheading">Smooth effortless glide mechanism tested in front of architectural spiral stair.</p>
+                </div>
               </div>
-              <div class="vid" role="button" tabindex="0" aria-label="Play Stylish Door">
-                <video src="assets/videos/stylish_door.mp4" poster="assets/video_posters/stylish_door_poster.jpg" muted preload="none"></video>
-                <h3 class="title">Stylish Door</h3>
+
+              <div class="vid" role="button" tabindex="0" aria-label="Play Matte Black Louvered Architectural Entrance">
+                <div class="vid-thumb">
+                  <video src="assets/videos/stylish_door.mp4" poster="assets/video_posters/stylish_door_poster.jpg" muted preload="none"></video>
+                </div>
+                <div class="vid-info">
+                  <h4 class="title">Matte Black Louvered Architectural Entrance</h4>
+                  <p class="subheading">Cinematic reveal of a precision-engineered multi-panel black steel pivot entrance door.</p>
+                </div>
               </div>
-              <div class="vid" role="button" tabindex="0" aria-label="Play Stylish Gate 2">
-                <video src="assets/videos/stylish_gate_2.mp4" poster="assets/video_posters/stylish_gate_2_poster.jpg" muted preload="none"></video>
-                <h3 class="title">Stylish Gate 2</h3>
+
+              <div class="vid" role="button" tabindex="0" aria-label="Play Motorized Louvered Boundary Gate">
+                <div class="vid-thumb">
+                  <video src="assets/videos/stylish_gate_2.mp4" poster="assets/video_posters/stylish_gate_2_poster.jpg" muted preload="none"></video>
+                </div>
+                <div class="vid-info">
+                  <h4 class="title">Motorized Louvered Boundary Gate</h4>
+                  <p class="subheading">Automated gate sliding glide operation with integrated safety sensors and quiet motor drive.</p>
+                </div>
               </div>
-              <div class="vid" role="button" tabindex="0" aria-label="Play Stylish Gate 3">
-                <video src="assets/videos/stylish_gate_3.mp4" poster="assets/video_posters/stylish_gate_3_poster.jpg" muted preload="none"></video>
-                <h3 class="title">Stylish Gate 3</h3>
+
+              <div class="vid" role="button" tabindex="0" aria-label="Play Heavy Architectural Compound Gate">
+                <div class="vid-thumb">
+                  <video src="assets/videos/stylish_gate_3.mp4" poster="assets/video_posters/stylish_gate_3_poster.jpg" muted preload="none"></video>
+                </div>
+                <div class="vid-info">
+                  <h4 class="title">Heavy Architectural Compound Gate</h4>
+                  <p class="subheading">Smooth cantilever movement of heavy-duty steel and timber composite gate.</p>
+                </div>
               </div>
             </div>
           </div>
