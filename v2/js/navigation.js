@@ -12,7 +12,6 @@ export function initNavigation() {
   const desktopLinks = Array.from(document.querySelectorAll('.site-nav__link'));
   const mobileLinks = Array.from(document.querySelectorAll('.mobile-drawer__link'));
   const allNavLinks = [...desktopLinks, ...mobileLinks];
-  const backToTopBtn = document.querySelector('.back-to-top');
   const heroSection = document.querySelector('#hero');
 
   // Tracked sections and their navbar href mappings.
@@ -135,7 +134,7 @@ export function initNavigation() {
     }
   }
 
-  // Header background appearance and back-to-top visibility
+  // Header background appearance
   function handleScroll() {
     const scrollY = (window.lenis && typeof window.lenis.scroll === 'number')
       ? window.lenis.scroll
@@ -242,16 +241,6 @@ export function initNavigation() {
         }
       }
     });
-  });
-
-  // Back-to-top click handler
-  backToTopBtn?.addEventListener('click', () => {
-    forceActiveNav('#hero');
-    if (window.lenis) {
-      window.lenis.scrollTo(0, { duration: 0.9 });
-    } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
   });
 
   // Initial calculation on load

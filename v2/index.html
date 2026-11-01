@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Hyper Steel Fabrication — Premium architectural steel in Madurai, Tamil Nadu. Bespoke doors, automated gates, floating staircases, helical stairs, canopies, and architectural metalwork."
+      content="Hyper Steel Innovation — Premium architectural steel in Madurai, Tamil Nadu. Bespoke doors, automated gates, floating staircases, helical stairs, canopies, and architectural metalwork."
     />
     <meta name="theme-color" content="#000000" />
 
@@ -45,16 +45,15 @@
     <header class="site-header" role="banner">
       <div class="container">
         <div class="site-header__inner">
-          <!-- Brand Mark: Vector SVG with C Symbol Preserved + Business Name -->
-          <a href="#hero" class="brand-logo" aria-label="Hyper Steel Home">
+          <!-- Brand Mark: Vector SVG with Emblem and Innovation Brand Name -->
+          <a href="#hero" class="brand-logo" aria-label="Hyper Steel Innovation Home">
             <img
-              src="assets/logo_vector.svg"
-              alt="Hyper Steel Logo"
+              src="assets/logo_v2.svg"
+              alt="Hyper Steel Innovation Logo"
               class="brand-logo__img"
-              width="46"
-              height="46"
+              width="180"
+              height="54"
             />
-            <span class="brand-logo__text">HYPER STEEL</span>
           </a>
 
           <!-- Desktop Navigation: Exactly 5 items with automatic active state -->
@@ -106,6 +105,17 @@
       aria-modal="true"
       aria-label="Navigation Menu"
     >
+      <button
+        type="button"
+        class="mobile-drawer__close"
+        aria-label="Close navigation menu"
+      >
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
       <nav class="mobile-drawer__nav">
         <a href="#hero" class="mobile-drawer__link is-active">Home</a>
         <a href="#craft" class="mobile-drawer__link">Craft</a>
@@ -527,316 +537,81 @@
       <!-- ======================================================================
          05 — VIDEO SHOWCASE: FABRICATION IN MOTION
          ====================================================================== -->
-      
-<section class="work-gallery" id="craft-videos" aria-label="Gallery">
-  <div class="container work-gallery__container">
-    <h2 class="work-gallery__title">Gallery</h2>
-
-    <div class="work-gallery__grid">
-
-      <!-- Item 01: Vertical Rectangular (Span 2 rows) -->
-      <button
-        type="button"
-        class="gallery-item gallery-item--vertical"
-        data-video-src="assets/videos/stylish_door.mp4"
-        data-poster="assets/video_posters/stylish_door_poster.jpg"
-        data-orientation="portrait"
-        data-title="Architectural Entrance Door"
-        data-duration="00:09"
-        aria-label="Play video: Architectural Entrance Door"
+      <section
+        id="craft-videos"
+        class="video-player-section"
+        aria-label="Fabrication Video Showcase"
       >
-        <div class="gallery-item__media">
-          <img
-            src="assets/video_posters/stylish_door_poster.jpg"
-            alt="Architectural Entrance Door"
-            class="gallery-item__img"
-            loading="lazy"
-            width="576"
-            height="1024"
-          />
-          <div class="gallery-item__overlay" aria-hidden="true"></div>
-          <div class="gallery-item__play" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-              <polygon points="7,4 20,12 7,20"></polygon>
-            </svg>
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Fabrication in Motion.</h2>
+            <p class="section-lead">
+              Watch our bespoke gates, architectural doors, and structural metalwork in operation. Select any video from the playlist to inspect craftsmanship.
+            </p>
           </div>
-          <span class="gallery-item__duration">00:09</span>
-        </div>
-      </button>
 
-      <!-- Item 02: Square -->
-      <button
-        type="button"
-        class="gallery-item gallery-item--square"
-        data-video-src="assets/videos/metal_gate_showcase.mp4"
-        data-poster="assets/video_posters/metal_gate_showcase_poster.jpg"
-        data-orientation="portrait"
-        data-title="Laser-Cut Compound Gate"
-        data-duration="00:04"
-        aria-label="Play video: Laser-Cut Compound Gate"
-      >
-        <div class="gallery-item__media">
-          <img
-            src="assets/video_posters/metal_gate_showcase_poster.jpg"
-            alt="Laser-Cut Compound Gate"
-            class="gallery-item__img"
-            loading="lazy"
-            width="576"
-            height="1024"
-          />
-          <div class="gallery-item__overlay" aria-hidden="true"></div>
-          <div class="gallery-item__play" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-              <polygon points="7,4 20,12 7,20"></polygon>
-            </svg>
+          <div class="video-player-container">
+            <div class="main-video">
+              <div class="video">
+                <video
+                  src="assets/videos/balcony_view.mp4"
+                  poster="assets/video_posters/balcony_view_poster.jpg"
+                  controls
+                  muted
+                  autoplay
+                  playsinline
+                  webkit-playsinline
+                  preload="metadata"
+                ></video>
+                <h3 class="title">Balcony View</h3>
+              </div>
+            </div>
+
+            <div class="video-list" role="list" aria-label="Video playlist">
+              <div class="vid active" role="button" tabindex="0" aria-label="Play Balcony View">
+                <video src="assets/videos/balcony_view.mp4" poster="assets/video_posters/balcony_view_poster.jpg" muted preload="none"></video>
+                <h3 class="title">Balcony View</h3>
+              </div>
+              <div class="vid" role="button" tabindex="0" aria-label="Play Exterior Work">
+                <video src="assets/videos/exterior_work.mp4" poster="assets/video_posters/exterior_work_poster.jpg" muted preload="none"></video>
+                <h3 class="title">Exterior Work</h3>
+              </div>
+              <div class="vid" role="button" tabindex="0" aria-label="Play Finished Exterior 2">
+                <video src="assets/videos/finished_exterior_2.mp4" poster="assets/video_posters/finished_exterior_2_poster.jpg" muted preload="none"></video>
+                <h3 class="title">Finished Exterior 2</h3>
+              </div>
+              <div class="vid" role="button" tabindex="0" aria-label="Play Finished Exterior 3">
+                <video src="assets/videos/finished_exterior_3.mp4" poster="assets/video_posters/finished_exterior_3_poster.jpg" muted preload="none"></video>
+                <h3 class="title">Finished Exterior 3</h3>
+              </div>
+              <div class="vid" role="button" tabindex="0" aria-label="Play Metal Gate Showcase">
+                <video src="assets/videos/metal_gate_showcase.mp4" poster="assets/video_posters/metal_gate_showcase_poster.jpg" muted preload="none"></video>
+                <h3 class="title">Metal Gate Showcase</h3>
+              </div>
+              <div class="vid" role="button" tabindex="0" aria-label="Play Roof Work">
+                <video src="assets/videos/roof_work.mp4" poster="assets/video_posters/roof_work_poster.jpg" muted preload="none"></video>
+                <h3 class="title">Roof Work</h3>
+              </div>
+              <div class="vid" role="button" tabindex="0" aria-label="Play Sliding Door">
+                <video src="assets/videos/sliding_door.mp4" poster="assets/video_posters/sliding_door_poster.jpg" muted preload="none"></video>
+                <h3 class="title">Sliding Door</h3>
+              </div>
+              <div class="vid" role="button" tabindex="0" aria-label="Play Stylish Door">
+                <video src="assets/videos/stylish_door.mp4" poster="assets/video_posters/stylish_door_poster.jpg" muted preload="none"></video>
+                <h3 class="title">Stylish Door</h3>
+              </div>
+              <div class="vid" role="button" tabindex="0" aria-label="Play Stylish Gate 2">
+                <video src="assets/videos/stylish_gate_2.mp4" poster="assets/video_posters/stylish_gate_2_poster.jpg" muted preload="none"></video>
+                <h3 class="title">Stylish Gate 2</h3>
+              </div>
+              <div class="vid" role="button" tabindex="0" aria-label="Play Stylish Gate 3">
+                <video src="assets/videos/stylish_gate_3.mp4" poster="assets/video_posters/stylish_gate_3_poster.jpg" muted preload="none"></video>
+                <h3 class="title">Stylish Gate 3</h3>
+              </div>
+            </div>
           </div>
-          <span class="gallery-item__duration">00:04</span>
         </div>
-      </button>
-
-      <!-- Item 03: Square -->
-      <button
-        type="button"
-        class="gallery-item gallery-item--square"
-        data-video-src="assets/videos/stylish_gate_2.mp4"
-        data-poster="assets/video_posters/stylish_gate_2_poster.jpg"
-        data-orientation="portrait"
-        data-title="Double-Swing Gate Movement Test"
-        data-duration="00:03"
-        aria-label="Play video: Double-Swing Gate Movement Test"
-      >
-        <div class="gallery-item__media">
-          <img
-            src="assets/video_posters/stylish_gate_2_poster.jpg"
-            alt="Double-Swing Gate Movement Test"
-            class="gallery-item__img"
-            loading="lazy"
-            width="576"
-            height="1024"
-          />
-          <div class="gallery-item__overlay" aria-hidden="true"></div>
-          <div class="gallery-item__play" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-              <polygon points="7,4 20,12 7,20"></polygon>
-            </svg>
-          </div>
-          <span class="gallery-item__duration">00:03</span>
-        </div>
-      </button>
-
-      <!-- Item 04: Vertical Rectangular (Span 2 rows) -->
-      <button
-        type="button"
-        class="gallery-item gallery-item--vertical"
-        data-video-src="assets/videos/balcony_view.mp4"
-        data-poster="assets/video_posters/balcony_view_poster.jpg"
-        data-orientation="portrait"
-        data-title="Balcony Balustrade &amp; Metallic Louvers"
-        data-duration="00:10"
-        aria-label="Play video: Balcony Balustrade &amp; Metallic Louvers"
-      >
-        <div class="gallery-item__media">
-          <img
-            src="assets/video_posters/balcony_view_poster.jpg"
-            alt="Balcony Balustrade &amp; Metallic Louvers"
-            class="gallery-item__img"
-            loading="lazy"
-            width="576"
-            height="1024"
-          />
-          <div class="gallery-item__overlay" aria-hidden="true"></div>
-          <div class="gallery-item__play" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-              <polygon points="7,4 20,12 7,20"></polygon>
-            </svg>
-          </div>
-          <span class="gallery-item__duration">00:10</span>
-        </div>
-      </button>
-
-      <!-- Item 05: Wide Landscape (Span 2 columns in row 2) -->
-      <button
-        type="button"
-        class="gallery-item gallery-item--wide"
-        data-video-src="assets/videos/sliding_door.mp4"
-        data-poster="assets/video_posters/sliding_door_poster.jpg"
-        data-orientation="landscape"
-        data-title="Precision Sliding Door Glide Test"
-        data-duration="00:10"
-        aria-label="Play video: Precision Sliding Door Glide Test"
-      >
-        <div class="gallery-item__media">
-          <img
-            src="assets/video_posters/sliding_door_poster.jpg"
-            alt="Precision Sliding Door Glide Test"
-            class="gallery-item__img"
-            loading="lazy"
-            width="1024"
-            height="576"
-          />
-          <div class="gallery-item__overlay" aria-hidden="true"></div>
-          <div class="gallery-item__play" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-              <polygon points="7,4 20,12 7,20"></polygon>
-            </svg>
-          </div>
-          <span class="gallery-item__duration">00:10</span>
-        </div>
-      </button>
-
-      <!-- Item 06: Vertical Rectangular (Span 2 rows) -->
-      <button
-        type="button"
-        class="gallery-item gallery-item--vertical"
-        data-video-src="assets/videos/roof_work.mp4"
-        data-poster="assets/video_posters/roof_work_poster.jpg"
-        data-orientation="portrait"
-        data-title="Glass Pergola Steel Framework"
-        data-duration="00:04"
-        aria-label="Play video: Glass Pergola Steel Framework"
-      >
-        <div class="gallery-item__media">
-          <img
-            src="assets/video_posters/roof_work_poster.jpg"
-            alt="Glass Pergola Steel Framework"
-            class="gallery-item__img"
-            loading="lazy"
-            width="576"
-            height="1024"
-          />
-          <div class="gallery-item__overlay" aria-hidden="true"></div>
-          <div class="gallery-item__play" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-              <polygon points="7,4 20,12 7,20"></polygon>
-            </svg>
-          </div>
-          <span class="gallery-item__duration">00:04</span>
-        </div>
-      </button>
-
-      <!-- Item 07: Square -->
-      <button
-        type="button"
-        class="gallery-item gallery-item--square"
-        data-video-src="assets/videos/stylish_gate_3.mp4"
-        data-poster="assets/video_posters/stylish_gate_3_poster.jpg"
-        data-orientation="portrait"
-        data-title="Boundary Gate &amp; Structural Posts"
-        data-duration="00:07"
-        aria-label="Play video: Boundary Gate &amp; Structural Posts"
-      >
-        <div class="gallery-item__media">
-          <img
-            src="assets/video_posters/stylish_gate_3_poster.jpg"
-            alt="Boundary Gate &amp; Structural Posts"
-            class="gallery-item__img"
-            loading="lazy"
-            width="576"
-            height="1024"
-          />
-          <div class="gallery-item__overlay" aria-hidden="true"></div>
-          <div class="gallery-item__play" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-              <polygon points="7,4 20,12 7,20"></polygon>
-            </svg>
-          </div>
-          <span class="gallery-item__duration">00:07</span>
-        </div>
-      </button>
-
-      <!-- Item 08: Square -->
-      <button
-        type="button"
-        class="gallery-item gallery-item--square"
-        data-video-src="assets/videos/exterior_work.mp4"
-        data-poster="assets/video_posters/exterior_work_poster.jpg"
-        data-orientation="portrait"
-        data-title="Villa Facade Steel Detailing"
-        data-duration="00:04"
-        aria-label="Play video: Villa Facade Steel Detailing"
-      >
-        <div class="gallery-item__media">
-          <img
-            src="assets/video_posters/exterior_work_poster.jpg"
-            alt="Villa Facade Steel Detailing"
-            class="gallery-item__img"
-            loading="lazy"
-            width="576"
-            height="1024"
-          />
-          <div class="gallery-item__overlay" aria-hidden="true"></div>
-          <div class="gallery-item__play" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-              <polygon points="7,4 20,12 7,20"></polygon>
-            </svg>
-          </div>
-          <span class="gallery-item__duration">00:04</span>
-        </div>
-      </button>
-
-      <!-- Item 09: Vertical Rectangular (Span 2 rows) -->
-      <button
-        type="button"
-        class="gallery-item gallery-item--vertical"
-        data-video-src="assets/videos/finished_exterior_2.mp4"
-        data-poster="assets/video_posters/finished_exterior_2_poster.jpg"
-        data-orientation="portrait"
-        data-title="Contemporary Villa Exterior"
-        data-duration="00:05"
-        aria-label="Play video: Contemporary Villa Exterior"
-      >
-        <div class="gallery-item__media">
-          <img
-            src="assets/video_posters/finished_exterior_2_poster.jpg"
-            alt="Contemporary Villa Exterior"
-            class="gallery-item__img"
-            loading="lazy"
-            width="576"
-            height="1024"
-          />
-          <div class="gallery-item__overlay" aria-hidden="true"></div>
-          <div class="gallery-item__play" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-              <polygon points="7,4 20,12 7,20"></polygon>
-            </svg>
-          </div>
-          <span class="gallery-item__duration">00:05</span>
-        </div>
-      </button>
-
-      <!-- Item 10: Wide Landscape (Span 2 columns in row 4) -->
-      <button
-        type="button"
-        class="gallery-item gallery-item--wide"
-        data-video-src="assets/videos/finished_exterior_3.mp4"
-        data-poster="assets/video_posters/finished_exterior_3_poster.jpg"
-        data-orientation="portrait"
-        data-title="Architectural Site Overview"
-        data-duration="00:08"
-        aria-label="Play video: Architectural Site Overview"
-      >
-        <div class="gallery-item__media">
-          <img
-            src="assets/video_posters/finished_exterior_3_poster.jpg"
-            alt="Architectural Site Overview"
-            class="gallery-item__img"
-            loading="lazy"
-            width="464"
-            height="832"
-          />
-          <div class="gallery-item__overlay" aria-hidden="true"></div>
-          <div class="gallery-item__play" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-              <polygon points="7,4 20,12 7,20"></polygon>
-            </svg>
-          </div>
-          <span class="gallery-item__duration">00:08</span>
-        </div>
-      </button>
-
-    </div>
-  </div>
-</section>
+      </section>
 
 
       <!-- ======================================================================
@@ -1748,8 +1523,8 @@
                   ></path>
                   <polyline points="22,6 12,13 2,6"></polyline>
                 </svg>
-                <a href="mailto:hypersteelfabrication@gmail.com"
-                  >hypersteelfabrication@gmail.com</a
+                <a href="mailto:hypersteelmdu@gmail.com"
+                  >hypersteelmdu@gmail.com</a
                 >
               </div>
 
@@ -1792,7 +1567,7 @@
                 allowfullscreen=""
                 loading="lazy"
                 referrerpolicy="strict-origin-when-cross-origin"
-                title="Hyper Steel Fabrication Madurai Location"
+                title="Hyper Steel Innovation Madurai Location"
               >
               </iframe>
             </div>
@@ -1801,7 +1576,7 @@
 
         <div class="footer-bottom">
           <div>
-            &copy; 2026 Hyper Steel Fabrication. All rights reserved. Madurai,
+            &copy; 2026 Hyper Steel Innovation. All rights reserved. Madurai,
             Tamil Nadu.
           </div>
           <div class="footer-attribution">Made by Cicada Web Solutions</div>
@@ -1810,8 +1585,30 @@
     </footer>
 
     <!-- ========================================================================
-       09 — FLOATING WHATSAPP BUTTON (FIXED BOTTOM-RIGHT)
+       09 — FLOATING ACTION BUTTONS (FIXED BOTTOM-RIGHT)
        ======================================================================== -->
+    <!-- Floating Instagram Button (Above WhatsApp) -->
+    <a
+      href="https://www.instagram.com/hyper_steel_innovation_mdu/"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="floating-instagram"
+      aria-label="Follow Hyper Steel on Instagram"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        width="26"
+        height="26"
+        fill="currentColor"
+        aria-hidden="true"
+      >
+        <path
+          d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+        />
+      </svg>
+    </a>
+
+    <!-- Floating WhatsApp Button -->
     <a
       href="https://wa.me/919944020815"
       target="_blank"
@@ -1831,24 +1628,6 @@
         />
       </svg>
     </a>
-
-    <!-- ========================================================================
-       10 — BACK TO TOP FLOATING BUTTON
-       ======================================================================== -->
-    <button type="button" class="back-to-top" aria-label="Back to top">
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        aria-hidden="true"
-      >
-        <line x1="12" y1="19" x2="12" y2="5"></line>
-        <polyline points="5 12 12 5 19 12"></polyline>
-      </svg>
-    </button>
 
     <!-- ========================================================================
        11 — PROJECT CONSULTATION MODAL
@@ -2034,138 +1813,7 @@
       </div>
     </div>
 
-    <!-- ========================================================================
-       13 — VIDEO SHOWCASE FULLSCREEN MODAL OVERLAY
-       ======================================================================== -->
-    <div
-      class="video-modal"
-      id="videoModal"
-      role="dialog"
-      aria-modal="true"
-      aria-hidden="true"
-      aria-label="Fabrication Video Player"
-    >
-      <div class="video-modal__backdrop" aria-hidden="true"></div>
 
-      <button
-        type="button"
-        class="video-modal__close"
-        id="modalCloseBtn"
-        aria-label="Close video player"
-      >
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
-      </button>
-
-      <div class="video-modal__dialog">
-        <div class="video-modal__ambient" id="modalAmbient" aria-hidden="true"></div>
-
-        <div class="video-modal__viewport" id="modalViewport" data-orientation="portrait">
-          <video
-            class="video-modal__video"
-            id="modalVideo"
-            playsinline
-            webkit-playsinline
-            muted
-            preload="auto"
-          ></video>
-
-          <button
-            type="button"
-            class="video-modal__center-toggle"
-            id="modalCenterToggle"
-            aria-label="Toggle playback"
-          >
-            <svg class="icon-play" viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
-              <polygon points="6,4 20,12 6,20"></polygon>
-            </svg>
-            <svg class="icon-pause" viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
-              <rect x="5" y="4" width="4" height="16"></rect>
-              <rect x="15" y="4" width="4" height="16"></rect>
-            </svg>
-          </button>
-
-          <div class="video-modal__controls">
-            <div
-              class="modal-scrubber"
-              id="modalScrubber"
-              role="slider"
-              aria-label="Video scrubber"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              aria-valuenow="0"
-              tabindex="0"
-            >
-              <div class="modal-scrubber__buffered" id="modalBuffered"></div>
-              <div class="modal-scrubber__progress" id="modalProgress">
-                <span class="modal-scrubber__handle"></span>
-              </div>
-            </div>
-
-            <div class="modal-controls__row">
-              <div class="modal-controls__left">
-                <button
-                  type="button"
-                  class="modal-btn"
-                  id="modalPlayBtn"
-                  aria-label="Play or pause video"
-                >
-                  <svg class="icon-play" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                    <polygon points="6,4 20,12 6,20"></polygon>
-                  </svg>
-                  <svg class="icon-pause" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                    <rect x="5" y="4" width="4" height="16"></rect>
-                    <rect x="15" y="4" width="4" height="16"></rect>
-                  </svg>
-                </button>
-
-                <button
-                  type="button"
-                  class="modal-btn is-muted"
-                  id="modalMuteBtn"
-                  aria-label="Unmute audio"
-                >
-                  <svg class="icon-vol" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-                  </svg>
-                  <svg class="icon-muted" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-                    <line x1="23" y1="9" x2="17" y2="15"></line>
-                    <line x1="17" y1="9" x2="23" y2="15"></line>
-                  </svg>
-                </button>
-
-                <div class="modal-timecode">
-                  <span id="modalCurrentTime">00:00</span>
-                  <span class="modal-timecode__sep">/</span>
-                  <span id="modalTotalDuration">00:00</span>
-                </div>
-              </div>
-
-              <div class="modal-controls__right">
-                <button
-                  type="button"
-                  class="modal-btn"
-                  id="modalFullscreenBtn"
-                  aria-label="Toggle fullscreen"
-                >
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="video-modal__title-bar">
-          <span class="video-modal__title" id="modalVideoTitle">Fabrication Showcase</span>
-        </div>
-      </div>
-    </div>
 
     <!-- ========================================================================
        VENDOR LIBRARIES (GSAP, ScrollTrigger, Lenis)
@@ -2174,7 +1822,7 @@
     <script src="vendor/gsap.min.js"></script>
     <script src="vendor/ScrollTrigger.min.js"></script>
 
-    <!-- Application Modules -->
-    <script type="module" src="js/main.js"></script>
+    <!-- Application Scripts -->
+    <script src="js/main.js"></script>
   </body>
 </html>
