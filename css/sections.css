@@ -301,6 +301,12 @@
   z-index: var(--z-bg);
 }
 
+@media(max-width: 768px) {
+  .hero__bg {
+    background-image: url('../assets/hero_bg_mobile.png');
+  }
+}
+
 /* Architectural Dark Gradient: Text legibility on left */
 .hero__overlay {
   position: absolute;
