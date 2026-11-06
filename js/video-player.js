@@ -1,190 +1,273 @@
 /**
- * HYPER STEEL — VIDEO SHOWCASE MODULE
- * Muted cinema player with smooth video switching, reliable play/pause controls, and metadata updates.
+ * HYPER STEEL INNOVATION — FABRICATION VIDEO PLAYER MODULE
+ * Clean, minimalistic two-column interactive video player with custom video controls,
+ * scrollable playlist, muted autoplay, and heading/subheading updates.
  */
 
 export function initVideoPlayer() {
-  const cinemaPlayer  = document.querySelector('.cinema-player');
-  const mainVideo     = document.querySelector('.cinema-player__video');
-  const playToggleBtn = document.querySelector('.js-play-toggle');
-  const playerTitle   = document.querySelector('.cinema-player__title');
-  const playerCaption = document.querySelector('.cinema-player__caption');
-  const playlistItems = document.querySelectorAll('.video-thumb-card');
+  const customPlayer = document.getElementById('customVideoPlayer');
+  const mainVideo = document.getElementById('mainPlayerVideo');
+  const listVideos = document.querySelectorAll('.video-player-container .video-list .vid');
+  const titleElem = document.querySelector('.main-video-title');
+  const subtitleElem = document.querySelector('.main-video-subheading');
 
-  if (!cinemaPlayer || !mainVideo) return;
+  if (!mainVideo || !customPlayer) return;
 
-  let isPlayingDesired = true;
-  let activePlayPromise = null;
+  const playBtn = customPlayer.querySelector('.player-play-btn');
+  const centerBtn = customPlayer.querySelector('.player-center-btn');
+  const fullscreenBtn = customPlayer.querySelector('.player-fullscreen-btn');
+  const progressBar = customPlayer.querySelector('.player-progress');
+  const playedBar = customPlayer.querySelector('.player-progress-played');
+  const bufferedBar = customPlayer.querySelector('.player-progress-buffered');
+  const progressThumb = customPlayer.querySelector('.player-progress-thumb');
+  const timeCurrent = customPlayer.querySelector('.time-current');
+  const timeDuration = customPlayer.querySelector('.time-duration');
 
-  /* ---- Always keep muted and prevent unmuting ---- */
-  function enforceMuted() {
-    mainVideo.muted        = true;
-    mainVideo.defaultMuted = true;
-    mainVideo.volume       = 0;
+  // Keep video muted by default
+  mainVideo.muted = true;
+
+  function formatTime(seconds) {
+    if (isNaN(seconds) || seconds < 0) return '0:00';
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
   }
-  enforceMuted();
-  mainVideo.addEventListener('volumechange', enforceMuted);
 
-  /* ---- Play / pause icon sync ---- */
-  function updatePlayIcons(playing) {
-    if (!playToggleBtn) return;
-    playToggleBtn.setAttribute('aria-label', playing ? 'Pause Video' : 'Play Video');
-    playToggleBtn.innerHTML = playing
-      ? `<svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>`
-      : `<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>`;
+  function togglePlay() {
+    if (mainVideo.paused || mainVideo.ended) {
+      mainVideo.muted = true;
+      const playPromise = mainVideo.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {});
+      }
+    } else {
+      mainVideo.pause();
+    }
   }
 
   mainVideo.addEventListener('play', () => {
-    cinemaPlayer.classList.add('is-playing');
-    updatePlayIcons(true);
+    customPlayer.classList.add('is-playing');
+    if (centerBtn) centerBtn.setAttribute('aria-label', 'Pause video');
+    if (playBtn) playBtn.setAttribute('aria-label', 'Pause video');
+    resetIdleTimer();
   });
 
   mainVideo.addEventListener('pause', () => {
-    cinemaPlayer.classList.remove('is-playing');
-    updatePlayIcons(false);
+    customPlayer.classList.remove('is-playing');
+    customPlayer.classList.remove('is-idle');
+    if (centerBtn) centerBtn.setAttribute('aria-label', 'Play video');
+    if (playBtn) playBtn.setAttribute('aria-label', 'Play video');
+    clearTimeout(idleTimeout);
   });
 
   mainVideo.addEventListener('ended', () => {
-    // Loop reliably from start
-    mainVideo.currentTime = 0;
-    playVideo();
+    customPlayer.classList.remove('is-playing');
+    customPlayer.classList.remove('is-idle');
+    clearTimeout(idleTimeout);
   });
 
-  /* ---- Safe play helper ---- */
-  function playVideo() {
-    enforceMuted();
-    isPlayingDesired = true;
-    const promise = mainVideo.play();
-    if (promise !== undefined) {
-      activePlayPromise = promise;
-      promise
-        .then(() => {
-          activePlayPromise = null;
-          cinemaPlayer.classList.add('is-playing');
-          updatePlayIcons(true);
-        })
-        .catch((err) => {
-          activePlayPromise = null;
-          // Ignore AbortError when switching videos or pausing
-          if (err.name !== 'AbortError') {
-            cinemaPlayer.classList.remove('is-playing');
-            updatePlayIcons(false);
-            console.log('Video play info:', err.message);
-          }
-        });
-    }
-  }
-
-  /* ---- Safe pause helper ---- */
-  function pauseVideo() {
-    isPlayingDesired = false;
-    if (activePlayPromise) {
-      activePlayPromise.then(() => {
-        mainVideo.pause();
-        cinemaPlayer.classList.remove('is-playing');
-        updatePlayIcons(false);
-      }).catch(() => {});
-    } else {
-      mainVideo.pause();
-      cinemaPlayer.classList.remove('is-playing');
-      updatePlayIcons(false);
-    }
-  }
-
-  /* ---- Toggle play/pause ---- */
-  function togglePlay() {
-    enforceMuted();
-    if (mainVideo.paused || mainVideo.ended) {
-      if (mainVideo.ended) {
-        mainVideo.currentTime = 0;
-      }
-      playVideo();
-    } else {
-      pauseVideo();
-    }
-  }
-
-  playToggleBtn?.addEventListener('click', (e) => {
-    e.preventDefault();
-    togglePlay();
-  });
-
+  if (centerBtn) centerBtn.addEventListener('click', (e) => { e.stopPropagation(); togglePlay(); });
+  if (playBtn) playBtn.addEventListener('click', (e) => { e.stopPropagation(); togglePlay(); });
   mainVideo.addEventListener('click', togglePlay);
 
-  /* ---- Switch to a different video card ---- */
-  function selectVideo(card) {
-    if (!card) return;
-
-    const videoSrc    = card.getAttribute('data-video-src');
-    const videoPoster = card.getAttribute('data-video-poster');
-    const title       = card.getAttribute('data-video-title');
-    const caption     = card.getAttribute('data-video-caption');
-
-    if (!videoSrc) return;
-
-    /* Update active indicator across all cards */
-    const allCards = document.querySelectorAll('.video-thumb-card');
-    allCards.forEach((c) => {
-      c.classList.remove('is-active');
-      c.setAttribute('aria-selected', 'false');
-    });
-    card.classList.add('is-active');
-    card.setAttribute('aria-selected', 'true');
-
-    /* Update text metadata */
-    if (playerTitle && title) playerTitle.textContent = title;
-    if (playerCaption && caption) playerCaption.textContent = caption;
-
-    /* Poster update */
-    if (videoPoster) mainVideo.setAttribute('poster', videoPoster);
-
-    /* ---- Source switch and reload from beginning ---- */
-    enforceMuted();
-    mainVideo.pause();
-    mainVideo.currentTime = 0;
-
-    // Cleanly assign source and load
-    mainVideo.src = videoSrc;
-    mainVideo.load();
-    mainVideo.currentTime = 0;
-
-    playVideo();
+  let idleTimeout = null;
+  function resetIdleTimer() {
+    clearTimeout(idleTimeout);
+    customPlayer.classList.remove('is-idle');
+    if (!mainVideo.paused) {
+      idleTimeout = setTimeout(() => {
+        if (!mainVideo.paused) {
+          customPlayer.classList.add('is-idle');
+        }
+      }, 2400);
+    }
   }
 
-  /* ---- Bind clicks on all playlist cards ---- */
-  playlistItems.forEach((card) => {
-    card.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      selectVideo(card);
+  customPlayer.addEventListener('mousemove', resetIdleTimer);
+  customPlayer.addEventListener('mouseenter', resetIdleTimer);
+  customPlayer.addEventListener('mouseleave', () => {
+    if (!mainVideo.paused) {
+      customPlayer.classList.add('is-idle');
+    }
+  });
+
+  mainVideo.addEventListener('timeupdate', () => {
+    if (!mainVideo.duration) return;
+    const pct = (mainVideo.currentTime / mainVideo.duration) * 100;
+    if (playedBar) playedBar.style.width = `${pct}%`;
+    if (progressThumb) progressThumb.style.left = `${pct}%`;
+    if (progressBar) progressBar.setAttribute('aria-valuenow', Math.round(pct).toString());
+    if (timeCurrent) timeCurrent.textContent = formatTime(mainVideo.currentTime);
+  });
+
+  function updateDuration() {
+    if (timeDuration && mainVideo.duration) {
+      timeDuration.textContent = formatTime(mainVideo.duration);
+    }
+  }
+  mainVideo.addEventListener('loadedmetadata', updateDuration);
+  mainVideo.addEventListener('durationchange', updateDuration);
+  if (mainVideo.duration) updateDuration();
+
+  mainVideo.addEventListener('progress', () => {
+    if (mainVideo.buffered.length > 0 && mainVideo.duration) {
+      const bufferedEnd = mainVideo.buffered.end(mainVideo.buffered.length - 1);
+      const pct = (bufferedEnd / mainVideo.duration) * 100;
+      if (bufferedBar) bufferedBar.style.width = `${pct}%`;
+    }
+  });
+
+  if (progressBar) {
+    let isDragging = false;
+
+    function seek(e) {
+      const rect = progressBar.getBoundingClientRect();
+      const clientX = e.clientX || (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
+      let pos = (clientX - rect.left) / rect.width;
+      pos = Math.max(0, Math.min(1, pos));
+      if (mainVideo.duration) {
+        mainVideo.currentTime = pos * mainVideo.duration;
+        if (playedBar) playedBar.style.width = `${pos * 100}%`;
+        if (progressThumb) progressThumb.style.left = `${pos * 100}%`;
+        if (timeCurrent) timeCurrent.textContent = formatTime(mainVideo.currentTime);
+      }
+    }
+
+    progressBar.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      progressBar.classList.add('is-dragging');
+      seek(e);
     });
-    card.addEventListener('keydown', (e) => {
+
+    window.addEventListener('mousemove', (e) => {
+      if (isDragging) seek(e);
+    });
+
+    window.addEventListener('mouseup', () => {
+      if (isDragging) {
+        isDragging = false;
+        progressBar.classList.remove('is-dragging');
+      }
+    });
+
+    progressBar.addEventListener('touchstart', (e) => {
+      isDragging = true;
+      progressBar.classList.add('is-dragging');
+      seek(e);
+    }, { passive: true });
+
+    window.addEventListener('touchmove', (e) => {
+      if (isDragging) seek(e);
+    }, { passive: true });
+
+    window.addEventListener('touchend', () => {
+      if (isDragging) {
+        isDragging = false;
+        progressBar.classList.remove('is-dragging');
+      }
+    });
+  }
+
+  function toggleFullscreen() {
+    const isFs = !!(document.fullscreenElement || document.webkitFullscreenElement);
+    if (!isFs) {
+      if (customPlayer.requestFullscreen) {
+        customPlayer.requestFullscreen();
+      } else if (customPlayer.webkitRequestFullscreen) {
+        customPlayer.webkitRequestFullscreen();
+      }
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      }
+    }
+  }
+
+  if (fullscreenBtn) {
+    fullscreenBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleFullscreen();
+    });
+  }
+
+  function syncFullscreen() {
+    const isFs = !!(document.fullscreenElement || document.webkitFullscreenElement);
+    customPlayer.classList.toggle('is-fullscreen', isFs);
+  }
+  document.addEventListener('fullscreenchange', syncFullscreen);
+  document.addEventListener('webkitfullscreenchange', syncFullscreen);
+
+  customPlayer.addEventListener('keydown', (e) => {
+    if (e.key === ' ' || e.key === 'k') {
+      e.preventDefault();
+      togglePlay();
+    } else if (e.key === 'f' || e.key === 'F') {
+      e.preventDefault();
+      toggleFullscreen();
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      mainVideo.currentTime = Math.max(0, mainVideo.currentTime - 5);
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      if (mainVideo.duration) {
+        mainVideo.currentTime = Math.min(mainVideo.duration, mainVideo.currentTime + 5);
+      }
+    }
+  });
+
+  listVideos.forEach((video) => {
+    const activate = () => {
+      if (video.classList.contains('active')) return;
+
+      listVideos.forEach((vid) => vid.classList.remove('active'));
+      video.classList.add('active');
+
+      const src = video.getAttribute('data-src');
+      const poster = video.getAttribute('data-poster');
+      const titleText = video.getAttribute('data-title');
+      const subtitleText = video.getAttribute('data-subtitle');
+
+      if (src && mainVideo.getAttribute('src') !== src) {
+        mainVideo.src = src;
+        if (poster) mainVideo.poster = poster;
+        mainVideo.muted = true; // Always muted
+        mainVideo.currentTime = 0;
+        mainVideo.load();
+        const playPromise = mainVideo.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            mainVideo.muted = true;
+            mainVideo.play().catch(() => {});
+          });
+        }
+      }
+
+      if (titleElem && titleText) {
+        titleElem.textContent = titleText;
+      }
+      if (subtitleElem && subtitleText) {
+        subtitleElem.textContent = subtitleText;
+      }
+    };
+
+    video.addEventListener('click', activate);
+    video.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        selectVideo(card);
+        activate();
       }
     });
   });
 
-  /* ---- Initial autoplay attempt ---- */
-  enforceMuted();
-  playVideo();
-
-  /* ---- Auto-pause when scrolled out of view & resume when in view ---- */
-  if ('IntersectionObserver' in window) {
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) {
-          if (!mainVideo.paused) {
-            mainVideo.pause();
-          }
-        } else {
-          if (isPlayingDesired && mainVideo.paused) {
-            playVideo();
-          }
-        }
-      });
-    }, { threshold: 0.25 });
-    obs.observe(cinemaPlayer);
+  if (!mainVideo.paused) {
+    customPlayer.classList.add('is-playing');
   }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initVideoPlayer, { once: true });
+} else {
+  initVideoPlayer();
 }

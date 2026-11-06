@@ -1,9 +1,10 @@
 /**
- * HYPER STEEL — PROJECTS & LIGHTBOX MODULE
+ * HYPER STEEL — SELECTED WORKS & LIGHTBOX MODULE
+ * High-Resolution Lightbox Viewer for Architectural Installations.
+ * Filter logic removed completely as per specifications.
  */
 
 export function initProjects() {
-  const filterBtns = document.querySelectorAll('.filter-btn');
   const projectItems = document.querySelectorAll('.project-item');
   const lightbox = document.querySelector('.project-lightbox');
   const lightboxImg = document.querySelector('.lightbox__image');
@@ -13,30 +14,7 @@ export function initProjects() {
   const lightboxClose = document.querySelector('.lightbox__close');
   const lightboxBackdrop = document.querySelector('.lightbox__backdrop');
 
-  // Filter functionality
-  filterBtns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach((b) => b.classList.remove('is-active'));
-      btn.classList.add('is-active');
-
-      const filterValue = btn.getAttribute('data-filter');
-
-      projectItems.forEach((item) => {
-        const itemCategory = item.getAttribute('data-category');
-        if (filterValue === 'all' || itemCategory === filterValue) {
-          item.style.display = 'block';
-        } else {
-          item.style.display = 'none';
-        }
-      });
-
-      if (typeof ScrollTrigger !== 'undefined') {
-        ScrollTrigger.refresh();
-      }
-    });
-  });
-
-  // Lightbox view
+  // Open Lightbox
   function openLightbox(item) {
     if (!lightbox) return;
     const img = item.querySelector('.project-item__img');
@@ -56,6 +34,7 @@ export function initProjects() {
     document.body.style.overflow = 'hidden';
   }
 
+  // Close Lightbox
   function closeLightbox() {
     if (!lightbox) return;
     lightbox.classList.remove('is-active');

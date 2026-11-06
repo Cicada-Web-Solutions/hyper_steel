@@ -1,80 +1,110 @@
 /**
- * HYPER STEEL — CATEGORY GALLERY MODULE
- * Initial state: ALL panels equal compressed width (no panel open).
- * Hover state (desktop): hovered panel grows, siblings shrink.
- * Touch (mobile): click to expand / collapse.
- * Mouse leave gallery: resets all panels to equal compressed state.
+ * HYPER STEEL — CATEGORY GALLERY
+ * CSS handles desktop hover.
+ * JavaScript handles touch and keyboard interaction.
  */
 
 export function initCategoryGallery() {
-  const gallery = document.querySelector('.category-gallery');
-  if (!gallery) return;
+  document.querySelectorAll('.category-gallery').forEach((gallery) => {
+    if (gallery.dataset.galleryReady === 'true') return;
 
-  const panels = Array.from(gallery.querySelectorAll('.category-panel'));
-  if (panels.length === 0) return;
+    const panels = [...gallery.querySelectorAll('.category-panel')];
 
-  /* ---- State helpers ---- */
-  function resetAll() {
-    panels.forEach((p) => {
-      p.classList.remove('is-expanded', 'is-shrunk');
-      p.setAttribute('aria-expanded', 'false');
-    });
-  }
+    if (!panels.length) return;
 
-  function expandPanel(index) {
-    panels.forEach((panel, i) => {
-      if (i === index) {
-        panel.classList.add('is-expanded');
-        panel.classList.remove('is-shrunk');
-        panel.setAttribute('aria-expanded', 'true');
-      } else {
-        panel.classList.remove('is-expanded');
-        panel.classList.add('is-shrunk');
+    gallery.dataset.galleryReady = 'true';
+
+    const touchMode = window.matchMedia(
+      '(hover: none), (pointer: coarse)'
+    );
+
+    function closeAll() {
+      panels.forEach((panel) => {
+        panel.classList.remove('is-expanded', 'is-shrunk');
         panel.setAttribute('aria-expanded', 'false');
+      });
+    }
+
+    function expand(selectedPanel) {
+      panels.forEach((panel) => {
+        const selected = panel === selectedPanel;
+
+        panel.classList.toggle('is-expanded', selected);
+        panel.classList.toggle('is-shrunk', !selected);
+        panel.setAttribute('aria-expanded', String(selected));
+      });
+    }
+
+    // Remove any stale state left by previous scripts.
+    closeAll();
+
+    panels.forEach((panel, index) => {
+      panel.addEventListener('click', () => {
+        // Desktop expansion is controlled by CSS :hover.
+        if (!touchMode.matches) return;
+
+        if (panel.classList.contains('is-expanded')) {
+          closeAll();
+        } else {
+          expand(panel);
+        }
+      });
+
+      panel.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          closeAll();
+          return;
+        }
+
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+
+          if (panel.classList.contains('is-expanded')) {
+            closeAll();
+          } else {
+            expand(panel);
+          }
+
+          return;
+        }
+
+        if (
+          event.key === 'ArrowRight' ||
+          event.key === 'ArrowDown'
+        ) {
+          event.preventDefault();
+          panels[(index + 1) % panels.length].focus();
+        }
+
+        if (
+          event.key === 'ArrowLeft' ||
+          event.key === 'ArrowUp'
+        ) {
+          event.preventDefault();
+          panels[(index - 1 + panels.length) % panels.length].focus();
+        }
+      });
+    });
+
+    // Close expanded panels when tapping outside the gallery.
+    document.addEventListener('pointerdown', (event) => {
+      if (
+        event.pointerType === 'touch' &&
+        !gallery.contains(event.target)
+      ) {
+        closeAll();
       }
     });
-  }
-
-  /* ---- Initial: equal compressed state ---- */
-  resetAll();
-
-  /* ---- Desktop hover interaction ---- */
-  panels.forEach((panel, index) => {
-    panel.addEventListener('mouseenter', () => {
-      expandPanel(index);
-    });
   });
+}
 
-  gallery.addEventListener('mouseleave', () => {
-    resetAll();
-  });
-
-  /* ---- Touch / click toggle ---- */
-  panels.forEach((panel, index) => {
-    panel.addEventListener('click', () => {
-      if (panel.classList.contains('is-expanded')) {
-        resetAll();
-      } else {
-        expandPanel(index);
-      }
-    });
-
-    /* ---- Keyboard navigation ---- */
-    panel.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        panel.classList.contains('is-expanded') ? resetAll() : expandPanel(index);
-      } else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-        e.preventDefault();
-        const next = (index + 1) % panels.length;
-        panels[next].focus();
-        expandPanel(next);
-      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-        e.preventDefault();
-        const prev = (index - 1 + panels.length) % panels.length;
-        panels[prev].focus();
-        expandPanel(prev);
-      }
-    });
-  });
+// Automatically initialize, even if this module loads after DOMContentLoaded.
+if (document.readyState === 'loading') {
+  document.addEventListener(
+    'DOMContentLoaded',
+    initCategoryGallery,
+    { once: true }
+  );
+} else {
+  initCategoryGallery();
 }

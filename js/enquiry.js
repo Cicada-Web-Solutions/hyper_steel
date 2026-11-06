@@ -1,5 +1,6 @@
 /**
  * HYPER STEEL — PROJECT CONSULTATION MODULE
+ * Manages the consultation enquiry modal and WhatsApp integration.
  */
 
 export function initEnquiry() {
@@ -54,7 +55,7 @@ export function initEnquiry() {
       const location = form.querySelector('#enquiry-location')?.value.trim() || 'Madurai';
       const message = form.querySelector('#enquiry-message')?.value.trim() || '';
 
-      const text = `Hello Hyper Steel,\n\nI am interested in discussing an architectural project:\n- Name: ${name}\n- Phone: ${phone}\n- Discipline: ${service}\n- Project Location: ${location}\n- Notes: ${message}\n\nPlease let me know when we can schedule a consultation.`;
+      const text = `Hello Hyper Steel,\n\nI would like to discuss an architectural steel project:\n- Name: ${name}\n- Contact: ${phone}\n- Category: ${service}\n- Project Location: ${location}\n- Scope & Notes: ${message}\n\nPlease let me know when we can schedule a consultation.`;
 
       const encodedText = encodeURIComponent(text);
       const whatsappUrl = `https://wa.me/919944020815?text=${encodedText}`;
